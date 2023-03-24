@@ -1,12 +1,14 @@
-import { Contacts, Navigation } from '../../components';
-
-import { Block } from './header.styled';
+import { Block, Menu } from "./header.styled";
+import { Contacts, Navigation, TopBar } from "../../components";
 
 function Header(): JSX.Element {
   return (
     <Block>
-      <Contacts />
-      <Navigation />
+      <Menu>
+        <Contacts />
+        <Navigation />
+      </Menu>
+      <TopBar />
     </Block>
   );
 }

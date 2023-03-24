@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { verticalLine } from "../../theme/mixins";
 
 export const Block = styled.nav`
   flex-grow: 1;
@@ -16,13 +17,9 @@ export const Item = styled.li`
   align-items: center;
 
   &:not(:first-child) {
+    ${verticalLine("left")}
     margin-left: 31px;
     padding-left: 32px;
-    background-position:  0 0, 0 0, 100% 0, 0 100%;
-    background-size: 1px 100%, 100% 3px, 3px 100% , 100% 3px;
-    background-repeat: no-repeat;
-    background-image: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 4px);
-    border-image: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 4px);
   }
 `;
 

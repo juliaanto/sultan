@@ -1,7 +1,7 @@
-import { Block, Contact, IconWrapper, Mail, PrimaryText, SecondaryText, TextWrapper } from './contacts.styled';
+import { Block, Contact, IconWrapper, Mail, PrimaryText, SecondaryText, TextWrapper } from "./contacts.styled";
 
-import { ReactComponent as IconLocation } from '../../assets/icons/location.svg';
-import { ReactComponent as IconMail } from '../../assets/icons/mail.svg';
+import { ReactComponent as IconLocation } from "../../assets/icons/location.svg";
+import { ReactComponent as IconMail } from "../../assets/icons/mail.svg";
 
 function Contacts(): JSX.Element {
   return (
