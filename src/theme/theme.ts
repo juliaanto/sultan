@@ -9,7 +9,9 @@ const theme = {
     input: "#ededed",
   },
   contentWidth: {
-    max: "1400px",
+    maxDesktop: "1400px",
+    maxMobile: "500px",
+    minMobile: "300px",
   },
   breakpoint: {
     desktop: 1230,

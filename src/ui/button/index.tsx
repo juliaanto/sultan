@@ -3,7 +3,7 @@ import { StyledButton } from "./button.styled";
 export interface ButtonProps {
   type?: "button" | "submit" | "reset";
   children?: JSX.Element| JSX.Element[] | string;
-  $style?: string;
+  $style?: "text" | "headerSearch";
 }
 
 function Button({

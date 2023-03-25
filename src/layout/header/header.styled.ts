@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 export const Block = styled.header`
-  max-width: ${({ theme }) => theme.contentWidth.max};
+  max-width: ${({ theme }) => theme.contentWidth.maxMobile};
+  min-width: ${({ theme }) => theme.contentWidth.minMobile};
   margin: 0 auto;
   width: 100%;
-`;
 
-export const Menu = styled.div`
-  padding: 10px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+    max-width: ${({ theme }) => theme.contentWidth.maxDesktop};
+  }
 `;

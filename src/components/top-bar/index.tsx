@@ -1,11 +1,7 @@
-import { Block, ButtonWrapper, HeaderLink, LinkText, PhoneWrapper } from "./top-bar.styled";
+import { Block, ButtonWrapper, HeaderLink, LinkText, PhoneWrapper, StyledCatalogIcon } from "./top-bar.styled";
+import { CartLink, Logo, Phone, PriceListButton } from "../../components";
 
-import CartLink from "../cart-link";
-import { ReactComponent as IconCatalog } from "../../assets/icons/catalog-button.svg";
-import { ReactComponent as IconLogo } from "../../assets/icons/logo.svg";
 import { Input } from "../../ui";
-import Phone from "../phone";
-import PriceListButton from "../price-list-button";
 import useViewport from "../../common/hooks/useViewport";
 
 function TopBar(): JSX.Element {
@@ -14,13 +10,13 @@ function TopBar(): JSX.Element {
   return (
       <Block>
         {!isMobile &&
-          <IconLogo />
+          <Logo />
         }
         <HeaderLink to="/">
           <LinkText>Каталог</LinkText>
-          <IconCatalog />
+          <StyledCatalogIcon />
         </HeaderLink>
-        <Input type="search" placeholder="Поиск..."></Input>
+        <Input type="search" placeholder={isMobile ? "Поиск" : "Поиск..."} $style="headerSearch"></Input>
         {!isMobile &&
         <>
           <PhoneWrapper>

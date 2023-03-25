@@ -3,22 +3,27 @@ import { StyledInput, Wrapper } from "./input.styled";
 import Button from "../button";
 import { ReactComponent as IconSearch } from "../../assets/icons/search.svg";
 
-interface SearchInputProps {
+export interface InputProps {
   type?: string;
   placeholder?: string;
+  $style?: "headerSearch";
 }
 
 function Input({
   type="text",
   placeholder,
-}: SearchInputProps): JSX.Element {
+  $style,
+}: InputProps): JSX.Element {
   return (
-    <Wrapper>
+    <Wrapper 
+      $style={$style}
+    >
       <StyledInput
         type={type}
         placeholder={placeholder}
+        $style={$style}
       ></StyledInput>
-      <Button type="button">
+      <Button type="button" $style="headerSearch">
         <IconSearch />
       </Button>
     </Wrapper>

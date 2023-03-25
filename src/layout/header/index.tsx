@@ -1,19 +1,11 @@
-import { Block, Menu } from "./header.styled";
-import { Contacts, Navigation, TopBar } from "../../components";
+import { MenuBar, TopBar } from "../../components";
 
-import useViewport from "../../common/hooks/useViewport";
+import { Block } from "./header.styled";
 
 function Header(): JSX.Element {
-  const isMobile = useViewport();
-  
   return (
     <Block>
-      {!isMobile &&
-        <Menu>
-          <Contacts />
-          <Navigation />
-        </Menu>
-      }
+      <MenuBar />
       <TopBar />
     </Block>
   );

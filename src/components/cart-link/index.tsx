@@ -1,17 +1,21 @@
-import { Block, Cart, PrimaryText, SecondaryText, TextWrapper } from "./cart-link.styled";
+import { Block, Cart, Icon, PrimaryText, SecondaryText, TextWrapper } from "./cart-link.styled";
 
-import { ReactComponent as IconCart } from "../../assets/icons/cart.svg";
+import useViewport from "../../common/hooks/useViewport";
 
 function CartLink(): JSX.Element {
+  const isMobile = useViewport();
+  
   return (
     <Block to="/">
       <Cart $productsCount={3}>
-        <IconCart />
+        <Icon />
       </Cart>
-      <TextWrapper>
-        <SecondaryText>Корзина</SecondaryText>
-        <PrimaryText>12 478 ₸</PrimaryText>
-      </TextWrapper>
+      {!isMobile &&
+        <TextWrapper>
+          <SecondaryText>Корзина</SecondaryText>
+          <PrimaryText>12 478 ₸</PrimaryText>
+        </TextWrapper>
+      }
     </Block>
   );
 }
