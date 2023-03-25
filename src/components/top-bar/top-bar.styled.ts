@@ -1,6 +1,5 @@
-import styled, { css } from "styled-components";
-
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import { verticalLine } from "../../common/helpers/verticalLine";
 
 export const Block = styled.div`
@@ -39,7 +38,7 @@ export const HeaderLink = styled(Link)`
   align-items: center;
   gap: 11px;
   margin-left: 14px;
-  margin-right: -10px;
+  margin-right: 10px;
 `;
 
 export const LinkText = styled.span`
@@ -51,6 +50,7 @@ export const PhoneWrapper = styled.div`
   align-items: center;
   gap: 10px;
   margin-left: 10px;
+  margin-right: 10px;
 
   &::after {
     content: "";
@@ -77,20 +77,6 @@ export const PhoneWrapper = styled.div`
   }
 `;
 
-export const Phone = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-`;
-
-export const PhoneNumber = styled.a`
-  font-size: 14px;
-  font-weight: 600;
-  color: ${({ theme }) => theme.color.textPrimary};
-  margin-top: 5px;
-  margin-bottom: 7px;
-`;
-
 export const PrimaryText = styled.p`
   font-weight: 600;
   margin: 0;
@@ -103,17 +89,13 @@ export const SecondaryText = styled.p`
   margin: 0;
 `;
 
-export const RequestCall = styled.a`
-  font-size: 10px;
-  text-decoration: underline;
-  color: ${({ theme }) => theme.color.textSecondary};
-  font-weight: 400;
-  margin-top: 10px;
-`;
-
 export const ButtonWrapper = styled.div`
   position: relative;
-  padding: 0 25px;
+  flex-grow: 1;
+  max-width: 230px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
   
   &::after {
     ${verticalLine("leftRight")}
@@ -125,44 +107,4 @@ export const ButtonWrapper = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
-`;
-
-export const CartLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  margin-right: 5px;
-`;
-
-interface CartProps {
-  $productsCount?: number;
-}
-
-export const Cart = styled.div<CartProps>`
-  position: relative;
-
-  &::after {
-    ${(props) => props.$productsCount && props.$productsCount > 0 && css`
-      content: "${props.$productsCount}";
-      width: 22px;
-      height: 22px;
-      background-color: ${({ theme }) => theme.color.primary};
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      top: -5px;
-      right: -14px;
-      border-radius: 50%;
-      color: ${({ theme }) => theme.color.textButton};
-      font-weight: 700;
-      box-shadow: 0px 0px 0px 3px #ffffff;
-    `}
-  }
-`;
-
-export const TextWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
 `;

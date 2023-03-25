@@ -10,6 +10,9 @@ const theme = {
   },
   contentWidth: {
     max: "1400px",
+  },
+  breakpoint: {
+    desktop: 1230,
   }
 }
 

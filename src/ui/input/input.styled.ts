@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   border-radius: 36px;
   display: flex;
   flex-grow: 1;
+  flex-shrink: 1;
   max-width: 233px;
 `;
 
