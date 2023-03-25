@@ -1,6 +1,6 @@
-import Block from './page.styled';
-import Footer from '../footer';
-import Header from '../header';
+import Block from "./page.styled";
+import Footer from "../footer";
+import Header from "../header";
 
 interface PageProps {
   children: JSX.Element;

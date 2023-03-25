@@ -1,5 +1,5 @@
-import Block from './catalog.styled';
-import Page from '../../layout/page';
+import Block from "./catalog.styled";
+import Page from "../../layout/page";
 
 function Catalog() {
   return (

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { verticalLine } from '../../theme/mixins';
+import styled from "styled-components";
+import { verticalLine } from "../../common/helpers/verticalLine";
 
 export const Block = styled.div`
   display: flex;

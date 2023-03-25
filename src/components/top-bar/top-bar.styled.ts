@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 import { Link } from "react-router-dom";
-import { verticalLine } from "../../theme/mixins";
+import { verticalLine } from "../../common/helpers/verticalLine";
 
 export const Block = styled.div`
   display: flex;
