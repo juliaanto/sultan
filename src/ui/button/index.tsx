@@ -1,22 +1,40 @@
+import { ReactComponent as IconDownload } from "../../assets/icons/download.svg";
 import { StyledButton } from "./button.styled";
 
 export interface ButtonProps {
+  onClick?: () => void;
   type?: "button" | "submit" | "reset";
   children?: JSX.Element| JSX.Element[] | string;
-  $style?: "text" | "headerSearch";
+  $view?: "icon" | "headerSearch" | "priceList";
 }
 
 function Button({
+  onClick,
   type = "button",
   children,
-  $style,
+  $view,
 }: ButtonProps): JSX.Element {
+  const renderContent = (view?: string) => {
+    switch(view) {
+      case "priceList":
+        return <>
+          <span>Прайс-лист</span>
+          <IconDownload />
+        </>;
+      default:
+        return <>
+          {children}
+        </>;
+    }
+  }
+  
   return (
     <StyledButton
+      onClick={onClick}
       type={type}
-      $style={$style}
+      $view={$view}
     >
-      {children}
+      {renderContent($view)}
     </StyledButton>
   );
 }

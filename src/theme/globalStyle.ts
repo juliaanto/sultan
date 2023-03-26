@@ -19,6 +19,12 @@ const GlobalStyle = createGlobalStyle`
     padding-left: 0;
     margin: 0;
   }
+
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+  }
 `;
 
 export default GlobalStyle;

@@ -8,18 +8,20 @@ export const StyledButton = styled.button<ButtonProps>`
   justify-content: center;
   align-items: center;
   font-family: "Inter", sans-serif;
+  background-color: ${({theme}) => theme.color.primary};
 
   ${(props) => {
-    switch (props.$style) {
-      case "text":
+    switch (props.$view) {
+      case "icon":
         return css`
-          padding: 20px 44px;
-          border-radius: 79px;
-          font-weight: 700;
-          background-color: ${({theme}) => theme.color.primary};
-          color: ${({theme}) => theme.color.textButton};
-          font-size: 14px;
-          gap: 14px;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+
+          @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+            width: 39px;
+            height: 39px;
+          }
         `;
       case "headerSearch":
         return css`
@@ -50,20 +52,15 @@ export const StyledButton = styled.button<ButtonProps>`
               stroke: ${({theme}) => theme.color.textButton};
             }
           }
-        
         `;
       default:
         return css`
-          background-color: ${({theme}) => theme.color.primary};
-          border-radius: 50%;
-          width: 32px;
-          height: 32px;
-          padding: 0;
-
-          @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
-            width: 39px;
-            height: 39px;
-          }
+          padding: 20px 44px;
+          border-radius: 79px;
+          font-weight: 700;
+          color: ${({theme}) => theme.color.textButton};
+          font-size: 14px;
+          gap: 14px;
         `;
     }
   }}

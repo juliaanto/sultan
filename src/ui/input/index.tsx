@@ -6,24 +6,24 @@ import { ReactComponent as IconSearch } from "../../assets/icons/search.svg";
 export interface InputProps {
   type?: string;
   placeholder?: string;
-  $style?: "headerSearch";
+  $view?: "headerSearch";
 }
 
 function Input({
   type="text",
   placeholder,
-  $style,
+  $view,
 }: InputProps): JSX.Element {
   return (
     <Wrapper 
-      $style={$style}
+      $view={$view}
     >
       <StyledInput
         type={type}
         placeholder={placeholder}
-        $style={$style}
+        $view={$view}
       ></StyledInput>
-      <Button type="button" $style="headerSearch">
+      <Button $view="headerSearch">
         <IconSearch />
       </Button>
     </Wrapper>

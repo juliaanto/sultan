@@ -1,7 +1,7 @@
 import { Block, ButtonWrapper, HeaderLink, LinkText, PhoneWrapper, StyledCatalogIcon } from "./top-bar.styled";
-import { CartLink, Logo, Phone, PriceListButton } from "../../components";
+import { Button, Input } from "../../ui";
+import { CartLink, Logo, Phone } from "../../components";
 
-import { Input } from "../../ui";
 import useViewport from "../../common/hooks/useViewport";
 
 function TopBar(): JSX.Element {
@@ -16,14 +16,14 @@ function TopBar(): JSX.Element {
           <LinkText>Каталог</LinkText>
           <StyledCatalogIcon />
         </HeaderLink>
-        <Input type="search" placeholder={isMobile ? "Поиск" : "Поиск..."} $style="headerSearch"></Input>
+        <Input type="search" placeholder={isMobile ? "Поиск" : "Поиск..."} $view="headerSearch"></Input>
         {!isMobile &&
         <>
           <PhoneWrapper>
             <Phone />
           </PhoneWrapper>
           <ButtonWrapper>
-            <PriceListButton />
+            <Button $view="priceList" />
           </ButtonWrapper>
           <CartLink />
         </>

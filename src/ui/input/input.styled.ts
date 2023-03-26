@@ -2,12 +2,12 @@ import styled, { css } from "styled-components";
 
 import { InputProps } from ".";
 
-export const Wrapper = styled.div<{$style?: "headerSearch"}>`
+export const Wrapper = styled.div<{$view?: "headerSearch"}>`
   border-radius: 36px;
   display: flex;
 
-  ${({$style}) => {
-  switch ($style) {
+  ${({$view}) => {
+  switch ($view) {
     case "headerSearch":
       return css`
         flex-direction: row-reverse;
@@ -57,14 +57,15 @@ export const StyledInput = styled.input<InputProps>`
     font-size: 12px;
   }
 
-  ${({$style}) => {
-  switch ($style) {
+  ${({$view}) => {
+  switch ($view) {
     case "headerSearch":
       return css`
         width: 50px;
 
         @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
           width: auto;
+          flex-grow: 1;
         }
         
         &::placeholder {
@@ -86,4 +87,3 @@ export const StyledInput = styled.input<InputProps>`
     }
   }}
 `;
-

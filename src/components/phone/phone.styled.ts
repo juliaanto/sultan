@@ -1,9 +1,23 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Block = styled.div`
+interface BlockProps {
+  $isLocatedInMenu?: boolean;
+}
+
+export const Block = styled.div<BlockProps>`
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+
+  ${({$isLocatedInMenu}) => $isLocatedInMenu ?
+    css`
+      gap: 6px;
+      align-items: center;
+    `
+    :
+    css`
+      align-items: flex-end;
+      flex-direction: column;
+    `
+  }
 `;
 
 export const PhoneNumber = styled.a`
@@ -21,10 +35,26 @@ export const SecondaryText = styled.p`
   margin: 0;
 `;
 
-export const RequestCall = styled.a`
+interface RequestCallProps {
+  $isLocatedInMenu?: boolean;
+}
+
+export const RequestCall = styled.button<RequestCallProps>`
   font-size: 10px;
   text-decoration: underline;
   color: ${({ theme }) => theme.color.textSecondary};
   font-weight: 400;
-  margin-top: 10px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  width: max-content;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  
+
+  ${({$isLocatedInMenu}) => !$isLocatedInMenu &&
+    css`
+      margin-top: 10px;
+    `
+  }
 `;
