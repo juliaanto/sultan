@@ -9,6 +9,7 @@ export const StyledButton = styled.button<ButtonProps>`
   align-items: center;
   font-family: "Inter", sans-serif;
   background-color: ${({theme}) => theme.color.primary};
+  cursor: pointer;
 
   ${(props) => {
     switch (props.$view) {
@@ -52,6 +53,17 @@ export const StyledButton = styled.button<ButtonProps>`
               stroke: ${({theme}) => theme.color.textButton};
             }
           }
+        `;
+      case "priceList":
+        return css`
+          padding: 20px 44px;
+          border-radius: 79px;
+          font-weight: 700;
+          color: ${({theme}) => theme.color.textButton};
+          font-size: 14px;
+          gap: 14px;
+          width: 100%;
+          max-width: 214px;
         `;
       default:
         return css`

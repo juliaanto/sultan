@@ -5,30 +5,38 @@ import { ReactComponent as IconMail } from "../../assets/icons/mail.svg";
 import { ReactComponent as IconPhone } from "../../assets/icons/phone.svg";
 import useViewport from "../../common/hooks/useViewport";
 
-function Contacts(): JSX.Element {
+interface ContactsProps {
+  $isLocatedInFooter?: boolean;
+}
+
+function Contacts({$isLocatedInFooter}: ContactsProps): JSX.Element {
   const isMobile = useViewport();
   
   return (
     <Block>
+      {!$isLocatedInFooter &&
+        <Contact>
+          <IconWrapper>
+            <IconLocation />
+          </IconWrapper>
+          <TextWrapper>
+            <PrimaryText>г. Кокчетав, ул. Ж. Ташенова 129Б</PrimaryText>
+            <SecondaryText>(Рынок Восточный)</SecondaryText>
+          </TextWrapper>
+        </Contact>
+      }
       <Contact>
-        <IconWrapper>
-          <IconLocation />
-        </IconWrapper>
-        <TextWrapper>
-          <PrimaryText>г. Кокчетав, ул. Ж. Ташенова 129Б</PrimaryText>
-          <SecondaryText>(Рынок Восточный)</SecondaryText>
-        </TextWrapper>
-      </Contact>
-      <Contact>
+        {!$isLocatedInFooter &&
         <IconWrapper>
           <IconMail />
         </IconWrapper>
-        <TextWrapper>
-          <Mail href="mailto:opt.sultan@mail.ru">opt.sultan@mail.ru</Mail>
-          <SecondaryText>На связи в любое время</SecondaryText>
+        }
+        <TextWrapper $isLocatedInFooter={$isLocatedInFooter}>
+          <Mail href="mailto:opt.sultan@mail.ru" $isLocatedInFooter={$isLocatedInFooter}>opt.sultan@mail.ru</Mail>
+          <SecondaryText $isLocatedInFooter={$isLocatedInFooter}>На связи в любое время</SecondaryText>
         </TextWrapper>
       </Contact>
-      {isMobile &&
+      {isMobile && !$isLocatedInFooter &&
       <>
         <Contact>
           <IconWrapper>

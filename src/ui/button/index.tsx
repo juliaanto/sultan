@@ -4,7 +4,7 @@ import { StyledButton } from "./button.styled";
 export interface ButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
-  children?: JSX.Element| JSX.Element[] | string;
+  children?: React.ReactNode;
   $view?: "icon" | "headerSearch" | "priceList";
 }
 

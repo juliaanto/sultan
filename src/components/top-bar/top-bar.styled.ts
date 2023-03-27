@@ -140,8 +140,8 @@ export const SecondaryText = styled.p`
 export const ButtonWrapper = styled.div`
   position: relative;
   flex-grow: 1;
-  max-width: 230px;
-  padding: 0 10px;
+  max-width: 200px;
+  padding: 0 25px;
   display: flex;
   justify-content: center;
   

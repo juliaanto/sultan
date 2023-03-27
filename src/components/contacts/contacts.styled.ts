@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
 import { verticalLine } from "../../common/helpers/verticalLine";
 
 export const Block = styled.div`
@@ -32,8 +33,15 @@ export const IconWrapper = styled.div`
   height: 100%;
 `;
 
-export const TextWrapper = styled.div`
-  margin-left: 17px;
+interface TextWrapperProps {
+  $isLocatedInFooter?: boolean;
+}
+
+export const TextWrapper = styled.div<TextWrapperProps>`
+  ${({$isLocatedInFooter}) => !$isLocatedInFooter &&
+    css`
+      margin-left: 17px;
+    `}
 `;
 
 export const PrimaryText = styled.p`
@@ -41,10 +49,19 @@ export const PrimaryText = styled.p`
   margin: 0;
 `;
 
-export const SecondaryText = styled.p`
+interface SecondaryTextProps {
+  $isLocatedInFooter?: boolean;
+}
+
+export const SecondaryText = styled.p<SecondaryTextProps>`
   font-size: 12px;
   margin: 0;
   color: ${({ theme }) => theme.color.textSecondary};
+
+  ${({$isLocatedInFooter}) => $isLocatedInFooter &&
+    css`
+      color: ${({ theme }) => theme.color.textFooter};
+    `}
 `;
 
 export const WorkingHours = styled(SecondaryText)`
@@ -53,6 +70,15 @@ export const WorkingHours = styled(SecondaryText)`
   margin-bottom: 14px;
 `;
 
-export const Mail = styled.a`
+interface MailProps {
+  $isLocatedInFooter?: boolean;
+}
+
+export const Mail = styled.a<MailProps>`
   font-weight: 600;
+
+  ${({$isLocatedInFooter}) => $isLocatedInFooter &&
+    css`
+      color: ${({ theme }) => theme.color.textFooter};
+    `}
 `;

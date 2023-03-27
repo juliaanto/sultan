@@ -2,6 +2,7 @@ import { ButtonSymbol, DesktopMenuBar, MobileMenuBar } from "./menu-bar.styled";
 import { CartLink, Contacts, Logo, Menu, Navigation } from "../../components";
 
 import { Button } from "../../ui";
+import { siteMenu } from "../../common/data/site-menu";
 import { useState } from "react";
 import useViewport from "../../common/hooks/useViewport";
 
@@ -22,7 +23,7 @@ function MenuBar(): JSX.Element {
         :
         <DesktopMenuBar>
           <Contacts />
-          <Navigation />
+          <Navigation sections={siteMenu} />
         </DesktopMenuBar>
       }
       {isMobile && isMenuOpen &&

@@ -1,37 +1,68 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
 import { verticalLine } from "../../common/helpers/verticalLine";
 
 export const Block = styled.nav`
   flex-grow: 1;
 `;
 
-export const List = styled.ul`
+interface ListProps {
+  $isLocatedInFooter?: boolean;
+}
+
+export const List = styled.ul<ListProps>`
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
   row-gap: 10px;
+  flex-wrap: wrap;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
-    flex-direction: row;
+  ${({$isLocatedInFooter}) => !$isLocatedInFooter &&
+    css`
+      @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+        flex-direction: row;
+      }
+    `
   }
 `;
 
-export const Item = styled.li`
+interface ItemProps {
+  $isLocatedInFooter?: boolean;
+}
+
+export const Item = styled.li<ItemProps>`
   min-height: 30px;
   height: 100%;
   display: flex;
   align-items: center;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
-    &:not(:first-child) {
-      ${verticalLine("left")}
-      margin-left: 31px;
-      padding-left: 32px;
-    }
+  ${({$isLocatedInFooter}) => !$isLocatedInFooter &&
+    css`
+      @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+        &:not(:first-child) {
+          ${verticalLine("left")}
+          margin-left: 31px;
+          padding-left: 32px;
+        }
+    `
   }
 `;
 
-export const Link = styled.a`
+interface LinkProps {
+  $isLocatedInFooter?: boolean;
+}
+
+export const Link = styled.a<LinkProps>`
   font-weight: 400;
-  color: ${({ theme }) => theme.color.textSecondary};
+
+
+  ${({$isLocatedInFooter}) => $isLocatedInFooter ?
+    css`
+      color: ${({ theme }) => theme.color.textFooter};
+    `
+    :
+    css`
+      color: ${({ theme }) => theme.color.textSecondary};
+    `
+  }
 `;

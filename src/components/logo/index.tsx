@@ -1,10 +1,14 @@
 import { Icon } from "./logo.styled";
 import { Link } from "react-router-dom";
 
-function Logo(): JSX.Element {
+interface LogoProps {
+  $isLight?: boolean;
+}
+
+function Logo({$isLight}: LogoProps): JSX.Element {
   return(
     <Link to="/">
-      <Icon />
+      <Icon $isLight={$isLight} />
     </Link>
   );
 }

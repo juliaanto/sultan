@@ -5,15 +5,28 @@ import { ReactComponent as IconPhone } from "../../assets/icons/phone-filled.svg
 
 interface PhoneProps {
   $isLocatedInMenu?: boolean;
+  $isLocatedInFooter?: boolean;
 }
 
-function Phone({$isLocatedInMenu}: PhoneProps): JSX.Element {
+function Phone({$isLocatedInMenu, $isLocatedInFooter}: PhoneProps): JSX.Element {
   return (
-    <Block $isLocatedInMenu={$isLocatedInMenu}>
+    <Block 
+      $isLocatedInMenu={$isLocatedInMenu} 
+      $isLocatedInFooter={$isLocatedInFooter}
+    >
       {!$isLocatedInMenu &&
       <>
-        <PhoneNumber href="tel:+77774900091">+7 (777) 490-00-91</PhoneNumber>
-        <SecondaryText>время работы: 9:00-20:00</SecondaryText>
+        <PhoneNumber 
+          href="tel:+77774900091" 
+          $isLocatedInFooter={$isLocatedInFooter}
+        >
+          +7 (777) 490-00-91
+        </PhoneNumber>
+        <SecondaryText 
+          $isLocatedInFooter={$isLocatedInFooter}
+        >
+          время работы: 9:00-20:00
+        </SecondaryText>
       </>
       }
       {$isLocatedInMenu &&
@@ -21,7 +34,13 @@ function Phone({$isLocatedInMenu}: PhoneProps): JSX.Element {
           <IconPhone />
         </Button>
       }
-      <RequestCall type="button" $isLocatedInMenu={$isLocatedInMenu}>Заказать звонок</RequestCall>
+      <RequestCall 
+        type="button" 
+        $isLocatedInMenu={$isLocatedInMenu} 
+        $isLocatedInFooter={$isLocatedInFooter}
+      >
+        Заказать звонок
+      </RequestCall>
     </Block>
   );
 }

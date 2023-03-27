@@ -3,7 +3,7 @@ import Footer from "../footer";
 import Header from "../header";
 
 interface PageProps {
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
 function Page({ children }: PageProps) {

@@ -2,7 +2,11 @@ import styled, { css } from "styled-components";
 
 import { InputProps } from ".";
 
-export const Wrapper = styled.div<{$view?: "headerSearch"}>`
+interface WrapperProps {
+  $view?: "headerSearch" | "footerEmail";
+}
+
+export const Wrapper = styled.div<WrapperProps>`
   border-radius: 36px;
   display: flex;
 
@@ -26,10 +30,19 @@ export const Wrapper = styled.div<{$view?: "headerSearch"}>`
           justify-content: space-between;
         }
       `;
+    case "footerEmail":
+      return css`
+        background-color: ${({theme}) => theme.color.inputFooter};
+        padding: 10px 10px 10px 20px;
+        max-width: 250px;
+        justify-content: space-between;
+      `;
     default:
       return css`
         padding: 10px 10px 10px 20px;
         background-color: ${({theme}) => theme.color.input};
+        max-width: 300px;
+        justify-content: space-between;
       `;
     }
   }}
@@ -39,6 +52,7 @@ export const StyledInput = styled.input<InputProps>`
   border: none;
   background-color: transparent;
   padding: 0;
+  flex-grow: 1;
 
   &:focus-visible {
     outline: none;
@@ -86,4 +100,10 @@ export const StyledInput = styled.input<InputProps>`
       `;
     }
   }}
+`;
+
+export const Label = styled.label`
+  display: inline-block;
+  font-size: 12px;
+  margin-bottom: 15px;
 `;

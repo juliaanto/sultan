@@ -1,21 +1,23 @@
 import { Block, Item, Link, List } from "./navigation.styled";
 
-function Navigation(): JSX.Element {
+interface NavigationProps {
+  sections: {
+    title: string;
+    link: string;
+  }[];
+  $isLocatedInFooter?: boolean;
+}
+
+
+function Navigation({sections, $isLocatedInFooter}: NavigationProps): JSX.Element {
   return (
     <Block>
-      <List>
-        <Item>
-          <Link href="#">О компании</Link>
-        </Item>
-        <Item>
-          <Link href="#">Доставка и оплата</Link>
-        </Item>
-        <Item>
-          <Link href="#">Возврат</Link>
-        </Item>
-        <Item>
-          <Link href="#">Контакты</Link>
-        </Item>
+      <List $isLocatedInFooter={$isLocatedInFooter}>
+        {sections.map((section, index) => (
+          <Item $isLocatedInFooter={$isLocatedInFooter} key={index}>
+            <Link href={section.link} $isLocatedInFooter={$isLocatedInFooter}>{section.title}</Link>
+          </Item>
+        ))}
       </List>
     </Block>
   );
