@@ -5,7 +5,7 @@ interface LogoProps {
   $isLight?: boolean;
 }
 
-function Logo({$isLight}: LogoProps): JSX.Element {
+function Logo({$isLight}: LogoProps) {
   return(
     <Link to="/">
       <Icon $isLight={$isLight} />

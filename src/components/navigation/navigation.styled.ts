@@ -1,6 +1,5 @@
+import { LinePosition, dashedLine } from "../../common/helpers/dashed-line";
 import styled, { css } from "styled-components";
-
-import { verticalLine } from "../../common/helpers/verticalLine";
 
 export const Block = styled.nav`
   flex-grow: 1;
@@ -40,7 +39,7 @@ export const Item = styled.li<ItemProps>`
     css`
       @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
         &:not(:first-child) {
-          ${verticalLine("left")}
+          ${dashedLine(LinePosition.left)}
           margin-left: 31px;
           padding-left: 32px;
         }

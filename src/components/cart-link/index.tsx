@@ -2,7 +2,7 @@ import { Block, Cart, Icon, PrimaryText, SecondaryText, TextWrapper } from "./ca
 
 import useViewport from "../../common/hooks/useViewport";
 
-function CartLink(): JSX.Element {
+function CartLink() {
   const isMobile = useViewport();
   
   return (

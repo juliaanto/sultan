@@ -1,6 +1,5 @@
+import { LinePosition, dashedLine } from "../../common/helpers/dashed-line";
 import styled, { css } from "styled-components";
-
-import { verticalLine } from "../../common/helpers/verticalLine";
 
 export const Block = styled.div`
   display: flex;
@@ -22,7 +21,7 @@ export const Contact = styled.div`
     margin-top: auto;
     
     &:not(:first-child) {
-      ${verticalLine("left")}
+      ${dashedLine(LinePosition.left)}
       margin-left: 23px;
       padding-left: 21px;
     }

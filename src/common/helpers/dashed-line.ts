@@ -1,6 +1,13 @@
 import { css } from "styled-components";
 
-export const verticalLine = (position: "left" | "right" | "leftRight" | "top") => {
+export enum LinePosition {
+  left = "left",
+  right = "right",
+  leftRight = "leftRight",
+  top = "top",
+}
+
+export const dashedLine = (position: LinePosition) => {
   return css`
     background-repeat: no-repeat;
     border-image: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 4px);
@@ -11,22 +18,22 @@ export const verticalLine = (position: "left" | "right" | "leftRight" | "top") =
 
     ${() => {
         switch (position) {
-          case "left":
+          case LinePosition.left:
             return css`
               background-position: 0 100%;
               background-size: 1px 100%, 0 0, 0 0, 0 0;
             `;
-          case "right":
+          case LinePosition.right:
             return css`
               background-position: 100% 0;
               background-size: 0 0, 0 0, 1px 100%, 0 0;
             `;
-          case "leftRight":
+          case LinePosition.leftRight:
             return css`
               background-position: 0 100%, 0 0, 100% 100%;
               background-size: 1px 100%, 0 0, 1px 100%, 0 0;
             `;
-          case "top":
+          case LinePosition.top:
             return css`
               background-position: 100% 0;
               background-size: 0 0, 0 0, 0 0, 100% 1px;

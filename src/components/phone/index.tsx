@@ -1,6 +1,7 @@
 import { Block, PhoneNumber, RequestCall, SecondaryText } from "./phone.styled";
 
 import { Button } from "../../ui";
+import { ButtonView } from "../../ui/button";
 import { ReactComponent as IconPhone } from "../../assets/icons/phone-filled.svg";
 
 interface PhoneProps {
@@ -8,7 +9,7 @@ interface PhoneProps {
   $isLocatedInFooter?: boolean;
 }
 
-function Phone({$isLocatedInMenu, $isLocatedInFooter}: PhoneProps): JSX.Element {
+function Phone({$isLocatedInMenu, $isLocatedInFooter}: PhoneProps) {
   return (
     <Block 
       $isLocatedInMenu={$isLocatedInMenu} 
@@ -30,7 +31,7 @@ function Phone({$isLocatedInMenu, $isLocatedInFooter}: PhoneProps): JSX.Element 
       </>
       }
       {$isLocatedInMenu &&
-        <Button $view="icon">
+        <Button $view={ButtonView.icon}>
           <IconPhone />
         </Button>
       }

@@ -2,9 +2,11 @@ import { Block, ButtonWrapper, HeaderLink, LinkText, PhoneWrapper, StyledCatalog
 import { Button, Input } from "../../ui";
 import { CartLink, Logo, Phone } from "../../components";
 
+import { ButtonView } from "../../ui/button";
+import { InputView } from "../../ui/input";
 import useViewport from "../../common/hooks/useViewport";
 
-function TopBar(): JSX.Element {
+function TopBar() {
   const isMobile = useViewport();
   
   return (
@@ -16,14 +18,14 @@ function TopBar(): JSX.Element {
           <LinkText>Каталог</LinkText>
           <StyledCatalogIcon />
         </HeaderLink>
-        <Input type="search" placeholder={isMobile ? "Поиск" : "Поиск..."} $view="headerSearch"></Input>
+        <Input type="search" placeholder={isMobile ? "Поиск" : "Поиск..."} $view={InputView.headerSearch}></Input>
         {!isMobile &&
         <>
           <PhoneWrapper>
             <Phone />
           </PhoneWrapper>
           <ButtonWrapper>
-            <Button $view="priceList" />
+            <Button $view={ButtonView.priceList} />
           </ButtonWrapper>
           <CartLink />
         </>

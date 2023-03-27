@@ -1,15 +1,20 @@
+import Button, { ButtonView } from "../button";
 import { Label, StyledInput, Wrapper } from "./input.styled";
 
-import Button from "../button";
 import { ReactComponent as IconArrow } from "../../assets/icons/arrow.svg";
 import { ReactComponent as IconSearch } from "../../assets/icons/search.svg";
 
-export interface InputProps {
+export enum InputView {
+  headerSearch = "headerSearch",
+  footerEmail = "footerEmail",
+}
+
+interface InputProps {
   type?: string;
   placeholder?: string;
   name?: string;
   id?: string;
-  $view?: "headerSearch" | "footerEmail";
+  $view?: InputView;
 }
 
 function Input({
@@ -18,18 +23,18 @@ function Input({
   name,
   id,
   $view,
-}: InputProps): JSX.Element {
+}: InputProps) {
   const renderContent = (view?: string) => {
     switch(view) {
-      case "headerSearch":
+      case InputView.headerSearch:
         return <>
-          <Button $view="headerSearch">
+          <Button $view={ButtonView.headerSearch}>
             <IconSearch />
           </Button>
         </>;
-      case "footerEmail":
+      case InputView.footerEmail:
         return <>
-          <Button $view="icon">
+          <Button $view={ButtonView.icon}>
             <IconArrow />
           </Button>
         </>;
@@ -42,7 +47,7 @@ function Input({
   
   return (
     <>
-      {$view === "footerEmail" &&
+      {$view === InputView.footerEmail &&
         <Label htmlFor={id}>Подпишись на скидки и акции</Label>
       }
       <Wrapper 

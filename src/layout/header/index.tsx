@@ -2,7 +2,7 @@ import { MenuBar, TopBar } from "../../components";
 
 import { Block } from "./header.styled";
 
-function Header(): JSX.Element {
+function Header() {
   return (
     <Block>
       <MenuBar />

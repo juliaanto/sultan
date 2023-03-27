@@ -1,7 +1,8 @@
+import { LinePosition, dashedLine } from "../../common/helpers/dashed-line";
+
 import { ReactComponent as IconCatalog } from "../../assets/icons/catalog-button.svg";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { verticalLine } from "../../common/helpers/verticalLine";
 
 export const Block = styled.div`
   display: flex;
@@ -46,7 +47,7 @@ export const Block = styled.div`
 `;
 
 export const HeaderLink = styled(Link)`
-  ${verticalLine("right")}
+  ${dashedLine(LinePosition.right)}
   color: ${({ theme }) => theme.color.textSecondary};
   font-weight: 600;
   display: flex;
@@ -146,7 +147,7 @@ export const ButtonWrapper = styled.div`
   justify-content: center;
   
   &::after {
-    ${verticalLine("leftRight")}
+    ${dashedLine(LinePosition.leftRight)}
     position: absolute;
     content: "";
     width: 100%;

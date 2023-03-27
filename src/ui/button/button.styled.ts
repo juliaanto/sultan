@@ -1,8 +1,12 @@
 import styled, { css } from "styled-components";
 
-import { ButtonProps } from ".";
+import { ButtonView } from ".";
 
-export const StyledButton = styled.button<ButtonProps>`
+interface StyledButtonProps {
+  $view?: ButtonView;
+}
+
+export const StyledButton = styled.button<StyledButtonProps>`
   border: none;
   display: flex;
   justify-content: center;
@@ -13,7 +17,7 @@ export const StyledButton = styled.button<ButtonProps>`
 
   ${(props) => {
     switch (props.$view) {
-      case "icon":
+      case ButtonView.icon:
         return css`
           width: 32px;
           height: 32px;
@@ -24,7 +28,7 @@ export const StyledButton = styled.button<ButtonProps>`
             height: 39px;
           }
         `;
-      case "headerSearch":
+      case ButtonView.headerSearch:
         return css`
           background-color: transparent;
 
@@ -54,7 +58,7 @@ export const StyledButton = styled.button<ButtonProps>`
             }
           }
         `;
-      case "priceList":
+      case ButtonView.priceList:
         return css`
           padding: 20px 44px;
           border-radius: 79px;

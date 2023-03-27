@@ -9,7 +9,7 @@ interface NavigationProps {
 }
 
 
-function Navigation({sections, $isLocatedInFooter}: NavigationProps): JSX.Element {
+function Navigation({sections, $isLocatedInFooter}: NavigationProps) {
   return (
     <Block>
       <List $isLocatedInFooter={$isLocatedInFooter}>

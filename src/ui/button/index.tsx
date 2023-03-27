@@ -1,11 +1,17 @@
 import { ReactComponent as IconDownload } from "../../assets/icons/download.svg";
 import { StyledButton } from "./button.styled";
 
-export interface ButtonProps {
+export enum ButtonView {
+  icon = "icon",
+  headerSearch = "headerSearch",
+  priceList = "priceList",
+}
+
+interface ButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   children?: React.ReactNode;
-  $view?: "icon" | "headerSearch" | "priceList";
+  $view?: ButtonView;
 }
 
 function Button({
@@ -13,10 +19,10 @@ function Button({
   type = "button",
   children,
   $view,
-}: ButtonProps): JSX.Element {
+}: ButtonProps) {
   const renderContent = (view?: string) => {
     switch(view) {
-      case "priceList":
+      case ButtonView.priceList:
         return <>
           <span>Прайс-лист</span>
           <IconDownload />

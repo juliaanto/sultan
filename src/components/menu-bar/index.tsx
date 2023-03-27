@@ -2,11 +2,12 @@ import { ButtonSymbol, DesktopMenuBar, MobileMenuBar } from "./menu-bar.styled";
 import { CartLink, Contacts, Logo, Menu, Navigation } from "../../components";
 
 import { Button } from "../../ui";
+import { ButtonView } from "../../ui/button";
 import { siteMenu } from "../../common/data/site-menu";
 import { useState } from "react";
 import useViewport from "../../common/hooks/useViewport";
 
-function MenuBar(): JSX.Element {
+function MenuBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useViewport();
 
@@ -14,7 +15,7 @@ function MenuBar(): JSX.Element {
     <>
       {isMobile ?
         <MobileMenuBar>
-          <Button $view="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <Button $view={ButtonView.icon} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <ButtonSymbol $isOpen={isMenuOpen} />
           </Button>
           <Logo />

@@ -2,9 +2,10 @@ import { Background, Block, ButtonWrapper, Heading, Wrapper } from "./menu.style
 import { Contacts, Navigation, Phone } from "../../components";
 
 import { Button } from "../../ui";
+import { ButtonView } from "../../ui/button";
 import { siteMenu } from "../../common/data/site-menu";
 
-function Menu(): JSX.Element {
+function Menu() {
   return (
     <Background>
       <Wrapper>
@@ -14,7 +15,7 @@ function Menu(): JSX.Element {
           <Heading>Меню сайта:</Heading>
           <Navigation sections={siteMenu} />
           <ButtonWrapper>
-            <Button $view="priceList" />
+            <Button $view={ButtonView.priceList} />
           </ButtonWrapper>
         </Block>
       </Wrapper>

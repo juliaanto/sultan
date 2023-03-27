@@ -2,10 +2,12 @@ import { Block, Column, CommunicationTitle, CommunicationWrapper, Content, Headi
 import { Button, Input } from "../../ui";
 import { Contacts, Logo, Navigation, Phone } from "../../components";
 
+import { ButtonView } from "../../ui/button";
 import { ReactComponent as IconMastercard } from "../../assets/icons/logo-mastercard.svg";
 import { ReactComponent as IconTelegram } from "../../assets/icons/logo-telegram.svg";
 import { ReactComponent as IconVisa } from "../../assets/icons/logo-visa.svg";
 import { ReactComponent as IconWhatsApp } from "../../assets/icons/logo-whatsapp.svg";
+import { InputView } from "../../ui/input";
 import { categories } from "../../common/data/categories";
 import { siteMenu } from "../../common/data/site-menu";
 
@@ -17,7 +19,7 @@ function Footer() {
           <Column>
             <Logo $isLight />
             <Text>Компания «Султан» — снабжаем розничные магазины товарами "под&nbsp;ключ" в Кокчетаве и Акмолинской области</Text>
-            <Input type="email" placeholder="Введите ваш E-mail" id="subscription-email" name="subscription-email" $view="footerEmail" />
+            <Input type="email" placeholder="Введите ваш E-mail" id="subscription-email" name="subscription-email" $view={InputView.footerEmail} />
           </Column>
           <Column>
             <Heading>Меню сайта:</Heading>
@@ -29,7 +31,7 @@ function Footer() {
           </Column>
           <Column>
             <Heading>Скачать прайс-лист:</Heading>
-            <Button $view="priceList" />
+            <Button $view={ButtonView.priceList} />
             <CommunicationTitle>Связь в мессенджерах:</CommunicationTitle>
             <CommunicationWrapper>
               <IconLink href="/">

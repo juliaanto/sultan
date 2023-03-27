@@ -9,7 +9,7 @@ interface ContactsProps {
   $isLocatedInFooter?: boolean;
 }
 
-function Contacts({$isLocatedInFooter}: ContactsProps): JSX.Element {
+function Contacts({$isLocatedInFooter}: ContactsProps) {
   const isMobile = useViewport();
   
   return (

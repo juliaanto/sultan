@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 
-import { InputProps } from ".";
+import { InputView } from ".";
 
 interface WrapperProps {
-  $view?: "headerSearch" | "footerEmail";
+  $view?: InputView;
 }
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -12,7 +12,7 @@ export const Wrapper = styled.div<WrapperProps>`
 
   ${({$view}) => {
   switch ($view) {
-    case "headerSearch":
+    case InputView.headerSearch:
       return css`
         flex-direction: row-reverse;
         justify-content: center;
@@ -30,7 +30,7 @@ export const Wrapper = styled.div<WrapperProps>`
           justify-content: space-between;
         }
       `;
-    case "footerEmail":
+    case InputView.footerEmail:
       return css`
         background-color: ${({theme}) => theme.color.inputFooter};
         padding: 10px 10px 10px 20px;
@@ -48,7 +48,11 @@ export const Wrapper = styled.div<WrapperProps>`
   }}
 `;
 
-export const StyledInput = styled.input<InputProps>`
+interface StyledInputProps {
+  $view?: InputView;
+}
+
+export const StyledInput = styled.input<StyledInputProps>`
   border: none;
   background-color: transparent;
   padding: 0;
@@ -73,7 +77,7 @@ export const StyledInput = styled.input<InputProps>`
 
   ${({$view}) => {
   switch ($view) {
-    case "headerSearch":
+    case InputView.headerSearch:
       return css`
         width: 50px;
 

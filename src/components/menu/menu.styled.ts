@@ -1,5 +1,6 @@
+import { LinePosition, dashedLine } from "../../common/helpers/dashed-line";
+
 import styled from "styled-components";
-import { verticalLine } from "../../common/helpers/verticalLine";
 
 export const Background = styled.div`
   background-color: rgba(17, 17, 17, 0.5);
@@ -21,7 +22,7 @@ export const Block = styled.div`
 `;
 
 export const Heading = styled.h2`
-  ${verticalLine("top")}
+  ${dashedLine(LinePosition.top)}
   margin: 24px 0;
   padding-top: 28px;
   font-size: 20px;
