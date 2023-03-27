@@ -25,7 +25,7 @@ function TopBar() {
             <Phone />
           </PhoneWrapper>
           <ButtonWrapper>
-            <Button $view={ButtonView.priceList} />
+            <Button $view={ButtonView.priceList} $width={"200px"} />
           </ButtonWrapper>
           <CartLink />
         </>

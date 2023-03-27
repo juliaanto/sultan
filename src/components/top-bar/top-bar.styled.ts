@@ -145,6 +145,7 @@ export const ButtonWrapper = styled.div`
   padding: 0 25px;
   display: flex;
   justify-content: center;
+  height: 59px;
   
   &::after {
     ${dashedLine(LinePosition.leftRight)}

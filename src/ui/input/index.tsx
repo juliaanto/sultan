@@ -34,7 +34,7 @@ function Input({
         </>;
       case InputView.footerEmail:
         return <>
-          <Button $view={ButtonView.icon}>
+          <Button $view={ButtonView.footerEmail}>
             <IconArrow />
           </Button>
         </>;

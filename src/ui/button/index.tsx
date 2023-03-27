@@ -5,13 +5,17 @@ export enum ButtonView {
   icon = "icon",
   headerSearch = "headerSearch",
   priceList = "priceList",
+  footerEmail = "footerEmail",
 }
 
 interface ButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   children?: React.ReactNode;
+  $isLocatedInFooter?: boolean;
   $view?: ButtonView;
+  $width?: string;
+  $height?: string;
 }
 
 function Button({
@@ -19,6 +23,9 @@ function Button({
   type = "button",
   children,
   $view,
+  $width,
+  $height,
+  $isLocatedInFooter
 }: ButtonProps) {
   const renderContent = (view?: string) => {
     switch(view) {
@@ -39,6 +46,9 @@ function Button({
       onClick={onClick}
       type={type}
       $view={$view}
+      $width={$width}
+      $height={$height}
+      $isLocatedInFooter={$isLocatedInFooter}
     >
       {renderContent($view)}
     </StyledButton>

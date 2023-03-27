@@ -33,9 +33,13 @@ export const Wrapper = styled.div<WrapperProps>`
     case InputView.footerEmail:
       return css`
         background-color: ${({theme}) => theme.color.inputFooter};
-        padding: 10px 10px 10px 20px;
-        max-width: 250px;
         justify-content: space-between;
+        padding: 10px 10px 10px 20px;
+        max-width: 260px;
+
+        @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+          max-width: 250px;
+        }
       `;
     default:
       return css`

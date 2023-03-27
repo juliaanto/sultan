@@ -4,6 +4,9 @@ import { ButtonView } from ".";
 
 interface StyledButtonProps {
   $view?: ButtonView;
+  $width?: string;
+  $height?: string;
+  $isLocatedInFooter?: boolean;
 }
 
 export const StyledButton = styled.button<StyledButtonProps>`
@@ -14,6 +17,8 @@ export const StyledButton = styled.button<StyledButtonProps>`
   font-family: "Inter", sans-serif;
   background-color: ${({theme}) => theme.color.primary};
   cursor: pointer;
+  width: ${({$width}) => $width};
+  height: ${({$height}) => $height};
 
   ${(props) => {
     switch (props.$view) {
@@ -27,6 +32,12 @@ export const StyledButton = styled.button<StyledButtonProps>`
             width: 39px;
             height: 39px;
           }
+        `;
+      case ButtonView.footerEmail:
+        return css`
+          width: 39px;
+          height: 39px;
+          border-radius: 50%;
         `;
       case ButtonView.headerSearch:
         return css`
@@ -60,18 +71,21 @@ export const StyledButton = styled.button<StyledButtonProps>`
         `;
       case ButtonView.priceList:
         return css`
-          padding: 20px 44px;
+          padding: 10px;
           border-radius: 79px;
           font-weight: 700;
           color: ${({theme}) => theme.color.textButton};
-          font-size: 14px;
-          gap: 14px;
-          width: 100%;
-          max-width: 214px;
+          font-size:  ${({$isLocatedInFooter}) => $isLocatedInFooter ? "12px" : "14px"};
+          gap: ${({$isLocatedInFooter}) => $isLocatedInFooter ? "5px" : "14px"};
+
+          @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+            font-size: 14px;
+            gap: 14px;
+          }
         `;
       default:
         return css`
-          padding: 20px 44px;
+          padding: 10px;
           border-radius: 79px;
           font-weight: 700;
           color: ${({theme}) => theme.color.textButton};

@@ -16,7 +16,15 @@ export const List = styled.ul<ListProps>`
   row-gap: 10px;
   flex-wrap: wrap;
 
-  ${({$isLocatedInFooter}) => !$isLocatedInFooter &&
+  ${({$isLocatedInFooter}) => $isLocatedInFooter ?
+    css`
+      row-gap: 8px;
+
+      @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+        row-gap: 10px;
+      }
+    `
+    :
     css`
       @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
         flex-direction: row;
@@ -53,11 +61,16 @@ interface LinkProps {
 
 export const Link = styled.a<LinkProps>`
   font-weight: 400;
-
+  line-height: 1.5;
 
   ${({$isLocatedInFooter}) => $isLocatedInFooter ?
     css`
       color: ${({ theme }) => theme.color.textFooter};
+      font-size: 12px;
+
+      @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+        font-size: 14px;
+      }
     `
     :
     css`

@@ -20,36 +20,65 @@ export const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 70px 15px 115px;
-  gap: 40px;
+  padding: 15px;
+  column-gap: 15px;
+  row-gap: 23px;
+
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+    padding: 70px 15px 115px;
+    gap: 40px;
+  }
 `;
 
 export const Column = styled.div`
   &:first-child {
-    margin-right: 20px;
+    margin: 0 auto;
+    flex-grow: 1;
+
+    @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+      margin-right: 20px;
+      flex-grow: 0;
+    }
   }
   
   &:not(:first-child) {
-    flex-grow: 1;
+    min-width: 35%;
+    
+    @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+      flex-grow: 1;
+      min-width: auto;
+    }
   }
+`;
+
+export const LogoWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const Heading = styled.h4`
   font-weight: 600;
   font-size: 20px;
-  margin-top: 2px;
+  margin-top: 10px;
+  margin-bottom: 16px;
+
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+    margin-bottom: 27px;
+    margin-top: 2px;
+  }
 `;
 
 export const Text = styled.p`
   max-width: 320px;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  margin: 12px 0 44px;
-`;
+  line-height: 1.5;
+  margin: 12px 0 14px;
+  font-size: 12px;
 
-export const CommunicationTitle = styled.p`
-  margin: 25px 6px 17px;
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+    margin: 12px 0 44px;
+    font-size: 16px;
+  }
 `;
 
 export const IconLink = styled.a`
@@ -57,14 +86,15 @@ export const IconLink = styled.a`
   cursor: pointer;
 `;
 
-export const CommunicationWrapper = styled.div`
-  margin: 0 5px;
-  display: flex;
-  gap: 10px;
-`;
-
 export const PaymentMethodsWrapper = styled.div`
   margin-top: 23px;
   display: flex;
   gap: 5px;
+`;
+
+export const CommunicationWrapperMobile = styled.div`
+  margin-top: 26px;
+  max-width: 165px;
+  flex-grow: 1;
+  flex-shrink: 1;
 `;
