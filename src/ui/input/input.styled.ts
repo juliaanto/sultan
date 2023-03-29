@@ -12,7 +12,7 @@ export const Wrapper = styled.div<WrapperProps>`
 
   ${({$view}) => {
   switch ($view) {
-    case InputView.headerSearch:
+    case InputView.search:
       return css`
         flex-direction: row-reverse;
         justify-content: center;
@@ -40,6 +40,11 @@ export const Wrapper = styled.div<WrapperProps>`
         @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
           max-width: 250px;
         }
+      `;
+    case InputView.number:
+      return css`
+        background-color: rgba(${({ theme }) => theme.color.primaryRGB}, .3);
+        padding: 4px 15px;
       `;
     default:
       return css`
@@ -81,7 +86,7 @@ export const StyledInput = styled.input<StyledInputProps>`
 
   ${({$view}) => {
   switch ($view) {
-    case InputView.headerSearch:
+    case InputView.search:
       return css`
         width: 50px;
 
@@ -99,6 +104,12 @@ export const StyledInput = styled.input<StyledInputProps>`
             font-weight: 400;
           }
         }
+      `;
+    case InputView.number:
+      return css`
+        max-width: 70px;
+        font-size: 12px;
+        text-align: center;
       `;
     default:
       return css`

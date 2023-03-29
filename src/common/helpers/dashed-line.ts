@@ -5,6 +5,7 @@ export enum LinePosition {
   right = "right",
   leftRight = "leftRight",
   top = "top",
+  bottom = "bottom",
 }
 
 export const dashedLine = (position: LinePosition) => {
@@ -36,6 +37,11 @@ export const dashedLine = (position: LinePosition) => {
           case LinePosition.top:
             return css`
               background-position: 100% 0;
+              background-size: 0 0, 0 0, 0 0, 100% 1px;
+            `;
+          case LinePosition.bottom:
+            return css`
+              background-position: 0 100%;
               background-size: 0 0, 0 0, 0 0, 100% 1px;
             `;
         }

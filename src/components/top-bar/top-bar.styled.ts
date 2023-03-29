@@ -2,13 +2,14 @@ import { LinePosition, dashedLine } from "../../common/helpers/dashed-line";
 
 import { ReactComponent as IconCatalog } from "../../assets/icons/catalog-button.svg";
 import { Link } from "react-router-dom";
+import operatorImg from "../../assets/img/operator.png";
 import styled from "styled-components";
 
 export const Block = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 10px;
+  padding: 8px 0;
   
   &::before,
   &::after {
@@ -29,7 +30,7 @@ export const Block = styled.div`
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
-    padding: 11px 15px;
+    padding: 11px 0;
     
     &::before {
       transform: translateY(-54px);
@@ -105,7 +106,7 @@ export const PhoneWrapper = styled.div`
     content: "";
     width: 74px;
     height: 90px;
-    background-image: url("../img/operator.png");
+    background-image: url(${operatorImg});
     background-size: 74px 113px;
     background-repeat: no-repeat;
     background-position: right bottom -20px;

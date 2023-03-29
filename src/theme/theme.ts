@@ -3,6 +3,7 @@ const theme = {
     canvas: "#ffffff",
     footer: "#3f4e65",
     primary: "#ffc85e",
+    primaryRGB: "255, 198, 80",
     accent: "#1fd85d",
     textPrimary: "#111111",
     textSecondary: "#3f4e65",
@@ -12,7 +13,7 @@ const theme = {
     inputFooter: "#ffffff",
   },
   contentWidth: {
-    maxDesktop: "1400px",
+    maxDesktop: "1370px",
     maxMobile: "500px",
     minMobile: "300px",
   },

@@ -18,7 +18,7 @@ function TopBar() {
           <LinkText>Каталог</LinkText>
           <StyledCatalogIcon />
         </HeaderLink>
-        <Input type="search" placeholder={isMobile ? "Поиск" : "Поиск..."} $view={InputView.headerSearch}></Input>
+        <Input placeholder={isMobile ? "Поиск" : "Поиск..."} $view={InputView.search}></Input>
         {!isMobile &&
         <>
           <PhoneWrapper>

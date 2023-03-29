@@ -1,11 +1,13 @@
+import { ReactComponent as IconCart } from "../../assets/icons/cart.svg";
 import { ReactComponent as IconDownload } from "../../assets/icons/download.svg";
 import { StyledButton } from "./button.styled";
 
 export enum ButtonView {
   icon = "icon",
-  headerSearch = "headerSearch",
+  search = "search",
   priceList = "priceList",
   footerEmail = "footerEmail",
+  addToCart = "addToCart",
 }
 
 interface ButtonProps {
@@ -33,6 +35,11 @@ function Button({
         return <>
           <span>Прайс-лист</span>
           <IconDownload />
+        </>;
+      case ButtonView.addToCart:
+        return <>
+          <span>В корзину</span>
+          <IconCart />
         </>;
       default:
         return <>

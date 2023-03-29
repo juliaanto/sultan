@@ -1,6 +1,23 @@
 import styled from "styled-components";
 
-const Main = styled.main`
+export const Block = styled.main`
+  max-width: ${({ theme }) => theme.contentWidth.maxMobile};
+  min-width: ${({ theme }) => theme.contentWidth.minMobile};
+  margin: 0 auto;
+  width: 100%;
+  padding: 47px 15px;
+
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+    max-width: ${({ theme }) => theme.contentWidth.maxDesktop};
+  }
 `;
 
-export default Main;
+export const HeadingWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  gap: 50px;
+`;

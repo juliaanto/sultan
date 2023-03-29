@@ -39,7 +39,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
           height: 39px;
           border-radius: 50%;
         `;
-      case ButtonView.headerSearch:
+      case ButtonView.search:
         return css`
           background-color: transparent;
 
@@ -81,6 +81,26 @@ export const StyledButton = styled.button<StyledButtonProps>`
           @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
             font-size: 14px;
             gap: 14px;
+          }
+        `;
+      case ButtonView.addToCart:
+        return css`
+          border-radius: 80px;
+          color: ${({theme}) => theme.color.textButton};
+          text-transform: uppercase;
+          font-weight: 700;
+          font-size: 10px;
+          letter-spacing: .15em;
+          line-height: 1.21;
+          gap: 5px;
+
+          & svg {
+            width: 27px;
+            height: auto;
+          }
+          
+          & svg path {
+            fill: ${({theme}) => theme.color.textButton};
           }
         `;
       default:

@@ -1,4 +1,4 @@
-import { Block, Column, CommunicationWrapperMobile, Content, Heading, IconLink, LogoWrapper, PaymentMethodsWrapper, Text, Wrapper } from "./footer.styled";
+import { Block, Column, CommunicationWrapperMobile, Content, Heading, IconLink, LogoWrapper, PaymentMethodsWrapper, Text } from "./footer.styled";
 import { Button, Input } from "../../ui";
 import { Communication, Contacts, Logo, Navigation, Phone } from "../../components";
 
@@ -15,8 +15,7 @@ function Footer() {
   
   return (
     <Block>
-      <Wrapper>
-        <Content>
+      <Content>
           <Column>
             <LogoWrapper>
               <Logo $isLight />
@@ -60,8 +59,7 @@ function Footer() {
             <Communication />
           </CommunicationWrapperMobile>
         }
-        </Content>
-      </Wrapper>
+      </Content>
     </Block>
   );
 }

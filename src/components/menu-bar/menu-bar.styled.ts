@@ -3,12 +3,12 @@ import styled, { css } from "styled-components";
 export const MobileMenuBar = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 10px 15px 5px;
+  padding: 10px 0 5px;
   align-items: center;
 `;
 
 export const DesktopMenuBar = styled.div`
-  padding: 10px 15px;
+  padding: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -7,7 +7,7 @@ export const Block = styled(Link)`
   display: flex;
   align-items: center;
   gap: 28px;
-  margin-right: 8px;
+  margin-right: 17px;
   margin-top: 6px;
 
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
@@ -33,8 +33,8 @@ export const Cart = styled.div<CartProps>`
       justify-content: center;
       align-items: center;
       position: absolute;
-      top: -10px;
-      right: -8px;
+      top: -5px;
+      right: -7px;
       border-radius: 50%;
       color: ${({ theme }) => theme.color.textButton};
       font-size: 10px;
@@ -45,19 +45,19 @@ export const Cart = styled.div<CartProps>`
         width: 22px;
         height: 22px;
         font-size: 14px;
-        top: -5px;
-        right: -14px;
+        top: 3px;
+        right: -11px;
       }
     `}
   }
 `;
 
 export const Icon = styled(IconCart)`
-  height: 16px;
+  height: 25px;
   width: auto;
 
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
-    height: 29px;
+    height: 46px;
   }
 `;
 

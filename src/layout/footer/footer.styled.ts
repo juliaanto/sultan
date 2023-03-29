@@ -5,18 +5,10 @@ export const Block = styled.footer`
   color: ${({ theme }) => theme.color.textFooter};
 `;
 
-export const Wrapper = styled.div`
+export const Content = styled.div`
   max-width: ${({ theme }) => theme.contentWidth.maxMobile};
   min-width: ${({ theme }) => theme.contentWidth.minMobile};
   margin: 0 auto;
-  width: 100%;
-
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
-    max-width: ${({ theme }) => theme.contentWidth.maxDesktop};
-  }
-`;
-
-export const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -25,6 +17,7 @@ export const Content = styled.div`
   row-gap: 23px;
 
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
+    max-width: ${({ theme }) => theme.contentWidth.maxDesktop};
     padding: 70px 15px 115px;
     gap: 40px;
   }

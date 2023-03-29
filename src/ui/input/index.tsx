@@ -5,8 +5,9 @@ import { ReactComponent as IconArrow } from "../../assets/icons/arrow.svg";
 import { ReactComponent as IconSearch } from "../../assets/icons/search.svg";
 
 export enum InputView {
-  headerSearch = "headerSearch",
+  search = "search",
   footerEmail = "footerEmail",
+  number = "number",
 }
 
 interface InputProps {
@@ -26,9 +27,9 @@ function Input({
 }: InputProps) {
   const renderContent = (view?: string) => {
     switch(view) {
-      case InputView.headerSearch:
+      case InputView.search:
         return <>
-          <Button $view={ButtonView.headerSearch}>
+          <Button $view={ButtonView.search}>
             <IconSearch />
           </Button>
         </>;
@@ -54,8 +55,8 @@ function Input({
         $view={$view}
       >
         <StyledInput
-          type={type}
-          placeholder={placeholder}
+          type={$view === InputView.search ? "search" : type}
+          placeholder={!placeholder && $view === InputView.search ? "Поиск..." : placeholder}
           name={name}
           id={id}
           $view={$view}
