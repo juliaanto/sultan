@@ -3,10 +3,13 @@ import styled from "styled-components";
 
 export const Block = styled.div`
   max-width: 326px;
-  padding: 43px 23px 23px;
+  padding: 30px 25px;
   box-sizing: border-box;
   border-radius: 10px;
   box-shadow: 0 14px 39px -11px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const Image = styled.img`
@@ -33,7 +36,7 @@ export const Title = styled(Link)`
   display: block;
   font-size: 16px;
   font-weight: 500;
-  margin: 11px 0 22px;
+  margin: 10px 0;
   line-height: 1.3;
 `;
 
@@ -60,11 +63,13 @@ export const SecondaryText = styled.span`
 export const BottomLineWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 17px;
   margin-right: 26px;
 `;
 
 export const Price = styled.p`
   font-weight: 800;
   font-size: 16px;
+  margin: 0;
+  display: flex;
+  align-items: center;
 `;

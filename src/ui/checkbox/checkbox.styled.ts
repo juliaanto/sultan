@@ -7,7 +7,7 @@ export const Fieldset = styled.fieldset`
   margin: 20px 0 22px;
   padding: 0 0 22px;
 
-  &:not(:last-child) {
+  &:not(:last-of-type) {
     ${dashedLine(LinePosition.bottom)};
   }
 `;
@@ -25,6 +25,8 @@ export const Wrapper = styled.div`
 
 export const CheckboxWrapper = styled.div`
   margin-top: 9px;
+  display: flex;
+  align-items: center;
 `;
 
 export const CheckboxLabel = styled.label`
@@ -36,6 +38,7 @@ export const CheckboxInput = styled.input`
   width: 10px;
   height: 10px;
   margin: 0;
+  display: block;
 `;
 
 export const Span = styled.span`

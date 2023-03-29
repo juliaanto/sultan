@@ -20,4 +20,5 @@ export const HeadingWrapper = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   gap: 50px;
+  align-items: flex-start;
 `;
