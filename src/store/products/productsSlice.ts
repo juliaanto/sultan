@@ -8,32 +8,34 @@ import { IProduct } from '../../types/product';
 import { RootState } from '../../app/store';
 
 export interface ProductsState {
-  initial: IProduct[];
-  catalog: IProduct[];
-  cart: IProduct[];
+  initialProducts: IProduct[];
+  products: IProduct[];
   productTypeFilter: IFilterData;
+  sortBy: SortBy;
 }
 
 const initialState: ProductsState = {
-  initial: [],
-  catalog: [],
-  cart: [],
+  initialProducts: [],
+  products: [],
   productTypeFilter: {},
+  sortBy: SortBy.titleAsc,
 };
 
 export const productsSlice = createSlice({
-  name: 'products',
+  name: 'catalog',
   initialState,
   reducers: {
     setCatalogProducts: (state, action: PayloadAction<IProduct[]>) => {
-      state.catalog = action.payload;
-      state.initial = action.payload;
+      state.products = action.payload;
+      state.initialProducts = action.payload;
     },
     sortCatalogProducts: (state, action: PayloadAction<SortBy>) => {
-      sortProducts(action.payload, state.catalog);
+      sortProducts(action.payload, state.products);
+      state.sortBy = action.payload;
     },
     filterCatalogProducts: (state, action: PayloadAction<{filterBy: FilterBy}>) => {
-      state.catalog = filterProducts(action.payload.filterBy, state.initial, getCheckedValues(state.productTypeFilter)) as IProduct[];
+      const sortedInitialProducts = sortProducts(state.sortBy, state.initialProducts);
+      state.products = filterProducts(action.payload.filterBy, sortedInitialProducts, getCheckedValues(state.productTypeFilter)) as IProduct[];
     },
     setInitialFilter: (state, action: PayloadAction<IProduct[]>) => {
       state.productTypeFilter = getFilterData(action.payload, "productType")
@@ -46,8 +48,7 @@ export const productsSlice = createSlice({
 
 export const { setCatalogProducts, sortCatalogProducts, filterCatalogProducts, setFilterValue, setInitialFilter } = productsSlice.actions;
 
-export const getCatalogProducts = (state: RootState) => state.products.catalog;
-export const getCartProducts = (state: RootState) => state.products.cart;
+export const getCatalogProducts = (state: RootState) => state.products.products;
 export const getProductTypeFilter = (state: RootState) => state.products.productTypeFilter;
 
 export default productsSlice.reducer;
