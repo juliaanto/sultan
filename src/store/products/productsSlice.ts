@@ -19,18 +19,18 @@ export const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    updateProductsInCatalog: (state, action: PayloadAction<IProduct[]>) => {
+    updateCatalogProducts: (state, action: PayloadAction<IProduct[]>) => {
       state.catalog = action.payload;
     },
-    sortProductsInCatalog: (state, action: PayloadAction<SortBy>) => {
-      state.catalog = sortProducts(action.payload, state.catalog);
+    sortCatalogProducts: (state, action: PayloadAction<SortBy>) => {
+      sortProducts(action.payload, state.catalog);
     }
   },
 });
 
-export const { updateProductsInCatalog, sortProductsInCatalog } = productsSlice.actions;
+export const { updateCatalogProducts, sortCatalogProducts } = productsSlice.actions;
 
-export const getProductsInCatalog = (state: RootState) => state.products.catalog;
-export const getProductsInCart = (state: RootState) => state.products.cart;
+export const getCatalogProducts = (state: RootState) => state.products.catalog;
+export const getCartProducts = (state: RootState) => state.products.cart;
 
 export default productsSlice.reducer;

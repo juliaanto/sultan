@@ -1,7 +1,7 @@
 import { Block, Label, Option, Select } from "./sorting.styled";
 
 import { SortBy } from "../../common/helpers/sort";
-import { sortProductsInCatalog } from "../../store/products/productsSlice";
+import { sortCatalogProducts } from "../../store/products/productsSlice";
 import { useAppDispatch } from "../../app/hooks";
 
 function Sorting() {
@@ -9,7 +9,7 @@ function Sorting() {
   
   const handleChangeSorting = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const sortType: SortBy = event.target?.value as unknown as SortBy;
-    dispatch(sortProductsInCatalog(sortType));
+    dispatch(sortCatalogProducts(sortType));
   }
   
   return (

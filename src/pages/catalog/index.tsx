@@ -4,14 +4,14 @@ import { SortBy, sortProducts } from "../../common/helpers/sort";
 
 import Page from "../../layout/page";
 import Sorting from "../../components/sorting";
+import { getCatalogProducts } from "../../store/products/productsSlice";
 import { getFieldValues } from "../../common/helpers/products";
-import { getProductsInCatalog } from "../../store/products/productsSlice";
 import { productsJson } from "../../common/data/products";
 import { useAppSelector } from "../../app/hooks";
 
 function Catalog() {
   const initialProducts = sortProducts(SortBy.titleAsc, JSON.parse(productsJson));
-  const products = useAppSelector(getProductsInCatalog);
+  const products = useAppSelector(getCatalogProducts);
 
   const productTypes = {
     filterName: "Бренд",
