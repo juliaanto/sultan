@@ -1,12 +1,17 @@
 import { Block, Label, Option, Select } from "./sorting.styled";
 
 import { SortBy } from "../../common/helpers/sort";
+import { sortProductsInCatalog } from "../../store/products/productsSlice";
+import { useAppDispatch } from "../../app/hooks";
 
-interface SortingProps {
-  handleChangeSorting: (e: any) => void;
-}
-
-function Sorting({handleChangeSorting}: SortingProps) {
+function Sorting() {
+  const dispatch = useAppDispatch();
+  
+  const handleChangeSorting = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const sortType: SortBy = event.target?.value as unknown as SortBy;
+    dispatch(sortProductsInCatalog(sortType));
+  }
+  
   return (
     <Block>
       <Label htmlFor="sorting">Сортировка:</Label>

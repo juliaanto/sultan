@@ -5,12 +5,13 @@ import { SortBy, sortProducts } from "../../common/helpers/sort";
 import Page from "../../layout/page";
 import Sorting from "../../components/sorting";
 import { getFieldValues } from "../../common/helpers/products";
+import { getProductsInCatalog } from "../../store/products/productsSlice";
 import { productsJson } from "../../common/data/products";
-import { useState } from "react";
+import { useAppSelector } from "../../app/hooks";
 
 function Catalog() {
-  const [sortType, setSortType] = useState(SortBy.titleAsc);
   const initialProducts = sortProducts(SortBy.titleAsc, JSON.parse(productsJson));
+  const products = useAppSelector(getProductsInCatalog);
 
   const productTypes = {
     filterName: "Бренд",
@@ -30,12 +31,12 @@ function Catalog() {
         <Breadcrumbs />
         <HeadingWrapper>
           <Heading>Косметика и гигиена</Heading>
-          <Sorting handleChangeSorting={(e) => setSortType(e.target.value)} />
+          <Sorting />
         </HeadingWrapper>
         <TopFilter items={productTypes.items}/>
         <Wrapper>
           <SideFilter itemSets={[producers, productTypes]} />
-          <ProductList products={sortProducts(sortType, initialProducts)} />
+          <ProductList products={products} />
         </Wrapper>
       </Block>
     </Page>
