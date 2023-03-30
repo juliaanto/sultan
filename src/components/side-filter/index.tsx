@@ -1,44 +1,77 @@
-import { Block, Fieldset, Heading, Legend, Text } from "./side-filter.styled";
 import { Button, Checkbox, Input } from "../../ui";
-import { getProductTypeFilter, setFilterValue } from "../../store/products/productsSlice";
+import { Fieldset, Form, Heading, Legend, Text } from "./side-filter.styled";
+import { FilterBy, IFilters, IPriceFilter } from "../../types/filters";
+import { filterCatalogProducts, getProductTypeFilter, setProducerFilterValue, setProductTypeFilterValue } from "../../store/products/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
-import { IFilterData } from "../../types/filter-data";
 import { InputView } from "../../ui/input";
 
-interface SideFilterProps {
-  itemSets: {
-    filterName: string;
-    items: IFilterData;
-  }[]
-}
-
-function SideFilter({itemSets}: SideFilterProps) {
-  const filterData: IFilterData = useAppSelector(getProductTypeFilter);
+function SideFilter() {
+  const filterData: IFilters = useAppSelector(getProductTypeFilter);
   const dispatch = useAppDispatch();
 
   const handleInputFromStoreChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const id = event.target.name;
     const isChecked = event.target.checked;
     
-    dispatch(setFilterValue({ id, isChecked }));
+    dispatch(setProductTypeFilterValue({ id, isChecked }));
+  }
+
+  const handleSubmitForm = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const producerFilterElement = document.getElementById("producerFilter");
+    const checkedValues = producerFilterElement?.querySelectorAll('input[type="checkbox"]');
+
+    let checkedProducers = Array.prototype.slice.call(checkedValues)
+
+    checkedProducers.forEach((input) => {
+      const id = input.name;
+      const isChecked = input.checked;
+      dispatch(setProducerFilterValue({ id, isChecked}));
+    });
+
+    dispatch(filterCatalogProducts());
   }
   
   return (
-    <Block>
+    <Form onSubmit={handleSubmitForm} name="sideFilter">
       <Heading>Подбор по параметрам</Heading>
       <Fieldset>
         <Legend>Цена ₸</Legend>
-        <Input type="number" $view={InputView.number} placeholder="0" name="priceMin" id="priceMin" />
+        <Input 
+          type="number" 
+          $view={InputView.number} 
+          placeholder="0" 
+          name={IPriceFilter.priceMin}
+          id={IPriceFilter.priceMin} 
+        />
         <Text>-</Text>
-        <Input type="number" $view={InputView.number} placeholder="10 000" name="priceMax" id="priceMax" />
+        <Input 
+          type="number" 
+          $view={InputView.number} 
+          placeholder="10 000" 
+          name={IPriceFilter.priceMax} 
+          id={IPriceFilter.priceMax} 
+        />
       </Fieldset>
-      {itemSets.map(({filterName, items}, index) => (
-        <Checkbox filterName={filterName} items={items} key={index} />
-      ))}
-      <Checkbox filterName="Тип ухода" items={filterData} onInputChange={handleInputFromStoreChange} />
-      <Button $width="169px" $height="59px">Показать</Button>
-    </Block>
+      <Checkbox 
+        filterName="Производитель" 
+        items={filterData[FilterBy.producer]}
+        id="producerFilter"
+      />
+      <Checkbox 
+        filterName="Тип ухода" 
+        items={filterData[FilterBy.productType]} 
+        onInputChange={handleInputFromStoreChange} 
+      />
+      <Button 
+        $width="169px" 
+        $height="59px" 
+        type="submit"
+      >
+        Показать
+      </Button>
+    </Form>
   );
 }
 

@@ -1,4 +1,4 @@
-import { IFilterData } from "../../types/filter-data";
+import { ICheckboxFilter } from "../../types/filters";
 import { IProduct } from "../../types/product";
 
 export const getFilterData = (products: IProduct[], field: string) => {
@@ -16,7 +16,7 @@ export const getFilterData = (products: IProduct[], field: string) => {
 
   const uniqueValues = Array.from(new Set(values));
 
-  const result: IFilterData = {};
+  const result: ICheckboxFilter = {};
 
   uniqueValues.map((value, index) => {
     return result[field + index] = {
@@ -29,7 +29,7 @@ export const getFilterData = (products: IProduct[], field: string) => {
   return result;
 }
 
-export const getCheckedValues = (filterData: IFilterData) => {
+export const getCheckedValues = (filterData: ICheckboxFilter) => {
   const checkedValues: string[] = [];
 
   Object.values(filterData).forEach(({title, isChecked}) => {

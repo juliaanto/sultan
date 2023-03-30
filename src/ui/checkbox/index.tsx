@@ -1,17 +1,18 @@
 import { CheckboxInput, CheckboxLabel, CheckboxWrapper, Fieldset, Legend, ShowAllButton, Span, Wrapper } from "./checkbox.styled";
 import Input, { InputView } from "../input";
 
-import { IFilterData } from "../../types/filter-data";
+import { ICheckboxFilter } from "../../types/filters";
 
 interface CheckboxProps {
   filterName: string;
-  items: IFilterData;
+  items: ICheckboxFilter;
+  id?: string;
   onInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Checkbox({filterName, items, onInputChange}: CheckboxProps) {
+function Checkbox({filterName, items, id, onInputChange}: CheckboxProps) {
   return (
-    <Fieldset>
+    <Fieldset id={id}>
       <Legend>{filterName}</Legend>
       <Input $view={InputView.search} />
       <Wrapper>
