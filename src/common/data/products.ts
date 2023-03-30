@@ -8,7 +8,7 @@ const products = [
     brand: "AOS",
     producer: "Нэфис",
     imageUrl: "/img/products/aos.png",
-    productType: ["Бытовая химия"],
+    productType: ["Бытовая химия", "Уход за\u00a0лицом"],
     sizeType: SizeType.volume,
     size: "450 мл",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada.",

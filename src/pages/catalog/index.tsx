@@ -5,7 +5,7 @@ import { SortBy, sortProducts } from "../../common/helpers/sort";
 import Page from "../../layout/page";
 import Sorting from "../../components/sorting";
 import { getCatalogProducts } from "../../store/products/productsSlice";
-import { getFilterData } from "../../common/helpers/filter";
+import { getFilterData } from "../../common/helpers/filter-data";
 import { useAppSelector } from "../../app/hooks";
 
 function Catalog() {

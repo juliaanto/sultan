@@ -1,6 +1,6 @@
 import { Block, Fieldset, Heading, Legend, Text } from "./side-filter.styled";
 import { Button, Checkbox, Input } from "../../ui";
-import { getProductTypeFilter, setFilterValue } from "../../store/filter/filterSlice";
+import { getProductTypeFilter, setFilterValue } from "../../store/products/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 import { IFilterData } from "../../types/filter-data";

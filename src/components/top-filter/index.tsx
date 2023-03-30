@@ -1,7 +1,8 @@
 import { Block, Input, Label, Wrapper } from "./top-filter.styled";
-import { getProductTypeFilter, setFilterValue } from "../../store/filter/filterSlice";
+import { filterCatalogProducts, getProductTypeFilter, setFilterValue } from "../../store/products/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
+import { FilterBy } from "../../common/helpers/filter";
 import { IFilterData } from "../../types/filter-data";
 
 function TopFilter() {
@@ -9,10 +10,8 @@ function TopFilter() {
   const dispatch = useAppDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const id = event.target.name;
-    const isChecked = event.target.checked;
-
-    dispatch(setFilterValue({ id, isChecked }));
+    dispatch(setFilterValue({ id: event.target.name, isChecked: event.target.checked }));
+    dispatch(filterCatalogProducts({ filterBy: FilterBy.productType }));
   }
   
   return(

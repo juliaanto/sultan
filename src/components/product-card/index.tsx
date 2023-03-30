@@ -15,7 +15,7 @@ function ProductCard({product}: ProductCardProps) {
   return (
     <Block>
       <div>
-        <Image src={process.env.PUBLIC_URL + product.imageUrl} alt={product.title} height={194} width={280} />
+        <Image src={process.env.PUBLIC_URL + product.imageUrl} alt={product.title} height={194} width="auto" />
         <ProductSizeWrapper>
           {product.sizeType === SizeType.volume ?
             <IconBottle />
