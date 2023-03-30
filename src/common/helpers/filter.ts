@@ -1,6 +1,7 @@
+import { IFilterData } from "../../types/filter-data";
 import { IProduct } from "../../types/product";
 
-export const getFieldValues = (products: IProduct[], field: string) => {
+export const getFilterData = (products: IProduct[], field: string) => {
   let values: (string | number)[] = [];
   
   for(const product of products) {
@@ -15,5 +16,15 @@ export const getFieldValues = (products: IProduct[], field: string) => {
 
   const uniqueValues = Array.from(new Set(values));
 
-  return uniqueValues;
+  const result: IFilterData = {};
+
+  uniqueValues.map((value, index) => {
+    return result[field + index] = {
+      title: value.toString(),
+      id: field + index,
+      isChecked: false,
+    };
+  })
+
+  return result;
 }

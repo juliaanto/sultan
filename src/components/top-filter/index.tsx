@@ -1,16 +1,26 @@
 import { Block, Input, Label, Wrapper } from "./top-filter.styled";
+import { getProductTypeFilter, setFilterValue } from "../../store/filter/filterSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
-interface TopFilterProps {
-  items: (string | number)[];
-}
+import { IFilterData } from "../../types/filter-data";
 
-function TopFilter({items}: TopFilterProps) {
+function TopFilter() {
+  const filterData: IFilterData = useAppSelector(getProductTypeFilter);
+  const dispatch = useAppDispatch();
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const id = event.target.name;
+    const isChecked = event.target.checked;
+
+    dispatch(setFilterValue({ id, isChecked }));
+  }
+  
   return(
     <Block>
-      {Object.entries(items).map(([key, value]) => (
-        <Wrapper key={key}>
-          <Input type="checkbox" id={key} name={key} />
-          <Label htmlFor={key}>{value}</Label>
+      {Object.values(filterData).map(({title, id, isChecked}) => (
+        <Wrapper key={id}>
+          <Input type="checkbox" id={"topFilter-" + id} name={id} checked={isChecked} onChange={handleChange} />
+          <Label htmlFor={"topFilter-" + id}>{title}</Label>
         </Wrapper>
       ))}
     </Block>

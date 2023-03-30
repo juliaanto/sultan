@@ -5,24 +5,16 @@ import { SortBy, sortProducts } from "../../common/helpers/sort";
 import Page from "../../layout/page";
 import Sorting from "../../components/sorting";
 import { getCatalogProducts } from "../../store/products/productsSlice";
-import { getFieldValues } from "../../common/helpers/products";
-import { productsJson } from "../../common/data/products";
+import { getFilterData } from "../../common/helpers/filter";
 import { useAppSelector } from "../../app/hooks";
 
 function Catalog() {
-  const initialProducts = sortProducts(SortBy.titleAsc, JSON.parse(productsJson));
   const products = useAppSelector(getCatalogProducts);
-
-  const productTypes = {
-    filterName: "Бренд",
-    filterCode: "productType",
-    items: getFieldValues(initialProducts, "productType"),
-  };
+  const sortedProducts = sortProducts(SortBy.titleAsc, [...products]);
   
   const producers = {
     filterName: "Производитель", 
-    filterCode: "producer",
-    items: getFieldValues(initialProducts, "producer"),
+    items: getFilterData(sortedProducts, "producer"),
   };
 
   return (
@@ -33,9 +25,9 @@ function Catalog() {
           <Heading>Косметика и гигиена</Heading>
           <Sorting />
         </HeadingWrapper>
-        <TopFilter items={productTypes.items}/>
+        <TopFilter />
         <Wrapper>
-          <SideFilter itemSets={[producers, productTypes]} />
+          <SideFilter itemSets={[producers]} />
           <ProductList products={products} />
         </Wrapper>
       </Block>

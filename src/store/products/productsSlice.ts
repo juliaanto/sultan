@@ -3,7 +3,6 @@ import { SortBy, sortProducts } from "../../common/helpers/sort";
 
 import { IProduct } from '../../types/product';
 import { RootState } from '../../app/store';
-import { productsJson } from '../../common/data/products';
 
 export interface ProductsState {
   catalog: IProduct[];
@@ -11,7 +10,7 @@ export interface ProductsState {
 }
 
 const initialState: ProductsState = {
-  catalog: JSON.parse(productsJson),
+  catalog: [],
   cart: [],
 };
 
@@ -19,7 +18,7 @@ export const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    updateCatalogProducts: (state, action: PayloadAction<IProduct[]>) => {
+    setCatalogProducts: (state, action: PayloadAction<IProduct[]>) => {
       state.catalog = action.payload;
     },
     sortCatalogProducts: (state, action: PayloadAction<SortBy>) => {
@@ -28,7 +27,7 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { updateCatalogProducts, sortCatalogProducts } = productsSlice.actions;
+export const { setCatalogProducts, sortCatalogProducts } = productsSlice.actions;
 
 export const getCatalogProducts = (state: RootState) => state.products.catalog;
 export const getCartProducts = (state: RootState) => state.products.cart;

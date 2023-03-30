@@ -1,23 +1,29 @@
 import { CheckboxInput, CheckboxLabel, CheckboxWrapper, Fieldset, Legend, ShowAllButton, Span, Wrapper } from "./checkbox.styled";
 import Input, { InputView } from "../input";
 
+import { IFilterData } from "../../types/filter-data";
+
 interface CheckboxProps {
   filterName: string;
-  filterCode: string;
-  items: (string | number)[];
+  items: IFilterData;
+  onInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Checkbox({filterName, filterCode, items}: CheckboxProps) {
+function Checkbox({filterName, items, onInputChange}: CheckboxProps) {
   return (
     <Fieldset>
       <Legend>{filterName}</Legend>
       <Input $view={InputView.search} />
       <Wrapper>
-        {items.map((item, index) => (
-          <CheckboxWrapper key={filterCode + index}>
-            <CheckboxInput type="checkbox" id={filterCode + index} name={filterCode + index} />
-            <CheckboxLabel htmlFor={filterCode + index}>
-              {item}
+        {Object.values(items).map(({title, id, isChecked}) => (
+          <CheckboxWrapper key={id}>
+            {onInputChange ?
+              <CheckboxInput type="checkbox" id={"sideFilter-" + id} name={id} checked={isChecked} onChange={onInputChange} />
+              :
+              <CheckboxInput type="checkbox" id={"sideFilter-" + id} name={id} />
+            }
+            <CheckboxLabel htmlFor={"sideFilter-" + id}>
+              {title}
               <Span>(56)</Span>
             </CheckboxLabel>
           </CheckboxWrapper>
