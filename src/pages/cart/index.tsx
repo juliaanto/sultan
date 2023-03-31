@@ -5,11 +5,13 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 import { Button } from "../../ui";
 import Page from "../../layout/page";
+import { getCartTotalPrice } from "../../common/helpers/cart";
 import { useEffect } from "react";
 
 function Cart() {
-  const cartItems = useAppSelector(getCartProducts);
   const dispatch = useAppDispatch();
+  const cartItems = useAppSelector(getCartProducts);
+  const totalPrice = getCartTotalPrice(cartItems);
   
   useEffect(() => {
     document.title = "Корзина | Султан";
@@ -30,7 +32,7 @@ function Cart() {
               <CartProductList cartItems={cartItems} />
               <BottomLine>
                 <Button $width="192px" $height="59px" onClick={handleSubmitButtonClick}>Оформить заказ</Button>
-                <TotalPrice>1 348,76 ₸</TotalPrice>
+                <TotalPrice>{totalPrice.toLocaleString('ru-RU')} ₸</TotalPrice>
               </BottomLine>
             </>
             :
@@ -39,6 +41,7 @@ function Cart() {
         </Content>
       </Block>
     </Page>
+
   );
 }
 

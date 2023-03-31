@@ -70,6 +70,7 @@ export const TextWrapper = styled.div`
 export const PrimaryText = styled.p`
   font-weight: 600;
   margin: 0;
+  min-width: 100px;
 `;
 
 export const SecondaryText = styled.p`

@@ -28,7 +28,7 @@ function CartProductCard({ cartItem }: CartProductCardProps) {
       <ProductCountWrapper>
         <ProductCount count={count} barcode={product.barcode} />
       </ProductCountWrapper>
-      <Price>{product.price.toLocaleString('ru-RU')} ₸</Price>
+      <Price>{(product.price * count).toLocaleString('ru-RU')} ₸</Price>
       <ButtonWrapper>
         <Button $view={ButtonView.Icon} $width="59px" $height="59px">
           <IconBin />

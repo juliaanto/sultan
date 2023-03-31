@@ -64,9 +64,8 @@ export const Price = styled.p`
   font-weight: 700;
   font-size: 30px;
   line-height: 50px;
-  flex-grow: 1;
   text-align: center;
-  min-width: 150px;
+  min-width: 210px;
 `;
 
 export const ButtonWrapper = styled.div`

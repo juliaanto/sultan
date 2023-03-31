@@ -39,3 +39,15 @@ export const removeItemFromCart = (cartItems: ICartItem[], targetBarcode: number
     cartItems.splice(index, 1);
   }
 }
+
+export const getCartItemsTotalCount = (cartItems: ICartItem[]) => {
+  let itemsTotalCount = 0;
+  cartItems.forEach((item) => itemsTotalCount += item.count);
+  return itemsTotalCount;
+}
+
+export const getCartTotalPrice = (cartItems: ICartItem[]) => {
+  let cartTotalPrice = 0;
+  cartItems.forEach((item) => cartTotalPrice += item.product.price * item.count);
+  return cartTotalPrice;
+}
