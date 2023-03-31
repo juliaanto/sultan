@@ -19,10 +19,12 @@ export interface ProductsState {
   sort: SortBy;
 }
 
+const localStorageState = localStorage.getItem('cart');
+
 const initialState: ProductsState = {
   initialProducts: [],
   catalogProducts: [],
-  cartProducts: [],
+  cartProducts: localStorageState ? JSON.parse(localStorageState) : [],
   filter: {
     [FilterBy.price]: {
       [PriceFilter.priceMin]: 0,
