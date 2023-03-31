@@ -1,7 +1,7 @@
 import { FilterBy, IFilters, PriceFilter } from '../../types/filters';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { SortBy, sortProducts } from "../../common/helpers/sort";
-import { addProductToCart, removeItemFromCart } from '../../common/helpers/cart';
+import { addProductToCart, removeItemFromCart, removeProduct } from '../../common/helpers/cart';
 
 import { ICartItem } from '../../types/cart-item';
 import { IProduct } from '../../types/product';
@@ -80,6 +80,12 @@ export const productsSlice = createSlice({
       
       removeItemFromCart(cartItems, targetBarcode);
     },
+    removeProductFromCart: (state, action: PayloadAction<number>) => {
+      const cartItems = state.cartProducts;
+      const targetBarcode = action.payload;
+
+      removeProduct(cartItems, targetBarcode);
+    },
     clearCart: (state) => {
       state.cartProducts = [];
     },
@@ -96,6 +102,7 @@ export const {
   setPriceFilterValue, 
   addProduct,
   removeOneItem,
+  removeProductFromCart,
   clearCart 
 } = productsSlice.actions;
 

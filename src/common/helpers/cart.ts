@@ -23,6 +23,15 @@ export const addProductToCart = (cartItems: ICartItem[], targetBarcode: number, 
   }
 }
 
+export const removeProduct = (cartItems: ICartItem[], targetBarcode: number) => {
+  const cartItem = cartItems.find(({ product }) => product.barcode === targetBarcode);
+  
+  if (cartItem) {
+    const index = cartItems.indexOf(cartItem);
+    cartItems.splice(index, 1);
+  }
+}
+
 export const removeItemFromCart = (cartItems: ICartItem[], targetBarcode: number) => {
   const cartItem = cartItems.find(({ product }) => product.barcode === targetBarcode);
 
@@ -35,8 +44,7 @@ export const removeItemFromCart = (cartItems: ICartItem[], targetBarcode: number
   if (cartItemCount > 1) {
     cartItem.count--;
   } else {
-    const index = cartItems.indexOf(cartItem);
-    cartItems.splice(index, 1);
+    removeProduct(cartItems, targetBarcode);
   }
 }
 

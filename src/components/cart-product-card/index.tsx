@@ -7,12 +7,15 @@ import { ReactComponent as IconBin } from "../../assets/icons/bin.svg";
 import { ProductCount } from "../../components"
 import ProductSize from "../product-size";
 import { cutText } from "../../common/helpers/cut-text";
+import { removeProductFromCart } from "../../store/products/productsSlice";
+import { useAppDispatch } from "../../app/hooks";
 
 interface CartProductCardProps {
   cartItem: ICartItem;
 }
 
 function CartProductCard({ cartItem }: CartProductCardProps) {
+  const dispatch = useAppDispatch();
   const { product, count } = cartItem;
 
   return (
@@ -30,7 +33,7 @@ function CartProductCard({ cartItem }: CartProductCardProps) {
       </ProductCountWrapper>
       <Price>{(product.price * count).toLocaleString('ru-RU')} ₸</Price>
       <ButtonWrapper>
-        <Button $view={ButtonView.Icon} $width="59px" $height="59px">
+        <Button $view={ButtonView.Icon} $width="59px" $height="59px" onClick={() => dispatch(removeProductFromCart(product.barcode))}>
           <IconBin />
         </Button>
       </ButtonWrapper>

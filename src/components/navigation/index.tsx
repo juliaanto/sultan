@@ -8,7 +8,6 @@ interface NavigationProps {
   $isLocatedInFooter?: boolean;
 }
 
-
 function Navigation({sections, $isLocatedInFooter}: NavigationProps) {
   return (
     <Block>

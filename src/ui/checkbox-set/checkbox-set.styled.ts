@@ -32,6 +32,7 @@ export const CheckboxWrapper = styled.div`
 export const CheckboxLabel = styled.label`
   color: ${({ theme }) => theme.color.textSecondary};
   margin-left: 10px;
+  cursor: pointer;
 `;
 
 export const CheckboxInput = styled.input`
@@ -39,6 +40,7 @@ export const CheckboxInput = styled.input`
   height: 10px;
   margin: 0;
   display: block;
+  cursor: pointer;
 `;
 
 export const Span = styled.span`

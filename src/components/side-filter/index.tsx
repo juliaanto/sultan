@@ -1,4 +1,4 @@
-import { Button, Checkbox, Input } from "../../ui";
+import { Button, CheckboxSet, Input } from "../../ui";
 import { Fieldset, Form, Heading, Legend, Text } from "./side-filter.styled";
 import { FilterBy, IFilters, PriceFilter } from "../../types/filters";
 import { filterCatalogProducts, getProductTypeFilter, setPriceFilterValue, setProducerFilterValue, setProductTypeFilterValue } from "../../store/products/productsSlice";
@@ -72,12 +72,12 @@ function SideFilter() {
           innerRef={priceMaxRef}
         />
       </Fieldset>
-      <Checkbox 
+      <CheckboxSet 
         filterName="Производитель" 
         items={filterData[FilterBy.Producer]}
         id="producerFilter"
       />
-      <Checkbox 
+      <CheckboxSet 
         filterName="Тип ухода" 
         items={filterData[FilterBy.ProductType]} 
         onInputChange={handleProductTypeFilterChange} 
