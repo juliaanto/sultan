@@ -8,3 +8,34 @@ export const getProductByBarcode = (products: IProduct[], targetBarcode: number)
 export const getProductCountInCart = (cartItems: ICartItem[], targetBarcode: number) => {
   return cartItems.find(({ product }) => product.barcode === targetBarcode)?.count;
 }
+
+export const addProductToCart = (cartItems: ICartItem[], targetBarcode: number, catalogProducts: IProduct[]) => {
+  const cartItem = cartItems.find(({ product }) => product.barcode === targetBarcode);
+
+  if (cartItem) {
+    cartItem.count++;
+  } else {
+    const addedProduct: IProduct | undefined = getProductByBarcode(catalogProducts, targetBarcode);
+    addedProduct && cartItems.push({
+        product: addedProduct,
+        count: 1,
+      })
+  }
+}
+
+export const removeItemFromCart = (cartItems: ICartItem[], targetBarcode: number) => {
+  const cartItem = cartItems.find(({ product }) => product.barcode === targetBarcode);
+
+  if (!cartItem) {
+    return;
+  }
+  
+  const cartItemCount = cartItem.count;
+
+  if (cartItemCount > 1) {
+    cartItem.count--;
+  } else {
+    const index = cartItems.indexOf(cartItem);
+    cartItems.splice(index, 1);
+  }
+}

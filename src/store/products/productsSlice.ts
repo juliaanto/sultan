@@ -1,13 +1,13 @@
 import { FilterBy, IFilters, PriceFilter } from '../../types/filters';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { SortBy, sortProducts } from "../../common/helpers/sort";
+import { addProductToCart, removeItemFromCart } from '../../common/helpers/cart';
 
 import { ICartItem } from '../../types/cart-item';
 import { IProduct } from '../../types/product';
 import { RootState } from '../../app/store';
 import { filterProducts } from '../../common/helpers/filter';
 import { getFilterData } from '../../common/helpers/filter-data';
-import { getProductByBarcode } from '../../common/helpers/cart';
 
 export interface ProductsState {
   initialProducts: IProduct[];
@@ -69,35 +69,16 @@ export const productsSlice = createSlice({
     addProduct: (state, action: PayloadAction<number>) => {
       const cartItems = state.cartProducts;
       const targetBarcode = action.payload;
-      const cartItem = cartItems.find(({ product }) => product.barcode === targetBarcode);
-  
-      if (cartItem) {
-        cartItem.count++;
-      } else {
-        const addedProduct: IProduct | undefined = getProductByBarcode(state.catalogProducts, action.payload);
-        addedProduct && state.cartProducts.push({
-            product: addedProduct,
-            count: 1,
-          })
-      }
+      const catalogProducts = state.catalogProducts;
+      
+      addProductToCart(cartItems, targetBarcode, catalogProducts);
+
     },
     removeOneItem: (state, action: PayloadAction<number>) => {
       const cartItems = state.cartProducts;
       const targetBarcode = action.payload;
-      const cartItem = cartItems.find(({ product }) => product.barcode === targetBarcode);
-
-      if (!cartItem) {
-        return;
-      }
       
-      const cartItemCount = cartItem.count;
-
-      if (cartItemCount > 1) {
-        cartItem.count--;
-      } else {
-        const index = state.cartProducts.indexOf(cartItem);
-        state.cartProducts.splice(index, 1);
-      }
+      removeItemFromCart(cartItems, targetBarcode);
     },
     clearCart: (state) => {
       state.cartProducts = [];
