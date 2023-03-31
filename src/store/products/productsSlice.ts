@@ -1,4 +1,4 @@
-import { FilterBy, IFilters, IPriceFilter } from '../../types/filters';
+import { FilterBy, IFilters, PriceFilter } from '../../types/filters';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { SortBy, sortProducts } from "../../common/helpers/sort";
 
@@ -19,8 +19,8 @@ const initialState: ProductsState = {
   products: [],
   filter: {
     [FilterBy.price]: {
-      [IPriceFilter.priceMin]: 0,
-      [IPriceFilter.priceMax]: 0,
+      [PriceFilter.priceMin]: 0,
+      [PriceFilter.priceMax]: 0,
     },
     [FilterBy.productType]: {},
     [FilterBy.producer]: {},
@@ -36,14 +36,6 @@ export const productsSlice = createSlice({
       state.products = action.payload;
       state.initialProducts = action.payload;
     },
-    sortCatalogProducts: (state, action: PayloadAction<SortBy>) => {
-      sortProducts(action.payload, state.products);
-      state.sort = action.payload;
-    },
-    filterCatalogProducts: (state) => {
-      const sortedInitialProducts = sortProducts(state.sort, state.initialProducts);
-      state.products = filterProducts(sortedInitialProducts, state.filter);
-    },
     setInitialFilter: (state) => {
       state.filter[FilterBy.productType] = getFilterData(state.initialProducts, FilterBy.productType);
       state.filter[FilterBy.producer] = getFilterData(state.initialProducts, FilterBy.producer);
@@ -56,10 +48,22 @@ export const productsSlice = createSlice({
       const producerFilter = state.filter[FilterBy.producer][action.payload.id];
       producerFilter.isChecked = action.payload.isChecked;
     },
+    setPriceFilterValue: (state, action: PayloadAction<{priceMin: number, priceMax: number}>) => {
+      state.filter[FilterBy.price][PriceFilter.priceMin] = action.payload.priceMin;
+      state.filter[FilterBy.price][PriceFilter.priceMax] = action.payload.priceMax;
+    },
+    filterCatalogProducts: (state) => {
+      const sortedInitialProducts = sortProducts(state.sort, state.initialProducts);
+      state.products = filterProducts(sortedInitialProducts, state.filter);
+    },
+    sortCatalogProducts: (state, action: PayloadAction<SortBy>) => {
+      sortProducts(action.payload, state.products);
+      state.sort = action.payload;
+    },
   },
 });
 
-export const { setCatalogProducts, sortCatalogProducts, filterCatalogProducts, setProductTypeFilterValue, setProducerFilterValue, setInitialFilter } = productsSlice.actions;
+export const { setCatalogProducts, sortCatalogProducts, filterCatalogProducts, setProductTypeFilterValue, setProducerFilterValue, setInitialFilter, setPriceFilterValue } = productsSlice.actions;
 
 export const getCatalogProducts = (state: RootState) => state.products.products;
 export const getProductTypeFilter = (state: RootState) => state.products.filter;

@@ -1,35 +1,51 @@
 import { Button, Checkbox, Input } from "../../ui";
 import { Fieldset, Form, Heading, Legend, Text } from "./side-filter.styled";
-import { FilterBy, IFilters, IPriceFilter } from "../../types/filters";
-import { filterCatalogProducts, getProductTypeFilter, setProducerFilterValue, setProductTypeFilterValue } from "../../store/products/productsSlice";
+import { FilterBy, IFilters, PriceFilter } from "../../types/filters";
+import { filterCatalogProducts, getProductTypeFilter, setPriceFilterValue, setProducerFilterValue, setProductTypeFilterValue } from "../../store/products/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 import { InputView } from "../../ui/input";
+import { useRef } from "react";
 
 function SideFilter() {
   const filterData: IFilters = useAppSelector(getProductTypeFilter);
   const dispatch = useAppDispatch();
+  const priceMinRef = useRef<HTMLInputElement | null>(null);
+  const priceMaxRef = useRef<HTMLInputElement | null>(null);
 
-  const handleInputFromStoreChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleProductTypeFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const id = event.target.name;
     const isChecked = event.target.checked;
     
     dispatch(setProductTypeFilterValue({ id, isChecked }));
   }
 
-  const handleSubmitForm = (event: React.ChangeEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const setPriceFilterValues = () => {
+    let priceMin = Number(priceMinRef.current?.value);
+    let priceMax = Number(priceMaxRef.current?.value);
+
+    dispatch(setPriceFilterValue({priceMin, priceMax}));
+  }
+
+  const setProducerFilterValues = () => {
     const producerFilterElement = document.getElementById("producerFilter");
     const checkedValues = producerFilterElement?.querySelectorAll('input[type="checkbox"]');
 
-    let checkedProducers = Array.prototype.slice.call(checkedValues)
+    let checkedProducers = Array.prototype.slice.call(checkedValues);
 
     checkedProducers.forEach((input) => {
       const id = input.name;
       const isChecked = input.checked;
       dispatch(setProducerFilterValue({ id, isChecked}));
     });
+  }
 
+  const handleSubmitForm = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setPriceFilterValues();
+    setProducerFilterValues();
+    
     dispatch(filterCatalogProducts());
   }
   
@@ -42,16 +58,18 @@ function SideFilter() {
           type="number" 
           $view={InputView.number} 
           placeholder="0" 
-          name={IPriceFilter.priceMin}
-          id={IPriceFilter.priceMin} 
+          name={PriceFilter.priceMin}
+          id={PriceFilter.priceMin} 
+          innerRef={priceMinRef}
         />
         <Text>-</Text>
         <Input 
           type="number" 
           $view={InputView.number} 
           placeholder="10 000" 
-          name={IPriceFilter.priceMax} 
-          id={IPriceFilter.priceMax} 
+          name={PriceFilter.priceMax} 
+          id={PriceFilter.priceMax}
+          innerRef={priceMaxRef}
         />
       </Fieldset>
       <Checkbox 
@@ -62,7 +80,7 @@ function SideFilter() {
       <Checkbox 
         filterName="Тип ухода" 
         items={filterData[FilterBy.productType]} 
-        onInputChange={handleInputFromStoreChange} 
+        onInputChange={handleProductTypeFilterChange} 
       />
       <Button 
         $width="169px" 

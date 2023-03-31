@@ -6,9 +6,14 @@ export interface ICheckboxFilter {
   }
 }
 
-export enum IPriceFilter {
+export enum PriceFilter {
   priceMin = "priceMin",
   priceMax = "priceMax",
+}
+
+export interface IPriceFilter {
+  [PriceFilter.priceMin]: number;
+  [PriceFilter.priceMax]: number;
 }
 
 export enum FilterBy {
@@ -18,10 +23,7 @@ export enum FilterBy {
 }
 
 export interface IFilters {
-  [FilterBy.price]: {
-    [IPriceFilter.priceMin]: number;
-    [IPriceFilter.priceMax]: number;
-  },
+  [FilterBy.price]: IPriceFilter,
   [FilterBy.productType]: ICheckboxFilter,
   [FilterBy.producer]: ICheckboxFilter,
 }

@@ -3,6 +3,7 @@ import { Label, StyledInput, Wrapper } from "./input.styled";
 
 import { ReactComponent as IconArrow } from "../../assets/icons/arrow.svg";
 import { ReactComponent as IconSearch } from "../../assets/icons/search.svg";
+import { MutableRefObject } from "react";
 
 export enum InputView {
   search = "search",
@@ -15,6 +16,7 @@ interface InputProps {
   placeholder?: string;
   name?: string;
   id?: string;
+  innerRef?: MutableRefObject<HTMLInputElement | null>;
   $view?: InputView;
 }
 
@@ -23,6 +25,7 @@ function Input({
   placeholder,
   name,
   id,
+  innerRef,
   $view,
 }: InputProps) {
   const renderContent = (view?: string) => {
@@ -59,6 +62,7 @@ function Input({
           placeholder={!placeholder && $view === InputView.search ? "Поиск..." : placeholder}
           name={name}
           id={id}
+          ref={innerRef}
           $view={$view}
         ></StyledInput>
         {renderContent($view)}
