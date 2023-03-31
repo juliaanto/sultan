@@ -69,19 +69,34 @@ export const productsSlice = createSlice({
     addProduct: (state, action: PayloadAction<number>) => {
       const cartItems = state.cartProducts;
       const targetBarcode = action.payload;
-
       const cartItem = cartItems.find(({ product }) => product.barcode === targetBarcode);
   
       if (cartItem) {
-        cartItems.forEach((item) => {
-          item.product.barcode === targetBarcode && item.count++;
-        })
+        cartItem.count++;
       } else {
         const addedProduct: IProduct | undefined = getProductByBarcode(state.catalogProducts, action.payload);
         addedProduct && state.cartProducts.push({
             product: addedProduct,
             count: 1,
           })
+      }
+    },
+    removeOneItem: (state, action: PayloadAction<number>) => {
+      const cartItems = state.cartProducts;
+      const targetBarcode = action.payload;
+      const cartItem = cartItems.find(({ product }) => product.barcode === targetBarcode);
+
+      if (!cartItem) {
+        return;
+      }
+      
+      const cartItemCount = cartItem.count;
+
+      if (cartItemCount > 1) {
+        cartItem.count--;
+      } else {
+        const index = state.cartProducts.indexOf(cartItem);
+        state.cartProducts.splice(index, 1);
       }
     },
     clearCart: (state) => {
@@ -98,7 +113,8 @@ export const {
   setProducerFilterValue, 
   setInitialFilter, 
   setPriceFilterValue, 
-  addProduct, 
+  addProduct,
+  removeOneItem,
   clearCart 
 } = productsSlice.actions;
 

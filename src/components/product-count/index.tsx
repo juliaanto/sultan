@@ -1,6 +1,6 @@
 import { Block, Button, Count } from "./product-count.styled";
+import { addProduct, removeOneItem } from "../../store/products/productsSlice";
 
-import { addProduct } from "../../store/products/productsSlice";
 import { useAppDispatch } from "../../app/hooks";
 
 interface ProductCountProps {
@@ -11,15 +11,11 @@ interface ProductCountProps {
 function ProductCount({count, barcode}: ProductCountProps) {
   const dispatch = useAppDispatch();
 
-  const handleAddToCart = () => {
-    dispatch(addProduct(barcode));
-  }
-  
   return (
     <Block>
-      <Button>-</Button>
+      <Button onClick={() => dispatch(removeOneItem(barcode))}>-</Button>
       <Count>{count}</Count>
-      <Button onClick={handleAddToCart}>+</Button>
+      <Button onClick={() => dispatch(addProduct(barcode))}>+</Button>
     </Block>
   );
 }
