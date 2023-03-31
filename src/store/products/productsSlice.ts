@@ -5,18 +5,24 @@ import { SortBy, sortProducts } from "../../common/helpers/sort";
 import { IProduct } from '../../types/product';
 import { RootState } from '../../app/store';
 import { filterProducts } from '../../common/helpers/filter';
+import { findProductByBarcode } from '../../common/helpers/cart';
 import { getFilterData } from '../../common/helpers/filter-data';
 
 export interface ProductsState {
   initialProducts: IProduct[];
-  products: IProduct[];
+  catalogProducts: IProduct[];
+  cartProducts: {
+    product: IProduct;
+    count: number;
+  }[];
   filter: IFilters;
   sort: SortBy;
 }
 
 const initialState: ProductsState = {
   initialProducts: [],
-  products: [],
+  catalogProducts: [],
+  cartProducts: [],
   filter: {
     [FilterBy.price]: {
       [PriceFilter.priceMin]: 0,
@@ -29,11 +35,11 @@ const initialState: ProductsState = {
 };
 
 export const productsSlice = createSlice({
-  name: 'catalog',
+  name: 'products',
   initialState,
   reducers: {
     setCatalogProducts: (state, action: PayloadAction<IProduct[]>) => {
-      state.products = action.payload;
+      state.catalogProducts = action.payload;
       state.initialProducts = action.payload;
     },
     setInitialFilter: (state) => {
@@ -54,18 +60,26 @@ export const productsSlice = createSlice({
     },
     filterCatalogProducts: (state) => {
       const sortedInitialProducts = sortProducts(state.sort, state.initialProducts);
-      state.products = filterProducts(sortedInitialProducts, state.filter);
+      state.catalogProducts = filterProducts(sortedInitialProducts, state.filter);
     },
     sortCatalogProducts: (state, action: PayloadAction<SortBy>) => {
-      sortProducts(action.payload, state.products);
+      sortProducts(action.payload, state.catalogProducts);
       state.sort = action.payload;
+    },
+    addProduct: (state, action: PayloadAction<number>) => {
+      const addedProduct: IProduct | undefined = findProductByBarcode(state.catalogProducts, action.payload);
+      
+      addedProduct && state.cartProducts.push({
+        product: addedProduct,
+        count: 1,
+      })
     },
   },
 });
 
-export const { setCatalogProducts, sortCatalogProducts, filterCatalogProducts, setProductTypeFilterValue, setProducerFilterValue, setInitialFilter, setPriceFilterValue } = productsSlice.actions;
+export const { setCatalogProducts, sortCatalogProducts, filterCatalogProducts, setProductTypeFilterValue, setProducerFilterValue, setInitialFilter, setPriceFilterValue, addProduct } = productsSlice.actions;
 
-export const getCatalogProducts = (state: RootState) => state.products.products;
+export const getCatalogProducts = (state: RootState) => state.products.catalogProducts;
 export const getProductTypeFilter = (state: RootState) => state.products.filter;
 
 export default productsSlice.reducer;

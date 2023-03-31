@@ -45,7 +45,7 @@ function ProductCard({product}: ProductCardProps) {
       </div>
       <BottomLineWrapper>
         <Price>{product.price.toLocaleString('ru-RU')} ₸</Price>
-        <Button $view={ButtonView.addToCart} $width="153px" $height="45px" />
+        <Button $view={ButtonView.addToCart} $width="153px" $height="45px" $productBarcode={product.barcode} />
       </BottomLineWrapper>
     </Block>
   );

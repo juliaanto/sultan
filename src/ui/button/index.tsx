@@ -1,6 +1,8 @@
 import { ReactComponent as IconCart } from "../../assets/icons/cart.svg";
 import { ReactComponent as IconDownload } from "../../assets/icons/download.svg";
 import { StyledButton } from "./button.styled";
+import { addProduct } from "../../store/products/productsSlice";
+import { useAppDispatch } from "../../app/hooks";
 
 export enum ButtonView {
   icon = "icon",
@@ -18,6 +20,7 @@ interface ButtonProps {
   $view?: ButtonView;
   $width?: string;
   $height?: string;
+  $productBarcode?: number;
 }
 
 function Button({
@@ -27,8 +30,15 @@ function Button({
   $view,
   $width,
   $height,
-  $isLocatedInFooter
+  $isLocatedInFooter,
+  $productBarcode,
 }: ButtonProps) {
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = () => {
+    $productBarcode && dispatch(addProduct($productBarcode));
+  }
+  
   const renderContent = (view?: string) => {
     switch(view) {
       case ButtonView.priceList:
@@ -47,10 +57,10 @@ function Button({
         </>;
     }
   }
-  
+
   return (
     <StyledButton
-      onClick={onClick}
+      onClick={$view === ButtonView.addToCart ? handleAddToCart : onClick}
       type={type}
       $view={$view}
       $width={$width}
