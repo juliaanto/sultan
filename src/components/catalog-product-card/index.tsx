@@ -1,15 +1,21 @@
 import { Block, BottomLineWrapper, Image, Price, PrimaryText, Property, SecondaryText, Span, Title } from "./catalog-product-card.styled";
+import { ProductCount, ProductSize } from "../../components";
 
 import { Button } from "../../ui";
 import { ButtonView } from "../../ui/button";
 import { IProduct } from "../../types/product";
-import { ProductSize } from "../../components";
+import { getCartProducts } from "../../store/products/productsSlice";
+import { getProductCountInCart } from "../../common/helpers/cart";
+import { useAppSelector } from "../../app/hooks";
 
 interface CatalogProductCardProps {
   product: IProduct;
 }
 
 function CatalogProductCard({ product }: CatalogProductCardProps) {
+  const cartItems = useAppSelector(getCartProducts);
+  const countInCart = getProductCountInCart(cartItems, product.barcode);
+  
   return (
     <Block>
       <div>
@@ -36,7 +42,11 @@ function CatalogProductCard({ product }: CatalogProductCardProps) {
       </div>
       <BottomLineWrapper>
         <Price>{product.price.toLocaleString('ru-RU')} ₸</Price>
-        <Button $view={ButtonView.AddToCart} $width="153px" $height="45px" $productBarcode={product.barcode} />
+        {countInCart ?
+          <ProductCount count={countInCart} barcode={product.barcode} />
+          :
+          <Button $view={ButtonView.AddToCart} $width="153px" $height="45px" $productBarcode={product.barcode} />
+        }
       </BottomLineWrapper>
     </Block>
   );

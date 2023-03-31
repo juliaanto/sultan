@@ -6,8 +6,8 @@ import { ICartItem } from '../../types/cart-item';
 import { IProduct } from '../../types/product';
 import { RootState } from '../../app/store';
 import { filterProducts } from '../../common/helpers/filter';
-import { findProductByBarcode } from '../../common/helpers/cart';
 import { getFilterData } from '../../common/helpers/filter-data';
+import { getProductByBarcode } from '../../common/helpers/cart';
 
 export interface ProductsState {
   initialProducts: IProduct[];
@@ -67,17 +67,40 @@ export const productsSlice = createSlice({
       state.sort = action.payload;
     },
     addProduct: (state, action: PayloadAction<number>) => {
-      const addedProduct: IProduct | undefined = findProductByBarcode(state.catalogProducts, action.payload);
-      
-      addedProduct && state.cartProducts.push({
-        product: addedProduct,
-        count: 1,
-      })
+      const cartItems = state.cartProducts;
+      const targetBarcode = action.payload;
+
+      const cartItem = cartItems.find(({ product }) => product.barcode === targetBarcode);
+  
+      if (cartItem) {
+        cartItems.forEach((item) => {
+          item.product.barcode === targetBarcode && item.count++;
+        })
+      } else {
+        const addedProduct: IProduct | undefined = getProductByBarcode(state.catalogProducts, action.payload);
+        addedProduct && state.cartProducts.push({
+            product: addedProduct,
+            count: 1,
+          })
+      }
+    },
+    clearCart: (state) => {
+      state.cartProducts = [];
     },
   },
 });
 
-export const { setCatalogProducts, sortCatalogProducts, filterCatalogProducts, setProductTypeFilterValue, setProducerFilterValue, setInitialFilter, setPriceFilterValue, addProduct } = productsSlice.actions;
+export const { 
+  setCatalogProducts, 
+  sortCatalogProducts, 
+  filterCatalogProducts, 
+  setProductTypeFilterValue, 
+  setProducerFilterValue, 
+  setInitialFilter, 
+  setPriceFilterValue, 
+  addProduct, 
+  clearCart 
+} = productsSlice.actions;
 
 export const getCatalogProducts = (state: RootState) => state.products.catalogProducts;
 export const getCartProducts = (state: RootState) => state.products.cartProducts;

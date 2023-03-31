@@ -26,7 +26,7 @@ function CartProductCard({ cartItem }: CartProductCardProps) {
         <Description>{cutText(product.description, 180)}</Description>
       </TextWrapper>
       <ProductCountWrapper>
-        <ProductCount count={count} />
+        <ProductCount count={count} barcode={product.barcode} />
       </ProductCountWrapper>
       <Price>{product.price.toLocaleString('ru-RU')} ₸</Price>
       <ButtonWrapper>

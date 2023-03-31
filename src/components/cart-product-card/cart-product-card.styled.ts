@@ -58,7 +58,6 @@ export const ProductCountWrapper = styled.div`
 
 export const Price = styled.p`
   ${dashedLine(LinePosition.LeftRight)};
-  margin: 0;
   height: 50px;
   padding: 0 20px;
   margin: 0 20px;
@@ -67,6 +66,7 @@ export const Price = styled.p`
   line-height: 50px;
   flex-grow: 1;
   text-align: center;
+  min-width: 150px;
 `;
 
 export const ButtonWrapper = styled.div`

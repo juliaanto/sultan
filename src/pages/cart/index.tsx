@@ -1,18 +1,23 @@
 import { Block, BottomLine, Content, Message, TotalPrice } from "./cart.styled";
 import { Breadcrumbs, CartProductList, Heading } from "../../components";
+import { clearCart, getCartProducts } from "../../store/products/productsSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 import { Button } from "../../ui";
 import Page from "../../layout/page";
-import { getCartProducts } from "../../store/products/productsSlice";
-import { useAppSelector } from "../../app/hooks";
 import { useEffect } from "react";
 
 function Cart() {
   const cartItems = useAppSelector(getCartProducts);
+  const dispatch = useAppDispatch();
   
   useEffect(() => {
     document.title = "Корзина | Султан";
   }, []);
+
+  const handleSubmitButtonClick = () => {
+    dispatch(clearCart());
+  }
   
   return (
     <Page>
@@ -24,7 +29,7 @@ function Cart() {
             <>
               <CartProductList cartItems={cartItems} />
               <BottomLine>
-                <Button $width="192px" $height="59px">Оформить заказ</Button>
+                <Button $width="192px" $height="59px" onClick={handleSubmitButtonClick}>Оформить заказ</Button>
                 <TotalPrice>1 348,76 ₸</TotalPrice>
               </BottomLine>
             </>
@@ -34,7 +39,6 @@ function Cart() {
         </Content>
       </Block>
     </Page>
-
   );
 }
 

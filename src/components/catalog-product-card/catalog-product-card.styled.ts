@@ -51,6 +51,8 @@ export const BottomLineWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-right: 26px;
+  height: 45px;
+  align-items: center;
 `;
 
 export const Price = styled.p`
