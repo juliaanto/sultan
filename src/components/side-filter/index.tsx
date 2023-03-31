@@ -56,30 +56,30 @@ function SideFilter() {
         <Legend>Цена ₸</Legend>
         <Input 
           type="number" 
-          $view={InputView.number} 
+          $view={InputView.Number} 
           placeholder="0" 
-          name={PriceFilter.priceMin}
-          id={PriceFilter.priceMin} 
+          name={PriceFilter.PriceMin}
+          id={PriceFilter.PriceMin} 
           innerRef={priceMinRef}
         />
         <Text>-</Text>
         <Input 
           type="number" 
-          $view={InputView.number} 
+          $view={InputView.Number} 
           placeholder="10 000" 
-          name={PriceFilter.priceMax} 
-          id={PriceFilter.priceMax}
+          name={PriceFilter.PriceMax} 
+          id={PriceFilter.PriceMax}
           innerRef={priceMaxRef}
         />
       </Fieldset>
       <Checkbox 
         filterName="Производитель" 
-        items={filterData[FilterBy.producer]}
+        items={filterData[FilterBy.Producer]}
         id="producerFilter"
       />
       <Checkbox 
         filterName="Тип ухода" 
-        items={filterData[FilterBy.productType]} 
+        items={filterData[FilterBy.ProductType]} 
         onInputChange={handleProductTypeFilterChange} 
       />
       <Button 

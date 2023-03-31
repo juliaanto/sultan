@@ -2,6 +2,7 @@ import { Block, ButtonWrapper, HeaderLink, LinkText, PhoneWrapper, StyledCatalog
 import { Button, Input } from "../../ui";
 import { CartLink, Logo, Phone } from "../../components";
 
+import { AppRoute } from "../../common/data/app-route";
 import { ButtonView } from "../../ui/button";
 import { InputView } from "../../ui/input";
 import useViewport from "../../common/hooks/useViewport";
@@ -14,18 +15,18 @@ function TopBar() {
         {!isMobile &&
           <Logo />
         }
-        <HeaderLink to="/">
+        <HeaderLink to={AppRoute.Catalog}>
           <LinkText>Каталог</LinkText>
           <StyledCatalogIcon />
         </HeaderLink>
-        <Input placeholder={isMobile ? "Поиск" : "Поиск..."} $view={InputView.search}></Input>
+        <Input placeholder={isMobile ? "Поиск" : "Поиск..."} $view={InputView.Search}></Input>
         {!isMobile &&
         <>
           <PhoneWrapper>
             <Phone />
           </PhoneWrapper>
           <ButtonWrapper>
-            <Button $view={ButtonView.priceList} $width={"200px"} />
+            <Button $view={ButtonView.PriceList} $width={"200px"} />
           </ButtonWrapper>
           <CartLink />
         </>

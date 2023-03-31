@@ -31,7 +31,7 @@ function Phone({$isLocatedInMenu, $isLocatedInFooter}: PhoneProps) {
       </>
       }
       {$isLocatedInMenu &&
-        <Button $view={ButtonView.icon}>
+        <Button $view={ButtonView.Icon}>
           <IconPhone />
         </Button>
       }

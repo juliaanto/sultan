@@ -19,20 +19,6 @@ export const Image = styled.img`
   max-width: 276px;
 `;
 
-export const ProductSizeWrapper = styled.div`
-  display: flex;
-  gap: 8px;
-  margin-top: 4px;
-  margin-left: 2px;
-`;
-
-export const ProductSize = styled.p`
-  font-weight: 400;
-  color: ${({ theme }) => theme.color.textSecondary};
-  font-size: 12px;
-  margin: 0;
-`;
-
 export const Title = styled(Link)`
   display: block;
   font-size: 16px;

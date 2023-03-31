@@ -1,4 +1,4 @@
-import { Block, Column, CommunicationWrapperMobile, Content, Heading, IconLink, LogoWrapper, PaymentMethodsWrapper, Text } from "./footer.styled";
+import { Block, Column, CommunicationWrapperMobile, Content, Heading, Icon, LogoWrapper, PaymentMethodsWrapper, Text } from "./footer.styled";
 import { Button, Input } from "../../ui";
 import { Communication, Contacts, Logo, Navigation, Phone } from "../../components";
 
@@ -20,11 +20,11 @@ function Footer() {
             <LogoWrapper>
               <Logo $isLight />
               {isMobile &&
-                <Button $view={ButtonView.priceList} $width={"149px"} $height={"40px"} $isLocatedInFooter />
+                <Button $view={ButtonView.PriceList} $width={"149px"} $height={"40px"} $isLocatedInFooter />
               }
             </LogoWrapper>
             <Text>Компания «Султан» — снабжаем розничные магазины товарами "под&nbsp;ключ" в Кокчетаве и&nbsp;Акмолинской области</Text>
-            <Input type="email" placeholder="Введите ваш E-mail" id="subscription-email" name="subscription-email" $view={InputView.footerEmail} />
+            <Input type="email" placeholder="Введите ваш E-mail" id="subscription-email" name="subscription-email" $view={InputView.FooterEmail} />
           </Column>
           <Column>
             <Heading>Меню сайта:</Heading>
@@ -37,7 +37,7 @@ function Footer() {
           {!isMobile &&
             <Column>
               <Heading>Скачать прайс-лист:</Heading>
-              <Button $view={ButtonView.priceList} $width={"214px"} $height={"59px"} />
+              <Button $view={ButtonView.PriceList} $width={"214px"} $height={"59px"} />
               <Communication />
             </Column>
           }
@@ -46,12 +46,12 @@ function Footer() {
             <Phone $isLocatedInFooter />
             <Contacts $isLocatedInFooter />
             <PaymentMethodsWrapper>
-              <IconLink href="/">
+              <Icon>
                 <IconVisa />
-              </IconLink>
-              <IconLink href="/">
+              </Icon>
+              <Icon>
                 <IconMastercard />
-              </IconLink>
+              </Icon>
             </PaymentMethodsWrapper>
           </Column>
           {isMobile &&

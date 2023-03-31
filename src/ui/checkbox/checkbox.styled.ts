@@ -8,7 +8,7 @@ export const Fieldset = styled.fieldset`
   padding: 0 0 22px;
 
   &:not(:last-of-type) {
-    ${dashedLine(LinePosition.bottom)};
+    ${dashedLine(LinePosition.Bottom)};
   }
 `;
 

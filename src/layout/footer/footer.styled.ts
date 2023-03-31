@@ -74,7 +74,7 @@ export const Text = styled.p`
   }
 `;
 
-export const IconLink = styled.a`
+export const Icon = styled.div`
   display: inline-block;
   cursor: pointer;
 `;

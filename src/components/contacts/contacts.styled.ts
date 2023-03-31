@@ -21,7 +21,7 @@ export const Contact = styled.div`
     margin-top: auto;
     
     &:not(:first-child) {
-      ${dashedLine(LinePosition.left)}
+      ${dashedLine(LinePosition.Left)}
       margin-left: 23px;
       padding-left: 21px;
     }

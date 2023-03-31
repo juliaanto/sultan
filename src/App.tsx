@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Cart, Catalog } from "./pages";
 import { setCatalogProducts, setInitialFilter } from "./store/products/productsSlice";
 
-import { Catalog } from "./pages";
+import { AppRoute } from "./common/data/app-route";
 import GlobalStyle from "./theme/globalStyle";
 import React from "react";
 import { ThemeProvider } from "styled-components";
@@ -20,7 +21,9 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Catalog />} />
+          <Route path={AppRoute.Main} element={<Catalog />} />
+          <Route path={AppRoute.Catalog} element={<Catalog />} />
+          <Route path={AppRoute.Cart} element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

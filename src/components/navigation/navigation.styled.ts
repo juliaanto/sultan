@@ -47,7 +47,7 @@ export const Item = styled.li<ItemProps>`
     css`
       @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
         &:not(:first-child) {
-          ${dashedLine(LinePosition.left)}
+          ${dashedLine(LinePosition.Left)}
           margin-left: 31px;
           padding-left: 32px;
         }

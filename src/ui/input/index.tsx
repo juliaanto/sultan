@@ -6,9 +6,9 @@ import { ReactComponent as IconSearch } from "../../assets/icons/search.svg";
 import { MutableRefObject } from "react";
 
 export enum InputView {
-  search = "search",
-  footerEmail = "footerEmail",
-  number = "number",
+  Search = "search",
+  FooterEmail = "footerEmail",
+  Number = "number",
 }
 
 interface InputProps {
@@ -30,15 +30,15 @@ function Input({
 }: InputProps) {
   const renderContent = (view?: string) => {
     switch(view) {
-      case InputView.search:
+      case InputView.Search:
         return <>
-          <Button $view={ButtonView.search}>
+          <Button $view={ButtonView.Search}>
             <IconSearch />
           </Button>
         </>;
-      case InputView.footerEmail:
+      case InputView.FooterEmail:
         return <>
-          <Button $view={ButtonView.footerEmail}>
+          <Button $view={ButtonView.FooterEmail}>
             <IconArrow />
           </Button>
         </>;
@@ -51,15 +51,15 @@ function Input({
   
   return (
     <>
-      {$view === InputView.footerEmail &&
+      {$view === InputView.FooterEmail &&
         <Label htmlFor={id}>Подпишись на скидки и акции</Label>
       }
       <Wrapper 
         $view={$view}
       >
         <StyledInput
-          type={$view === InputView.search ? "search" : type}
-          placeholder={!placeholder && $view === InputView.search ? "Поиск..." : placeholder}
+          type={$view === InputView.Search ? "search" : type}
+          placeholder={!placeholder && $view === InputView.Search ? "Поиск..." : placeholder}
           name={name}
           id={id}
           ref={innerRef}

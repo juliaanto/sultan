@@ -15,7 +15,7 @@ function Menu() {
           <Heading>Меню сайта:</Heading>
           <Navigation sections={siteMenu} />
           <ButtonWrapper>
-            <Button $view={ButtonView.priceList} />
+            <Button $view={ButtonView.PriceList} />
           </ButtonWrapper>
         </Block>
       </Wrapper>

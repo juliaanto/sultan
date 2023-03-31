@@ -5,11 +5,11 @@ import { addProduct } from "../../store/products/productsSlice";
 import { useAppDispatch } from "../../app/hooks";
 
 export enum ButtonView {
-  icon = "icon",
-  search = "search",
-  priceList = "priceList",
-  footerEmail = "footerEmail",
-  addToCart = "addToCart",
+  Icon = "icon",
+  Search = "search",
+  PriceList = "priceList",
+  FooterEmail = "footerEmail",
+  AddToCart = "addToCart",
 }
 
 interface ButtonProps {
@@ -41,12 +41,12 @@ function Button({
   
   const renderContent = (view?: string) => {
     switch(view) {
-      case ButtonView.priceList:
+      case ButtonView.PriceList:
         return <>
           <span>Прайс-лист</span>
           <IconDownload />
         </>;
-      case ButtonView.addToCart:
+      case ButtonView.AddToCart:
         return <>
           <span>В корзину</span>
           <IconCart />
@@ -60,7 +60,7 @@ function Button({
 
   return (
     <StyledButton
-      onClick={$view === ButtonView.addToCart ? handleAddToCart : onClick}
+      onClick={$view === ButtonView.AddToCart ? handleAddToCart : onClick}
       type={type}
       $view={$view}
       $width={$width}

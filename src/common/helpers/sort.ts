@@ -1,15 +1,15 @@
 import { IProduct } from "../../types/product";
 
 export enum SortBy {
-  titleAsc = "titleAsc",
-  titleDesc = "titleDesc",
-  priceAsc = "priceAsc",
-  priceDesc = "priceDesc",
+  TitleAsc = "titleAsc",
+  TitleDesc = "titleDesc",
+  PriceAsc = "priceAsc",
+  PriceDesc = "priceDesc",
 }
 
 export const sortProducts = (sortType: SortBy, products: IProduct[]) => {
   switch (sortType) {
-    case SortBy.titleDesc:
+    case SortBy.TitleDesc:
       return products.sort((a, b) => {
         const nameA = (a.brand + a.title).toUpperCase();
         const nameB = (b.brand + b.title).toUpperCase();
@@ -22,9 +22,9 @@ export const sortProducts = (sortType: SortBy, products: IProduct[]) => {
       
         return 0;
       });
-    case SortBy.priceAsc:
+    case SortBy.PriceAsc:
       return products.sort((a, b) => a.price - b.price);
-    case SortBy.priceDesc:
+    case SortBy.PriceDesc:
       return products.sort((a, b) => b.price - a.price);
     default:
       return products.sort((a, b) => {

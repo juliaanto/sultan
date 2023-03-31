@@ -1,11 +1,12 @@
 import { css } from "styled-components";
 
 export enum LinePosition {
-  left = "left",
-  right = "right",
-  leftRight = "leftRight",
-  top = "top",
-  bottom = "bottom",
+  Left = "left",
+  Right = "right",
+  LeftRight = "leftRight",
+  Top = "top",
+  Bottom = "bottom",
+  TopBottom = "topBottom",
 }
 
 export const dashedLine = (position: LinePosition) => {
@@ -19,30 +20,35 @@ export const dashedLine = (position: LinePosition) => {
 
     ${() => {
         switch (position) {
-          case LinePosition.left:
+          case LinePosition.Left:
             return css`
               background-position: 0 100%;
               background-size: 1px 100%, 0 0, 0 0, 0 0;
             `;
-          case LinePosition.right:
+          case LinePosition.Right:
             return css`
               background-position: 100% 0;
               background-size: 0 0, 0 0, 1px 100%, 0 0;
             `;
-          case LinePosition.leftRight:
+          case LinePosition.LeftRight:
             return css`
               background-position: 0 100%, 0 0, 100% 100%;
               background-size: 1px 100%, 0 0, 1px 100%, 0 0;
             `;
-          case LinePosition.top:
+          case LinePosition.Top:
             return css`
               background-position: 100% 0;
               background-size: 0 0, 0 0, 0 0, 100% 1px;
             `;
-          case LinePosition.bottom:
+          case LinePosition.Bottom:
             return css`
               background-position: 0 100%;
               background-size: 0 0, 0 0, 0 0, 100% 1px;
+            `;
+          case LinePosition.TopBottom:
+            return css`
+              background-position: 0 0, 0 0, 100% 100%, 0 100%;
+              background-size: 0 0, 100% 1px, 0 0, 100% 1px;
             `;
         }
       }}

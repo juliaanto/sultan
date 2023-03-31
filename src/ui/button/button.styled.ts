@@ -22,24 +22,24 @@ export const StyledButton = styled.button<StyledButtonProps>`
 
   ${(props) => {
     switch (props.$view) {
-      case ButtonView.icon:
+      case ButtonView.Icon:
         return css`
           width: 32px;
           height: 32px;
           border-radius: 50%;
 
           @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
-            width: 39px;
-            height: 39px;
+            width: ${({$width}) => $width ? $width : "39px"};
+            height: ${({$height}) => $height ? $height : "39px"};
           }
         `;
-      case ButtonView.footerEmail:
+      case ButtonView.FooterEmail:
         return css`
           width: 39px;
           height: 39px;
           border-radius: 50%;
         `;
-      case ButtonView.search:
+      case ButtonView.Search:
         return css`
           background-color: transparent;
 
@@ -69,7 +69,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
             }
           }
         `;
-      case ButtonView.priceList:
+      case ButtonView.PriceList:
         return css`
           padding: 10px;
           border-radius: 79px;
@@ -83,7 +83,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
             gap: 14px;
           }
         `;
-      case ButtonView.addToCart:
+      case ButtonView.AddToCart:
         return css`
           border-radius: 80px;
           color: ${({theme}) => theme.color.textButton};

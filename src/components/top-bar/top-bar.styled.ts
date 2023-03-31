@@ -48,7 +48,7 @@ export const Block = styled.div`
 `;
 
 export const HeaderLink = styled(Link)`
-  ${dashedLine(LinePosition.right)}
+  ${dashedLine(LinePosition.Right)}
   color: ${({ theme }) => theme.color.textSecondary};
   font-weight: 600;
   display: flex;
@@ -149,7 +149,7 @@ export const ButtonWrapper = styled.div`
   height: 59px;
   
   &::after {
-    ${dashedLine(LinePosition.leftRight)}
+    ${dashedLine(LinePosition.LeftRight)}
     position: absolute;
     content: "";
     width: 100%;

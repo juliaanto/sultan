@@ -12,7 +12,7 @@ export const Wrapper = styled.div<WrapperProps>`
 
   ${({$view}) => {
   switch ($view) {
-    case InputView.search:
+    case InputView.Search:
       return css`
         flex-direction: row-reverse;
         justify-content: center;
@@ -30,7 +30,7 @@ export const Wrapper = styled.div<WrapperProps>`
           justify-content: space-between;
         }
       `;
-    case InputView.footerEmail:
+    case InputView.FooterEmail:
       return css`
         background-color: ${({theme}) => theme.color.inputFooter};
         justify-content: space-between;
@@ -41,7 +41,7 @@ export const Wrapper = styled.div<WrapperProps>`
           max-width: 250px;
         }
       `;
-    case InputView.number:
+    case InputView.Number:
       return css`
         background-color: rgba(${({ theme }) => theme.color.primaryRGB}, .3);
         padding: 4px 15px;
@@ -86,7 +86,7 @@ export const StyledInput = styled.input<StyledInputProps>`
 
   ${({$view}) => {
   switch ($view) {
-    case InputView.search:
+    case InputView.Search:
       return css`
         width: 50px;
 
@@ -105,7 +105,7 @@ export const StyledInput = styled.input<StyledInputProps>`
           }
         }
       `;
-    case InputView.number:
+    case InputView.Number:
       return css`
         max-width: 70px;
         font-size: 12px;

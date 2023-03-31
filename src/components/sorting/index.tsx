@@ -7,7 +7,7 @@ import { useAppDispatch } from "../../app/hooks";
 
 function Sorting() {
   const dispatch = useAppDispatch();
-  const [currentSort, setCurrentSort] = useState<SortBy>(SortBy.titleAsc);
+  const [currentSort, setCurrentSort] = useState<SortBy>(SortBy.TitleAsc);
 
   useEffect(() => {
     dispatch(sortCatalogProducts(currentSort));
@@ -22,10 +22,10 @@ function Sorting() {
         defaultValue={currentSort}
         onChange={(event) => setCurrentSort(event.target.value as unknown as SortBy)}
       >
-        <Option value={SortBy.titleAsc}>Название по возрастанию</Option>
-        <Option value={SortBy.titleDesc}>Название по убыванию </Option>
-        <Option value={SortBy.priceAsc}>Цена по возрастанию</Option>
-        <Option value={SortBy.priceDesc}>Цена по убыванию</Option>
+        <Option value={SortBy.TitleAsc}>Название по возрастанию</Option>
+        <Option value={SortBy.TitleDesc}>Название по убыванию </Option>
+        <Option value={SortBy.PriceAsc}>Цена по возрастанию</Option>
+        <Option value={SortBy.PriceDesc}>Цена по убыванию</Option>
       </Select>
     </Block>
   );

@@ -7,7 +7,7 @@ const filterByProductType = (products: IProduct[], filterField: ICheckboxFilter)
   const filterValue = getCheckedValues(filterField);
   
   return products.filter((product) => {
-    const productValue = product[FilterBy.productType];
+    const productValue = product[FilterBy.ProductType];
     const intersection = productValue.filter((value) => filterValue.includes(value));
     return intersection.length > 0;
   });
@@ -17,7 +17,7 @@ const filterByProducer = (products: IProduct[], filterField: ICheckboxFilter) =>
   const filterValue = getCheckedValues(filterField);
 
   return products.filter((product) => {
-    const productValue = product[FilterBy.producer];
+    const productValue = product[FilterBy.Producer];
     return filterValue.includes(productValue);
   });
 }
@@ -25,7 +25,7 @@ const filterByProducer = (products: IProduct[], filterField: ICheckboxFilter) =>
 const filterByPrice = (products: IProduct[], filterField: IPriceFilter) => {
   const { priceMin, priceMax } = filterField;
   return products.filter((product) => {
-    const productValue = product[FilterBy.price];
+    const productValue = product[FilterBy.Price];
 
     if (priceMax > 0) {
       return productValue > priceMin && productValue < priceMax;
@@ -38,9 +38,9 @@ const filterByPrice = (products: IProduct[], filterField: IPriceFilter) => {
 export const filterProducts = (products: IProduct[], filter: IFilters) => {
   let filteredProducts = products;
   
-  filteredProducts = filterByProductType(filteredProducts, filter[FilterBy.productType]);
-  filteredProducts = filterByProducer(filteredProducts, filter[FilterBy.producer]);
-  filteredProducts = filterByPrice(filteredProducts, filter[FilterBy.price]);
+  filteredProducts = filterByProductType(filteredProducts, filter[FilterBy.ProductType]);
+  filteredProducts = filterByProducer(filteredProducts, filter[FilterBy.Producer]);
+  filteredProducts = filterByPrice(filteredProducts, filter[FilterBy.Price]);
   
   return filteredProducts;
 }

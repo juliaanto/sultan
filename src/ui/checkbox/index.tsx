@@ -14,7 +14,7 @@ function Checkbox({filterName, items, id, onInputChange}: CheckboxProps) {
   return (
     <Fieldset id={id}>
       <Legend>{filterName}</Legend>
-      <Input $view={InputView.search} />
+      <Input $view={InputView.Search} />
       <Wrapper>
         {Object.values(items).map(({title, id, isChecked}) => (
           <CheckboxWrapper key={id}>

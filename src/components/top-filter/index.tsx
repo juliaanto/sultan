@@ -14,7 +14,7 @@ function TopFilter() {
   
   return(
     <Block>
-      {Object.values(filterData[FilterBy.productType]).map(({title, id, isChecked}) => (
+      {Object.values(filterData[FilterBy.ProductType]).map(({title, id, isChecked}) => (
         <Wrapper key={id}>
           <Input type="checkbox" id={"topFilter-" + id} name={id} checked={isChecked} onChange={handleChange} />
           <Label htmlFor={"topFilter-" + id}>{title}</Label>

@@ -1,10 +1,16 @@
 import { Block, CurrentSection, PreviousSection } from "./breadcrumbs.styled";
 
-function Breadcrumbs() {
+import { AppRoute } from "../../common/data/app-route";
+
+interface BreadcrumbsProps {
+  currentPage: string;
+}
+
+function Breadcrumbs({currentPage}: BreadcrumbsProps) {
   return (
     <Block>
-      <PreviousSection to="/">Главная</PreviousSection>
-      <CurrentSection>Косметика и гигиена</CurrentSection>
+      <PreviousSection to={AppRoute.Main}>Главная</PreviousSection>
+      <CurrentSection>{currentPage}</CurrentSection>
     </Block>
   );
 }

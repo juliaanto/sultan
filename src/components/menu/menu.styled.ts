@@ -22,7 +22,7 @@ export const Block = styled.div`
 `;
 
 export const Heading = styled.h2`
-  ${dashedLine(LinePosition.top)}
+  ${dashedLine(LinePosition.Top)}
   margin: 24px 0;
   padding-top: 28px;
   font-size: 20px;

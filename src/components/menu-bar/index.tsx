@@ -15,7 +15,7 @@ function MenuBar() {
     <>
       {isMobile ?
         <MobileMenuBar>
-          <Button $view={ButtonView.icon} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <Button $view={ButtonView.Icon} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <ButtonSymbol $isOpen={isMenuOpen} />
           </Button>
           <Logo />

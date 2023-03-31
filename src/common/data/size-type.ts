@@ -1,4 +1,4 @@
 export enum SizeType {
-  weight = "weight",
-  volume = "volume",
+  Weight = "weight",
+  Volume = "volume",
 }

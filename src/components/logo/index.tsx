@@ -1,3 +1,4 @@
+import { AppRoute } from "../../common/data/app-route";
 import { Icon } from "./logo.styled";
 import { Link } from "react-router-dom";
 
@@ -7,7 +8,7 @@ interface LogoProps {
 
 function Logo({$isLight}: LogoProps) {
   return(
-    <Link to="/">
+    <Link to={AppRoute.Main}>
       <Icon $isLight={$isLight} />
     </Link>
   );

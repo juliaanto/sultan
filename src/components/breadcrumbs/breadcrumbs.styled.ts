@@ -8,7 +8,7 @@ export const Block = styled.div`
 `;
 
 export const PreviousSection = styled(Link)`
-  ${dashedLine(LinePosition.right)};
+  ${dashedLine(LinePosition.Right)};
   color: ${({ theme }) => theme.color.textSecondary};
   display: flex;
   align-items: center;
