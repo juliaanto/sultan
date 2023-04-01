@@ -76,11 +76,13 @@ function SideFilter() {
         filterName="Производитель" 
         items={filterData[FilterBy.Producer]}
         id="producerFilter"
+        shownItemsCount={4}
       />
       <CheckboxSet 
         filterName="Тип ухода" 
         items={filterData[FilterBy.ProductType]} 
-        onInputChange={handleProductTypeFilterChange} 
+        onInputChange={handleProductTypeFilterChange}
+        shownItemsCount={4}
       />
       <Button 
         $width="169px" 
