@@ -28,7 +28,7 @@ function SideFilter() {
   }
 
   const setProducerFilterValues = () => {
-    const producerFilterElement = document.getElementById("producerFilter");
+    const producerFilterElement = document.getElementById(FilterBy.Producer);
     const checkedValues = producerFilterElement?.querySelectorAll('input[type="checkbox"]');
 
     let checkedProducers = Array.prototype.slice.call(checkedValues);
@@ -75,12 +75,13 @@ function SideFilter() {
       <CheckboxSet 
         filterName="Производитель" 
         items={filterData[FilterBy.Producer]}
-        id="producerFilter"
+        filterField={FilterBy.Producer}
         shownItemsCount={4}
       />
       <CheckboxSet 
         filterName="Тип ухода" 
         items={filterData[FilterBy.ProductType]} 
+        filterField={FilterBy.ProductType}
         onInputChange={handleProductTypeFilterChange}
         shownItemsCount={4}
       />

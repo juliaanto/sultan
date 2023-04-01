@@ -107,6 +107,7 @@ export const {
 } = productsSlice.actions;
 
 export const getCatalogProducts = (state: RootState) => state.products.catalogProducts;
+export const getCatalogInitialProducts = (state: RootState) => state.products.initialProducts;
 export const getCartProducts = (state: RootState) => state.products.cartProducts;
 export const getProductTypeFilter = (state: RootState) => state.products.filter;
 

@@ -22,6 +22,17 @@ const filterByProducer = (products: IProduct[], filterField: ICheckboxFilter) =>
   });
 }
 
+export const getFilterItemsCount = (products: IProduct[], value: string, filterField: FilterBy) => {
+  switch (filterField) {
+    case (FilterBy.Producer):
+      return products.filter((product) => product.producer === value).length;
+    case (FilterBy.ProductType):
+      return products.filter((product) => product.productType.includes(value)).length;
+    default:
+      return 0;
+  }
+}
+
 const filterByPrice = (products: IProduct[], filterField: IPriceFilter) => {
   const { priceMin, priceMax } = filterField;
   return products.filter((product) => {
