@@ -63,6 +63,10 @@ export const Link = styled.a<LinkProps>`
   font-weight: 400;
   line-height: 1.5;
 
+  &:hover {
+    text-decoration: underline;
+  }
+
   ${({$isLocatedInFooter}) => $isLocatedInFooter ?
     css`
       color: ${({ theme }) => theme.color.textFooter};

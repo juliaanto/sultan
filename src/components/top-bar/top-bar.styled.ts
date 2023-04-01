@@ -62,6 +62,10 @@ export const HeaderLink = styled(Link)`
   padding-right: 20px;
   min-height: 30px;
 
+  &:hover {
+    background-color: rgba(${({ theme }) => theme.color.primaryRGB}, .8);
+  }
+
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
     color: ${({ theme }) => theme.color.textButton};
     background-color: ${({ theme }) => theme.color.primary};
@@ -157,5 +161,6 @@ export const ButtonWrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: -1;
   }
 `;

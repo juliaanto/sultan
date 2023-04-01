@@ -14,6 +14,10 @@ export const Title = styled.p`
 export const IconLink = styled.a`
   display: inline-block;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const Wrapper = styled.div`

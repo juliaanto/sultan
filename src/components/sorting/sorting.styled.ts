@@ -15,6 +15,11 @@ export const Select = styled.select`
   font-family: "Inter", sans-serif;
   color: ${({ theme }) => theme.color.textSecondary};
   margin-left: 2px;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 `;
 
 export const Option = styled.option`

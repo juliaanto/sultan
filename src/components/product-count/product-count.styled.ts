@@ -23,4 +23,12 @@ export const Button = styled.button`
   font-family: "Inter", sans-serif;
   font-size: 12px;
   font-weight: 300;
+
+  &:hover {
+    background-color: rgba(${({ theme }) => theme.color.primaryRGB}, .6);
+  }
+
+  &:active {
+    background-color: rgba(${({ theme }) => theme.color.primaryRGB}, .3);
+  }
 `;

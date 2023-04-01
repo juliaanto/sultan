@@ -33,6 +33,10 @@ export const CheckboxLabel = styled.label`
   color: ${({ theme }) => theme.color.textSecondary};
   margin-left: 10px;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 export const CheckboxInput = styled.input`
@@ -58,4 +62,8 @@ export const ShowAllButton = styled.button`
   font-weight: 500;
   padding: 0;
   margin-top: 18px;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;

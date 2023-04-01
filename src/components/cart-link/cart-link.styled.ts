@@ -10,6 +10,10 @@ export const Block = styled(Link)`
   margin-right: 17px;
   margin-top: 6px;
 
+  &:hover {
+    opacity: 0.7;
+  }
+
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
     margin-right: 5px;
     margin-left: 10px;

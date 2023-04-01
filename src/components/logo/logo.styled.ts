@@ -10,6 +10,10 @@ export const Icon = styled(IconLogo)<IconProps>`
   height: 41px;
   width: auto;
 
+  &:hover {
+    opacity: 0.7;
+  }
+
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
     height: 66px;
   }

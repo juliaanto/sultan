@@ -41,6 +41,10 @@ export const PhoneNumber = styled.a<PhoneNumberProps>`
   margin-top: 5px;
   margin-bottom: 7px;
 
+  &:hover {
+    opacity: 0.7;
+  }
+
   ${({$isLocatedInFooter}) => $isLocatedInFooter &&
     css`
       color: ${({ theme }) => theme.color.textFooter};
@@ -79,8 +83,11 @@ export const RequestCall = styled.button<RequestCallProps>`
   width: max-content;
   cursor: pointer;
   font-family: "Inter", sans-serif;
-  
 
+  &:hover {
+    opacity: 0.7;
+  }
+  
   ${({$isLocatedInMenu}) => !$isLocatedInMenu &&
     css`
       margin-top: 10px;

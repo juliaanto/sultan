@@ -20,6 +20,14 @@ export const StyledButton = styled.button<StyledButtonProps>`
   width: ${({$width}) => $width};
   height: ${({$height}) => $height};
 
+  &:hover {
+    background-color: rgba(${({ theme }) => theme.color.primaryRGB}, .8);
+  }
+
+  &:active {
+    background-color: rgba(${({ theme }) => theme.color.primaryRGB}, .6);
+  }
+
   ${(props) => {
     switch (props.$view) {
       case ButtonView.Icon:

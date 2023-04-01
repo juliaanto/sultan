@@ -76,6 +76,10 @@ interface MailProps {
 export const Mail = styled.a<MailProps>`
   font-weight: 600;
 
+  &:hover {
+    opacity: 0.6;
+  }
+
   ${({$isLocatedInFooter}) => $isLocatedInFooter &&
     css`
       color: ${({ theme }) => theme.color.textFooter};

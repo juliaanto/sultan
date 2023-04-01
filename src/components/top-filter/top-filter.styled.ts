@@ -18,6 +18,10 @@ export const Label = styled.label`
   padding: 18px 15px;
   box-shadow: 0 15px 70px -11px rgba(43, 28, 1, 0.15);
   border-radius: 10px;
+
+  &:hover {
+    background-color: rgba(${({ theme }) => theme.color.primaryRGB}, .3);
+  }
 `;
 
 export const Input = styled.input`
