@@ -1,10 +1,10 @@
 import { Block, Input, Label, Wrapper } from "./top-filter.styled";
 import { FilterBy, IFilters } from "../../types/filters";
-import { filterCatalogProducts, getProductTypeFilter, setProductTypeFilterValue } from "../../store/products/productsSlice";
+import { filterCatalogProducts, getFilter, setProductTypeFilterValue } from "../../store/products/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 function TopFilter() {
-  const filterData: IFilters = useAppSelector(getProductTypeFilter);
+  const filterData: IFilters = useAppSelector(getFilter);
   const dispatch = useAppDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

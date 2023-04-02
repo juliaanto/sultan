@@ -12,8 +12,8 @@ export enum PriceFilter {
 }
 
 export interface IPriceFilter {
-  [PriceFilter.PriceMin]: number;
-  [PriceFilter.PriceMax]: number;
+  [PriceFilter.PriceMin]: string;
+  [PriceFilter.PriceMax]: string;
 }
 
 export enum FilterBy {

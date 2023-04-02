@@ -34,3 +34,8 @@ export const Text = styled.p`
   font-size: 16px;
 `;
 
+export const BottomLine = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+

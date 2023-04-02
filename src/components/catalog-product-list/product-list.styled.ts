@@ -6,4 +6,5 @@ export const Block = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   max-width: 1024px;
+  flex-grow: 1;
 `;

@@ -5,10 +5,11 @@ import styled from "styled-components";
 export const Fieldset = styled.fieldset`
   border: none;
   margin: 20px 0 22px;
-  padding: 0 0 22px;
+  padding: 0 0 5px;
 
   &:not(:last-of-type) {
     ${dashedLine(LinePosition.Bottom)};
+    padding: 0 0 22px;
   }
 `;
 

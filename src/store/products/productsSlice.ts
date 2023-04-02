@@ -25,8 +25,8 @@ const initialState: ProductsState = {
   cartProducts: localStorageState ? JSON.parse(localStorageState) : [],
   filter: {
     [FilterBy.Price]: {
-      [PriceFilter.PriceMin]: 0,
-      [PriceFilter.PriceMax]: 0,
+      [PriceFilter.PriceMin]: "",
+      [PriceFilter.PriceMax]: "",
     },
     [FilterBy.ProductType]: {},
     [FilterBy.Producer]: {},
@@ -54,9 +54,17 @@ export const productsSlice = createSlice({
       const producerFilter = state.filter[FilterBy.Producer][action.payload.id];
       producerFilter.isChecked = action.payload.isChecked;
     },
-    setPriceFilterValue: (state, action: PayloadAction<{priceMin: number, priceMax: number}>) => {
-      state.filter[FilterBy.Price][PriceFilter.PriceMin] = action.payload.priceMin;
-      state.filter[FilterBy.Price][PriceFilter.PriceMax] = action.payload.priceMax;
+    setPriceFilterValue: (state, action: PayloadAction<{priceMin?: string, priceMax?: string}>) => {
+      const priceMin = action.payload.priceMin;
+      const priceMax = action.payload.priceMax;
+
+      if (priceMin) {
+        state.filter[FilterBy.Price][PriceFilter.PriceMin] = priceMin;
+      }
+
+      if (priceMax) {
+        state.filter[FilterBy.Price][PriceFilter.PriceMax] = priceMax;
+      }
     },
     filterCatalogProducts: (state) => {
       const sortedInitialProducts = sortProducts(state.sort, state.initialProducts);
@@ -103,12 +111,12 @@ export const {
   addProduct,
   removeOneItem,
   removeProductFromCart,
-  clearCart 
+  clearCart,
 } = productsSlice.actions;
 
 export const getCatalogProducts = (state: RootState) => state.products.catalogProducts;
 export const getCatalogInitialProducts = (state: RootState) => state.products.initialProducts;
 export const getCartProducts = (state: RootState) => state.products.cartProducts;
-export const getProductTypeFilter = (state: RootState) => state.products.filter;
+export const getFilter = (state: RootState) => state.products.filter;
 
 export default productsSlice.reducer;

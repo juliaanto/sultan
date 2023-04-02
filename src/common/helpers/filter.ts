@@ -35,13 +35,14 @@ export const getFilterItemsCount = (products: IProduct[], value: string, filterF
 
 const filterByPrice = (products: IProduct[], filterField: IPriceFilter) => {
   const { priceMin, priceMax } = filterField;
+  
   return products.filter((product) => {
     const productValue = product[FilterBy.Price];
 
-    if (priceMax > 0) {
-      return productValue > priceMin && productValue < priceMax;
+    if (Number(priceMax) > 0) {
+      return productValue > Number(priceMin) && productValue < Number(priceMax);
     } else {
-      return productValue > priceMin;
+      return productValue > Number(priceMin);
     }
   });
 }
