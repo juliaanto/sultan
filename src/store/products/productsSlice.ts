@@ -74,13 +74,13 @@ export const productsSlice = createSlice({
       sortProducts(action.payload, state.catalogProducts);
       state.sort = action.payload;
     },
-    addProduct: (state, action: PayloadAction<number>) => {
+    addProduct: (state, action: PayloadAction<{barcode: number, count: number}>) => {
       const cartItems = state.cartProducts;
-      const targetBarcode = action.payload;
+      const targetBarcode = action.payload.barcode;
       const catalogProducts = state.catalogProducts;
+      const count = action.payload.count;
       
-      addProductToCart(cartItems, targetBarcode, catalogProducts);
-
+      addProductToCart(cartItems, targetBarcode, catalogProducts, count);
     },
     removeOneItem: (state, action: PayloadAction<number>) => {
       const cartItems = state.cartProducts;

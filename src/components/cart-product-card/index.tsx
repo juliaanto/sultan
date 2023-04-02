@@ -1,5 +1,7 @@
 import { Block, ButtonWrapper, Description, Image, ImageWrapper, Price, ProductCountWrapper, TextWrapper, Title } from "./cart-product-card.styled";
+import { addProduct, removeOneItem, removeProductFromCart } from "../../store/products/productsSlice";
 
+import { AppLink } from "../../common/data/app-route";
 import { Button } from "../../ui";
 import { ButtonView } from "../../ui/button";
 import { ICartItem } from "../../types/cart-item";
@@ -7,7 +9,6 @@ import { ReactComponent as IconBin } from "../../assets/icons/bin.svg";
 import { ProductCount } from "../../components"
 import ProductSize from "../product-size";
 import { cutText } from "../../common/helpers/cut-text";
-import { removeProductFromCart } from "../../store/products/productsSlice";
 import { useAppDispatch } from "../../app/hooks";
 
 interface CartProductCardProps {
@@ -25,11 +26,15 @@ function CartProductCard({ cartItem }: CartProductCardProps) {
       </ImageWrapper>
       <TextWrapper>
         <ProductSize sizeType={product.sizeType} size={product.size} />
-        <Title to={"/"}>{cutText(product.brand + " " + product.title, 40)}</Title>
+        <Title to={AppLink.ProductById(product.barcode)}>{cutText(product.brand + " " + product.title, 40)}</Title>
         <Description>{cutText(product.description, 180)}</Description>
       </TextWrapper>
       <ProductCountWrapper>
-        <ProductCount count={count} barcode={product.barcode} />
+        <ProductCount 
+          count={count}
+          onRemoveButtonClick={() => dispatch(removeOneItem(product.barcode))}
+          onAddButtonClick={() => dispatch(addProduct({barcode: product.barcode, count: count + 1}))}
+        />
       </ProductCountWrapper>
       <Price>{(product.price * count).toLocaleString('ru-RU')} ₸</Price>
       <ButtonWrapper>

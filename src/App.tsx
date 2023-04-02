@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Cart, Catalog } from "./pages";
+import { Cart, Catalog, Product } from "./pages";
 import { setCatalogProducts, setInitialFilter } from "./store/products/productsSlice";
 
 import { AppRoute } from "./common/data/app-route";
@@ -24,6 +24,7 @@ function App() {
           <Route path={AppRoute.Main} element={<Catalog />} />
           <Route path={AppRoute.Catalog} element={<Catalog />} />
           <Route path={AppRoute.Cart} element={<Cart />} />
+          <Route path={AppRoute.Product} element={<Product />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

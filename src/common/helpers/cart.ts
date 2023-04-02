@@ -1,24 +1,21 @@
 import { ICartItem } from "../../types/cart-item";
 import { IProduct } from "../../types/product";
-
-export const getProductByBarcode = (products: IProduct[], targetBarcode: number) => {
-  return products.find(({ barcode }) => barcode === targetBarcode);
-}
+import { getProductByBarcode } from "./products";
 
 export const getProductCountInCart = (cartItems: ICartItem[], targetBarcode: number) => {
   return cartItems.find(({ product }) => product.barcode === targetBarcode)?.count;
 }
 
-export const addProductToCart = (cartItems: ICartItem[], targetBarcode: number, catalogProducts: IProduct[]) => {
+export const addProductToCart = (cartItems: ICartItem[], targetBarcode: number, catalogProducts: IProduct[], count: number) => {
   const cartItem = cartItems.find(({ product }) => product.barcode === targetBarcode);
 
   if (cartItem) {
-    cartItem.count++;
+    cartItem.count = count;
   } else {
     const addedProduct: IProduct | undefined = getProductByBarcode(catalogProducts, targetBarcode);
     addedProduct && cartItems.push({
         product: addedProduct,
-        count: 1,
+        count,
       })
   }
 }

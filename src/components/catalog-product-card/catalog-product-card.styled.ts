@@ -25,6 +25,10 @@ export const Title = styled(Link)`
   font-weight: 500;
   margin: 10px 0;
   line-height: 1.3;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const Span = styled.span`

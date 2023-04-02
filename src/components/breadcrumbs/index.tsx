@@ -3,14 +3,23 @@ import { Block, CurrentSection, PreviousSection } from "./breadcrumbs.styled";
 import { AppRoute } from "../../common/data/app-route";
 
 interface BreadcrumbsProps {
-  currentPage: string;
+  currentPageName: string;
+  previousSections?: {
+    pageName: string;
+    pageLink: AppRoute;
+  }[];
 }
 
-function Breadcrumbs({currentPage}: BreadcrumbsProps) {
+function Breadcrumbs({currentPageName, previousSections}: BreadcrumbsProps) {
   return (
     <Block>
       <PreviousSection to={AppRoute.Main}>Главная</PreviousSection>
-      <CurrentSection>{currentPage}</CurrentSection>
+      {previousSections &&
+        previousSections.map((section, index) => (
+          <PreviousSection to={section.pageLink} key={index}>{section.pageName}</PreviousSection>
+        ))
+      }
+      <CurrentSection>{currentPageName}</CurrentSection>
     </Block>
   );
 }

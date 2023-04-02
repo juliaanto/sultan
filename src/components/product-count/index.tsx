@@ -1,21 +1,18 @@
 import { Block, Button, Count } from "./product-count.styled";
-import { addProduct, removeOneItem } from "../../store/products/productsSlice";
-
-import { useAppDispatch } from "../../app/hooks";
 
 interface ProductCountProps {
   count: number;
-  barcode: number;
+  disabled?: boolean;
+  onRemoveButtonClick: () => void;
+  onAddButtonClick: () => void;
 }
 
-function ProductCount({count, barcode}: ProductCountProps) {
-  const dispatch = useAppDispatch();
-
+function ProductCount({count, disabled, onRemoveButtonClick, onAddButtonClick}: ProductCountProps) {
   return (
     <Block>
-      <Button onClick={() => dispatch(removeOneItem(barcode))}>-</Button>
+      <Button onClick={onRemoveButtonClick} disabled={disabled}>-</Button>
       <Count>{count}</Count>
-      <Button onClick={() => dispatch(addProduct(barcode))}>+</Button>
+      <Button onClick={onAddButtonClick}>+</Button>
     </Block>
   );
 }

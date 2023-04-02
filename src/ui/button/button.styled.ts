@@ -111,6 +111,25 @@ export const StyledButton = styled.button<StyledButtonProps>`
             fill: ${({theme}) => theme.color.textButton};
           }
         `;
+      case ButtonView.AddToCartFromProductPage:
+        return css`
+          border-radius: 80px;
+          color: ${({theme}) => theme.color.textButton};
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 1.21;
+          gap: 10px;
+          padding: 0;
+
+          & svg {
+            width: 27px;
+            height: auto;
+          }
+          
+          & svg path {
+            fill: ${({theme}) => theme.color.textButton};
+          }
+        `;
       default:
         return css`
           padding: 10px;

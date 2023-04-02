@@ -25,7 +25,7 @@ function Cart() {
     <Page>
       <Block>
         <Content>
-          <Breadcrumbs currentPage="Корзина" />
+          <Breadcrumbs currentPageName="Корзина" />
           <Heading>Корзина</Heading>
           {cartItems.length > 0 ?
             <>

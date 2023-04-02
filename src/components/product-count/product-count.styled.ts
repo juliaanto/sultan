@@ -24,11 +24,11 @@ export const Button = styled.button`
   font-size: 12px;
   font-weight: 300;
 
-  &:hover {
+  &:not(:disabled):hover {
     background-color: rgba(${({ theme }) => theme.color.primaryRGB}, .6);
   }
 
-  &:active {
+  &:not(:disabled):active {
     background-color: rgba(${({ theme }) => theme.color.primaryRGB}, .3);
   }
 `;

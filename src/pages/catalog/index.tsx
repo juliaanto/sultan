@@ -17,7 +17,7 @@ function Catalog() {
   return (
     <Page>
       <Block>
-        <Breadcrumbs currentPage="Каталог" />
+        <Breadcrumbs currentPageName="Каталог" />
         <HeadingWrapper>
           <Heading>Косметика и гигиена</Heading>
           <Sorting />

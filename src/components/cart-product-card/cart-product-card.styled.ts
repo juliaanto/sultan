@@ -36,6 +36,10 @@ export const Title = styled(Link)`
   margin: 10px 10px 0 0;
   display: block;
   max-width: 440px;
+
+  &:hover {
+    color: ${({ theme }) => theme.color.textSecondary};
+  }
 `;
 
 export const Description = styled.p`
