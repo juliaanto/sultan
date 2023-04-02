@@ -4,17 +4,17 @@ import { setCatalogProducts, setInitialFilter } from "./store/products/productsS
 
 import { AppRoute } from "./common/data/app-route";
 import GlobalStyle from "./theme/globalStyle";
+import { IProduct } from "./types/product";
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { productsJson } from "./common/data/products";
+import products from "./common/data/products.json"
 import theme from "./theme/theme";
 import { useAppDispatch } from "./app/hooks";
 
 function App() {
-  const initialProducts = JSON.parse(productsJson);
   const dispatch = useAppDispatch();
-  dispatch(setCatalogProducts(initialProducts));
-  dispatch(setInitialFilter(initialProducts));
+  dispatch(setCatalogProducts(products as IProduct[]));
+  dispatch(setInitialFilter());
   
   return (
     <ThemeProvider theme={theme}>
