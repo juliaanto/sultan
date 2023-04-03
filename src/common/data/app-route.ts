@@ -1,5 +1,5 @@
 export enum AppRoute {
-  Main = "/sultan-online-store",
+  Main = "/",
   Catalog = "/catalog",
   Cart = "/cart",
   Product = '/product/:id',

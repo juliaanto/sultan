@@ -19,7 +19,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path={AppRoute.Main} element={<Catalog />} />
           <Route path={AppRoute.Catalog} element={<Catalog />} />
