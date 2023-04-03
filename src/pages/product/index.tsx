@@ -1,4 +1,4 @@
-import { AccentText, Block, Image, Price, PriceWrapper, Span, TextWrapper, Title, Wrapper } from "./product.styled";
+import { AccentText, Block, ButtonsWrapper, Characteristics, CharacteristicsWrapper, Image, Information, InformationSpan, MainCharacteristicsWrapper, Parameter, ParameterValue, Price, PriceWrapper, SectionHeading, SectionHeadingWrapper, Span, Text, TextWrapper, Title, Wrapper } from "./product.styled";
 import { Breadcrumbs, ProductCount, ProductSize } from "../../components";
 import { addProduct, getCartProducts, getCatalogInitialProducts } from "../../store/products/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { AppRoute } from "../../common/data/app-route";
 import { Button } from "../../ui";
 import { ButtonView } from "../../ui/button";
+import { ReactComponent as IconShare } from "../../assets/icons/share.svg";
+import { ReactComponent as IconTriangle } from "../../assets/icons/triangle.svg";
 import Page from "../../layout/page";
 import { getProductByBarcode } from "../../common/helpers/products";
 import { getProductCountInCart } from "../../common/helpers/cart";
@@ -24,6 +26,8 @@ function Product() {
   let initialCount = countInCart ? countInCart : 1;
 
   const [count, setCount] = useState(initialCount);
+  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
+  const [isCharacteristicsOpen, setIsCharacteristicsOpen] = useState(false);
 
   useEffect(() => {
     document.title = product ? product.brand + " " + product.title + " | Султан" : "Товар не найден";
@@ -48,7 +52,7 @@ function Product() {
           }]}
         />
         <Wrapper>
-          <Image src={process.env.PUBLIC_URL + product.imageUrl} alt={product.title} height="auto" width={650} />
+          <Image src={process.env.PUBLIC_URL + product.imageUrl} alt={product.title} height={600} width={650} />
           <TextWrapper>
             <AccentText>В наличии</AccentText>
             <Title>
@@ -71,6 +75,52 @@ function Product() {
                 onClick={() => dispatch(addProduct({barcode: product.barcode, count}))}
               />
             </PriceWrapper>
+            <ButtonsWrapper>
+              <Button 
+                $view={ButtonView.ProductPage}
+                $width="77px"
+                $height="77px"
+                disabled
+              >
+                <IconShare />
+              </Button>
+              <Information>При покупке от <InformationSpan>10 000 ₸</InformationSpan> бесплатная доставка по Кокчетаву и области</Information>
+              <Button $view={ButtonView.PriceListFromProductPage} disabled />
+            </ButtonsWrapper>
+            <MainCharacteristicsWrapper>
+              <Characteristics>
+                <Parameter>Производитель: <ParameterValue>{product.producer}</ParameterValue></Parameter>
+                <Parameter>Бренд: <ParameterValue>{product.brand}</ParameterValue></Parameter>
+                <Parameter>Артикул: <ParameterValue>{product.barcode}</ParameterValue></Parameter>
+                <Parameter>Штрихкод: <ParameterValue>{product.barcode}</ParameterValue></Parameter>
+              </Characteristics>
+            </MainCharacteristicsWrapper>
+            <SectionHeadingWrapper onClick={() => setIsDescriptionOpen(!isDescriptionOpen)} $isSectionOpen={isDescriptionOpen}>
+              <SectionHeading>Описание</SectionHeading>
+              <IconTriangle />
+            </SectionHeadingWrapper>
+            {isDescriptionOpen &&
+              <Text>{product.description}</Text>
+            }
+            <CharacteristicsWrapper>
+              <SectionHeadingWrapper onClick={() => setIsCharacteristicsOpen(!isCharacteristicsOpen)} $isSectionOpen={isCharacteristicsOpen}>
+                <SectionHeading >Характеристики</SectionHeading>
+                <IconTriangle />
+              </SectionHeadingWrapper>
+              {isCharacteristicsOpen &&
+                <Characteristics>
+                  <Parameter>Назначение: <ParameterValue>{product.productType.join(", ")}</ParameterValue></Parameter>
+                  <Parameter>Тип: <ParameterValue>{product.productType.join(", ")}</ParameterValue></Parameter>
+                  <Parameter>Производитель: <ParameterValue>{product.producer}</ParameterValue></Parameter>
+                  <Parameter>Бренд: <ParameterValue>{product.brand}</ParameterValue></Parameter>
+                  <Parameter>Артикул: <ParameterValue>{product.barcode}</ParameterValue></Parameter>
+                  <Parameter>Штрихкод: <ParameterValue>{product.barcode}</ParameterValue></Parameter>
+                  <Parameter>Вес: <ParameterValue>{product.size}</ParameterValue></Parameter>
+                  <Parameter>Объем: <ParameterValue>{product.size}</ParameterValue></Parameter>
+                  <Parameter>Кол-во в коробке: <ParameterValue>{product.size}</ParameterValue></Parameter>
+                </Characteristics>
+              }
+            </CharacteristicsWrapper>
           </TextWrapper>
         </Wrapper>
       </Block>

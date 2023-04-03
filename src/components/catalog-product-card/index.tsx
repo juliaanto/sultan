@@ -21,7 +21,7 @@ function CatalogProductCard({ product }: CatalogProductCardProps) {
   return (
     <Block>
       <div>
-        <Image src={process.env.PUBLIC_URL + product.imageUrl} alt={product.title} height={194} width="auto" />
+        <Image src={process.env.PUBLIC_URL + product.imageUrl} alt={product.title} height={194} width={276} />
         <ProductSize sizeType={product.sizeType} size={product.size} />
         <Title to={AppLink.ProductById(product.barcode)}>
           <Span>{product.brand} </Span>

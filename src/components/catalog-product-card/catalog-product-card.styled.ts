@@ -16,7 +16,6 @@ export const Image = styled.img`
   display: block;
   margin: 0 auto;
   object-fit: contain;
-  max-width: 276px;
 `;
 
 export const Title = styled(Link)`

@@ -6,7 +6,7 @@
     "brand": "BioMio BIO-SOAP",
     "producer": "BioMio",
     "imageUrl": "/img/products/aos.png",
-    "productType": ["Уход за\u00a0лицом"],
+    "productType": ["Уход за\u00a0лицом", "Уход за\u00a0телом"],
     "sizeType": "weight",
     "size": "90 г",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis vulputate feugiat massa vestibulum duis. Faucibus consectetur aliquet sed pellentesque consequat consectetur congue mauris venenatis. Nunc elit, dignissim sed nulla ullamcorper enim, malesuada."

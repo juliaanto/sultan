@@ -6,9 +6,11 @@ export enum ButtonView {
   Icon = "icon",
   Search = "search",
   PriceList = "priceList",
+  PriceListFromProductPage = "priceListFromProductPage",
   FooterEmail = "footerEmail",
   AddToCart = "addToCart",
-  AddToCartFromProductPage = "addToCartFromProductPage"
+  AddToCartFromProductPage = "addToCartFromProductPage",
+  ProductPage = "productPage"
 }
 
 interface ButtonProps {
@@ -19,6 +21,7 @@ interface ButtonProps {
   $view?: ButtonView;
   $width?: string;
   $height?: string;
+  disabled?: boolean;
 }
 
 function Button({
@@ -29,10 +32,12 @@ function Button({
   $width,
   $height,
   $isLocatedInFooter,
+  disabled,
 }: ButtonProps) {
   const renderContent = (view?: string) => {
     switch(view) {
       case ButtonView.PriceList:
+      case ButtonView.PriceListFromProductPage:
         return <>
           <span>Прайс-лист</span>
           <IconDownload />
@@ -58,6 +63,7 @@ function Button({
       $width={$width}
       $height={$height}
       $isLocatedInFooter={$isLocatedInFooter}
+      disabled={disabled}
     >
       {renderContent($view)}
     </StyledButton>

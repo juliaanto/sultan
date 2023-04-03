@@ -130,6 +130,56 @@ export const StyledButton = styled.button<StyledButtonProps>`
             fill: ${({theme}) => theme.color.textButton};
           }
         `;
+      case ButtonView.ProductPage:
+        return css`
+          background-color: #ffffff;
+          box-shadow: 0 15px 70px -11px rgba(43, 28, 1, 0.04);
+          border-radius: 10px;
+
+          &:hover svg path {
+            fill: ${({theme}) => theme.color.textButton};
+          }
+
+          &:disabled:hover {
+            background-color: #ffffff;
+
+            & svg path {
+              fill: ${({theme}) => theme.color.primary};
+            }
+          }
+        `;
+      case ButtonView.PriceListFromProductPage:
+        return css`
+          background-color: #ffffff;
+          box-shadow: 0 15px 70px -11px rgba(43, 28, 1, 0.04);
+          border-radius: 10px;
+          gap: 10px;
+          padding: 0 38px;
+          color: ${({theme}) => theme.color.textSecondary};
+          font-weight: 700;
+          letter-spacing: .03em;
+
+          & svg path {
+            fill: ${({theme}) => theme.color.textSecondary};
+          }
+
+          &:hover {
+            color: ${({theme}) => theme.color.textButton};
+
+            & svg path {
+              fill: ${({theme}) => theme.color.textButton};
+            }
+          }
+
+          &:disabled:hover {
+            background-color: #ffffff;
+            color: ${({theme}) => theme.color.textSecondary};
+
+            & svg path {
+              fill: ${({theme}) => theme.color.textSecondary};
+            }
+          }
+        `;
       default:
         return css`
           padding: 10px;
