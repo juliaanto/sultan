@@ -1,5 +1,5 @@
 import Button, { ButtonView } from "../button";
-import { Label, StyledInput, Wrapper } from "./input.styled";
+import { Label, LabelWrapper, StyledInput, Wrapper } from "./input.styled";
 
 import { ReactComponent as IconArrow } from "../../assets/icons/arrow.svg";
 import { ReactComponent as IconSearch } from "../../assets/icons/search.svg";
@@ -17,6 +17,7 @@ interface InputProps {
   id?: string;
   value?: string | number | readonly string[] | undefined;
   $view?: InputView;
+  $label?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -27,50 +28,70 @@ function Input({
   id,
   value,
   $view,
+  $label,
   onChange,
 }: InputProps) {
-  const renderContent = (view?: string) => {
-    switch(view) {
-      case InputView.Search:
-        return <>
+  switch($view) {
+    case InputView.Search:
+      return (
+        <Wrapper 
+          $view={$view}
+        >
+          <StyledInput
+            type={$view === InputView.Search ? "search" : type}
+            placeholder={!placeholder && $view === InputView.Search ? "Поиск..." : placeholder}
+            name={name}
+            id={id}
+            value={value}
+            $view={$view}
+            onChange={onChange}
+          ></StyledInput>
           <Button $view={ButtonView.Search}>
             <IconSearch />
           </Button>
-        </>;
-      case InputView.FooterEmail:
-        return <>
-          <Button $view={ButtonView.FooterEmail}>
-            <IconArrow />
-          </Button>
-        </>;
-      default:
-        return <>
+        </Wrapper>
+      )
+    case InputView.FooterEmail:
+      return (
+        <>
+          <Label htmlFor={id} $view={InputView.FooterEmail}>Подпишись на скидки и акции</Label>
+          <Wrapper 
+            $view={$view}
+          >
+            <StyledInput
+              type="search"
+              placeholder={!placeholder ? "Поиск..." : placeholder}
+              name={name}
+              id={id}
+              value={value}
+              $view={$view}
+              onChange={onChange}
+            ></StyledInput>
+            <Button $view={ButtonView.FooterEmail}>
+              <IconArrow />
+            </Button>
+          </Wrapper>
+        </>
 
-        </>;
-    }
+      )
+    default:
+      return (
+        <LabelWrapper>
+          {$label &&
+            <Label htmlFor={id}>{$label}</Label>
+          }
+            <StyledInput
+              type={type}
+              placeholder={placeholder}
+              name={name}
+              id={id}
+              value={value}
+              $view={$view}
+              onChange={onChange}
+            ></StyledInput>
+          </LabelWrapper>
+      ) 
   }
-  
-  return (
-    <>
-      {$view === InputView.FooterEmail &&
-        <Label htmlFor={id}>Подпишись на скидки и акции</Label>
-      }
-      <Wrapper 
-        $view={$view}
-      >
-        <StyledInput
-          type={$view === InputView.Search ? "search" : type}
-          placeholder={!placeholder && $view === InputView.Search ? "Поиск..." : placeholder}
-          name={name}
-          id={id}
-          value={value}
-          $view={$view}
-          onChange={onChange}
-        ></StyledInput>
-        {renderContent($view)}
-      </Wrapper>
-    </>
-  );
 }
 
 export default Input;

@@ -41,11 +41,6 @@ export const Wrapper = styled.div<WrapperProps>`
           max-width: 250px;
         }
       `;
-    case InputView.Number:
-      return css`
-        background-color: rgba(${({ theme }) => theme.color.primaryRGB}, .3);
-        padding: 4px 15px;
-      `;
     default:
       return css`
         padding: 10px 10px 10px 20px;
@@ -110,9 +105,22 @@ export const StyledInput = styled.input<StyledInputProps>`
         max-width: 70px;
         font-size: 12px;
         text-align: center;
+        background-color: rgba(${({ theme }) => theme.color.primaryRGB}, .3);
+        padding: 4px 15px;
+        border-radius: 36px;
+      `;
+    case InputView.FooterEmail:
+      return css`
+        &::placeholder {
+          color: rgba(92, 99, 112, 0.6);
+        }
       `;
     default:
       return css`
+        background-color: ${({theme}) => theme.color.input};
+        border-radius: 36px;
+        padding: 21px 30px;
+        
         &::placeholder {
           color: rgba(92, 99, 112, 0.6);
         }
@@ -121,8 +129,30 @@ export const StyledInput = styled.input<StyledInputProps>`
   }}
 `;
 
-export const Label = styled.label`
-  display: inline-block;
-  font-size: 12px;
-  margin-bottom: 15px;
+interface LabelProps {
+  $view?: InputView;
+}
+
+export const Label = styled.label<LabelProps>`
+  ${({$view}) => {
+    switch ($view) {
+      case InputView.FooterEmail:
+        return css`
+          display: inline-block;
+          font-size: 12px;
+          margin-bottom: 15px;
+        `;
+      default:
+        return css`
+          font-weight: 500;
+          font-size: 16px;
+        `;
+    }
+  }}
+`;
+
+export const LabelWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;

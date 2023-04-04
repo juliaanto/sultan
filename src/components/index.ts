@@ -17,3 +17,4 @@ export { default as CartProductList } from "./cart-product-list";
 export { default as CartProductCard } from "./cart-product-card";
 export { default as ProductSize } from "./product-size";
 export { default as ProductCount } from "./product-count";
+export { default as NewProductForm } from "./new-product-form";

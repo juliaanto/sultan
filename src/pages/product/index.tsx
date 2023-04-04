@@ -52,7 +52,7 @@ function Product() {
           }]}
         />
         <Wrapper>
-          <Image src={process.env.PUBLIC_URL + product.imageUrl} alt={product.title} height={600} width={650} />
+          <Image src={product.imageUrl} alt={product.title} height={600} width={650} />
           <TextWrapper>
             <AccentText>В наличии</AccentText>
             <Title>

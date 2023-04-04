@@ -2,7 +2,8 @@ export enum AppRoute {
   Main = "/",
   Catalog = "/catalog",
   Cart = "/cart",
-  Product = '/product/:id',
+  Product = "/product/:id",
+  Admin = "/admin"
 }
 
 export const AppLink = {

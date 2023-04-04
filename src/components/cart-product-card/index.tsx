@@ -22,7 +22,7 @@ function CartProductCard({ cartItem }: CartProductCardProps) {
   return (
     <Block>
       <ImageWrapper>
-        <Image src={process.env.PUBLIC_URL + product.imageUrl} alt={product.title} height={190} width={280} />
+        <Image src={product.imageUrl} alt={product.title} height={190} width={280} />
       </ImageWrapper>
       <TextWrapper>
         <ProductSize sizeType={product.sizeType} size={product.size} />

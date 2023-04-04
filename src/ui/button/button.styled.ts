@@ -182,7 +182,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
         `;
       default:
         return css`
-          padding: 10px;
+          padding: 20px 50px;
           border-radius: 79px;
           font-weight: 700;
           color: ${({theme}) => theme.color.textButton};
