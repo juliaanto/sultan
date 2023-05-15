@@ -14,7 +14,7 @@ function Select({label, id, options}: SelectProps) {
     <Block>
       <Label htmlFor={id}>{label}</Label>
       <SelectWrapper>
-        <StyledSelect id={id} name={id}>
+        <StyledSelect id={id} name={id} multiple>
           {options.map((option) => (
             <Option value={option.valueId} key={option.valueId}>{option.valueName}</Option>
           ))}

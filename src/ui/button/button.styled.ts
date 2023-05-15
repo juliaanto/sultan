@@ -15,7 +15,6 @@ export const StyledButton = styled.button<StyledButtonProps>`
   justify-content: center;
   align-items: center;
   font-family: "Inter", sans-serif;
-  background-color: ${({theme}) => theme.color.primary};
   cursor: pointer;
   width: ${({$width}) => $width};
   height: ${({$height}) => $height};
@@ -32,6 +31,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
     switch (props.$view) {
       case ButtonView.Icon:
         return css`
+          background-color: ${({theme}) => theme.color.primary};
           width: 32px;
           height: 32px;
           border-radius: 50%;
@@ -43,6 +43,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
         `;
       case ButtonView.FooterEmail:
         return css`
+          background-color: ${({theme}) => theme.color.primary};
           width: 39px;
           height: 39px;
           border-radius: 50%;
@@ -79,6 +80,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
         `;
       case ButtonView.PriceList:
         return css`
+          background-color: ${({theme}) => theme.color.primary};
           padding: 10px;
           border-radius: 79px;
           font-weight: 700;
@@ -93,6 +95,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
         `;
       case ButtonView.AddToCart:
         return css`
+          background-color: ${({theme}) => theme.color.primary};
           border-radius: 80px;
           color: ${({theme}) => theme.color.textButton};
           text-transform: uppercase;
@@ -113,6 +116,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
         `;
       case ButtonView.AddToCartFromProductPage:
         return css`
+          background-color: ${({theme}) => theme.color.primary};
           border-radius: 80px;
           color: ${({theme}) => theme.color.textButton};
           font-weight: 700;
@@ -180,8 +184,43 @@ export const StyledButton = styled.button<StyledButtonProps>`
             }
           }
         `;
+      case ButtonView.Cross:
+        return css`
+          background-color: transparent;
+          position: relative;
+          width: 24px;
+          height: 24px;
+
+          &:hover {
+            background-color: transparent;
+          }
+
+          &:active {
+            background-color: transparent;
+          }
+
+          &::after,
+          &::before {
+            content: "";
+            background-color: ${({theme}) => theme.color.primary};
+            border-radius: 10px;
+            position: absolute;
+            width: 17px;
+            height: 2px;
+          }
+
+          &::before {
+            transform: rotate(45deg);
+          }
+
+          &::after {
+            transform: rotate(-45deg);
+          }
+
+        `;
       default:
         return css`
+          background-color: ${({theme}) => theme.color.primary};
           padding: 20px 50px;
           border-radius: 79px;
           font-weight: 700;

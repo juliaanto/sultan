@@ -10,4 +10,4 @@
 
 ## Описание
 
-Управление списком товаров доступно по адресу [/admin](https://juliaanto.github.io/sultan-online-store/admin).
+Управление списком товаров доступно по пути [/admin](https://juliaanto.github.io/sultan-online-store/admin).

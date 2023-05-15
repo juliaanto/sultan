@@ -1,4 +1,4 @@
-import { Heading, NewProductForm } from "../../components";
+import { Heading, NewProductForm, ProductTypes } from "../../components";
 
 import { Block } from "./admin.styled";
 import { useEffect } from "react";
@@ -11,6 +11,7 @@ function Admin() {
   return (
     <Block>
       <Heading>Товары</Heading>
+      <ProductTypes />
       <NewProductForm />
     </Block>
   );

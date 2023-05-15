@@ -10,7 +10,8 @@ export enum ButtonView {
   FooterEmail = "footerEmail",
   AddToCart = "addToCart",
   AddToCartFromProductPage = "addToCartFromProductPage",
-  ProductPage = "productPage"
+  ProductPage = "productPage",
+  Cross = "cross"
 }
 
 interface ButtonProps {

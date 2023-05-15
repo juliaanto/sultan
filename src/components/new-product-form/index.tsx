@@ -5,14 +5,17 @@ import { SizeType } from "../../common/data/size-type";
 import { useState } from "react";
 
 function NewProductForm() {
+  const adminProductTypes = localStorage.getItem("productTypes");
+  const productTypeValues: string[] = adminProductTypes ? JSON.parse(adminProductTypes) : [];
   const [productTypes, setProductTypes] = useState([]);
 
-  const handleFormSubmit = (event: any) => {
+
+  const handleFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const newProduct = {
       barcode: Number(event.target.barcode.value),
-      title: event.target.title.value,
+      title: event.target.title.valueOf,
       price: Number(event.target.price.value),
       brand: event.target.brand.value,
       producer: event.target.producer.value,
@@ -33,7 +36,7 @@ function NewProductForm() {
       localStorage.setItem('products', JSON.stringify([newProduct]));
     }
 
-    window.location.reload();
+    event.target.reset();
   }
   
   return (
@@ -47,9 +50,19 @@ function NewProductForm() {
         <Input $label="Бренд" id="brand" name="brand" />
         <Input $label="Производитель" id="producer" name="producer" />
         <Input $label="Тип ухода" id="productType" name="productType" />
+        <Select label="Тип ухода" id="" options={[
+          {
+            valueId: String(SizeType.Volume),
+            valueName: "Объем"
+          },
+          {
+            valueId: String(SizeType.Weight),
+            valueName: "Вес"
+          },
+        ]} />
       </Wrapper>
         <Wrapper>
-        <Input $label="Url изображения" id="imageUrl" name="imageUrl" />
+        <Input $label="URL изображения" id="imageUrl" name="imageUrl" />
         <Select label="Тип размера" id="sizeType" options={[
           {
             valueId: String(SizeType.Volume),
