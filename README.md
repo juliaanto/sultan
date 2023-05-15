@@ -1,13 +1,43 @@
-# Интернет-магазин "Султан"
+# Sultan
+Online store of household chemicals, cosmetics and household goods.
 
-Список того, что еще **не сделано**:
 
-1. Микроадминка по управлению списком товаров
-2. <del>Доделать страницу карточки товара</del>
-3. Пагинация и поиск по чекбоксам на странице каталога
-4. Окно "Спасибо заказ" после кнопки "оформить заказ" в корзине
-5. Адаптивная верстка всех страниц (пока готовы только хедер и футер)
+## General Information
+Managing the list of goods is available in the admin panel on the path [/admin](https://juliaanto.github.io/sultan/admin).
+Products added via the admin panel are saved to the localStorage. If the list is empty (the administrator deleted everything or from the very start), then mock data is used.
 
-## Описание
 
-Управление списком товаров доступно по пути [/admin](https://juliaanto.github.io/sultan-online-store/admin).
+## Technologies Used
+- TypeScript
+- React
+- Redux
+- styled-components
+
+
+## Сomposition
+- Pages: catalog, cart, product card
+- Filtering and sorting the list of products
+- Adding a product to the cart
+- Editing the list of items in the cart
+
+
+## To do
+- Main page
+- Сheckout page
+- Admin panel
+- Pagination on the catalog page
+- Search by checkboxes in the filter
+- Thank you order window
+- Adaptive layout
+
+
+## How to run
+To clone and run this application:
+
+```
+git clone https://github.com/juliaanto/sultan.git
+cd sultan
+npm install
+npm start
+```
+The application will be available at [localhost:3000](http://localhost:3000).
