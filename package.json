@@ -1,7 +1,7 @@
 {
-  "name": "sultan-online-store",
+  "name": "sultan",
   "version": "0.1.0",
-  "homepage": "https://juliaanto.github.io/sultan-online-store",
+  "homepage": "https://juliaanto.github.io/sultan",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
