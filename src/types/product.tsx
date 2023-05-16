@@ -1,5 +1,3 @@
-import { SizeType } from "../common/data/size-type";
-
 export interface IProduct {
   barcode: number;
   title: string;
@@ -8,7 +6,7 @@ export interface IProduct {
   producer: string;
   imageUrl: string;
   productType: string[],
-  sizeType: SizeType,
+  sizeType: string,
   size: string;
   description: string;
 }

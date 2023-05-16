@@ -3,7 +3,7 @@ Online store of household chemicals, cosmetics and household goods.
 
 
 ## General Information
-Managing the list of goods is available in the admin panel on the path [/admin](https://juliaanto.github.io/sultan/admin).
+Managing the list of goods is available in the admin panel on the path [/admin](https://juliaanto.github.io/sultan/admin).  
 Products added via the admin panel are saved to the localStorage. If the list is empty (the administrator deleted everything or from the very start), then mock data is used.
 
 

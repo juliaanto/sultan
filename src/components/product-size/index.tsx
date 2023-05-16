@@ -5,7 +5,7 @@ import { ReactComponent as IconBox } from "../../assets/icons/box.svg";
 import { SizeType } from "../../common/data/size-type";
 
 interface ProductSizeProps {
-  sizeType: SizeType;
+  sizeType: string;
   size: string;
 }
 
