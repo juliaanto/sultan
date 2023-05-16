@@ -3,21 +3,6 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-`;
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 20%;
-  flex-grow: 1;
-`;
-
-export const BottomLine = styled.div`
-  width: 100%;
-  display: flex;
   flex-direction: column;
   gap: 20px;
 `;

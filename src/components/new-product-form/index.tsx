@@ -1,10 +1,14 @@
-import { BottomLine, Form, Wrapper } from "./new-product-form.styled";
 import { Button, Input, Select, Textarea } from "../../ui";
 
+import { Form } from "./new-product-form.styled";
 import { SizeType } from "../../common/data/size-type";
 import { useState } from "react";
 
-function NewProductForm() {
+interface NewProductFormProps {
+  handleSubmit: () => void;
+}
+
+function NewProductForm({handleSubmit}: NewProductFormProps) {
   const adminProductTypes = localStorage.getItem("productTypes");
   const productTypeValues: string[] = adminProductTypes ? JSON.parse(adminProductTypes) : [];
   const [productTypes, setProductTypes] = useState([]);
@@ -37,47 +41,40 @@ function NewProductForm() {
     }
 
     event.target.reset();
+    handleSubmit();
   }
   
   return (
     <Form onSubmit={handleFormSubmit} id="addNewProductForm">
-      <Wrapper>
-        <Input $label="Штрихкод" id="barcode" name="barcode" />
-        <Input $label="Название" id="title" name="title" />
-        <Input $label="Цена" id="price" name="price" type="number" />
-      </Wrapper>
-      <Wrapper>
-        <Input $label="Бренд" id="brand" name="brand" />
-        <Input $label="Производитель" id="producer" name="producer" />
-        <Input $label="Тип ухода" id="productType" name="productType" />
-        <Select label="Тип ухода" id="" options={[
-          {
-            valueId: String(SizeType.Volume),
-            valueName: "Объем"
-          },
-          {
-            valueId: String(SizeType.Weight),
-            valueName: "Вес"
-          },
-        ]} />
-      </Wrapper>
-        <Wrapper>
-        <Input $label="URL изображения" id="imageUrl" name="imageUrl" />
-        <Select label="Тип размера" id="sizeType" options={[
-          {
-            valueId: String(SizeType.Volume),
-            valueName: "Объем"
-          },
-          {
-            valueId: String(SizeType.Weight),
-            valueName: "Вес"
-          },
-        ]} />
-        <Input $label="Размер" id="size" name="size" />
-      </Wrapper>
-      <BottomLine>
-        <Textarea label="Описание" id="description" />
-      </BottomLine>
+      <Input $label="Штрихкод" id="barcode" name="barcode" />
+      <Input $label="URL изображения" id="imageUrl" name="imageUrl" />
+      <Input $label="Название" id="title" name="title" />
+      <Input $label="Цена" id="price" name="price" type="number" />
+      <Input $label="Бренд" id="brand" name="brand" />
+      <Input $label="Производитель" id="producer" name="producer" />
+      <Select label="Тип размера" id="sizeType" options={[
+        {
+          valueId: String(SizeType.Volume),
+          valueName: "Объем"
+        },
+        {
+          valueId: String(SizeType.Weight),
+          valueName: "Вес"
+        },
+      ]} />
+      <Input $label="Размер" id="size" name="size" />
+      <Select label="Назначение" id="" options={[
+        {
+          valueId: String(SizeType.Volume),
+          valueName: "Уход за руками"
+        },
+        {
+          valueId: String(SizeType.Weight),
+          valueName: "Уход за лицом"
+        },
+      ]} />
+
+      <Textarea label="Описание" id="description" />
       <Button type="submit">Добавить</Button>
     </Form>
   );

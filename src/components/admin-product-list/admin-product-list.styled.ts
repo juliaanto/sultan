@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Block = styled.table`
-  border-collapse: collapse; 
+  border-collapse: collapse;
+  width: 100%;
 `;
 
 export const TableHeader = styled.th`
