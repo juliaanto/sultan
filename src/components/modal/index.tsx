@@ -7,7 +7,7 @@ import useLockBodyScroll from "../../common/hooks/useLockBodyScroll";
 
 interface ModalProps {
   isOpen: boolean;
-  children: JSX.Element;
+  children: React.ReactNode;
   handleCloseClick: () => void;
 }
 

@@ -1,5 +1,5 @@
-import { Block, BottomLine, Content, Message, TotalPrice } from "./cart.styled";
-import { Breadcrumbs, CartProductList, Heading } from "../../components";
+import { Block, BottomLine, Content, TotalPrice } from "./cart.styled";
+import { Breadcrumbs, CartProductList, Heading, Message } from "../../components";
 import { clearCart, getCartProducts } from "../../store/products/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 

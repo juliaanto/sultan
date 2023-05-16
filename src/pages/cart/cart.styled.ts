@@ -16,12 +16,6 @@ export const Content = styled.div`
   width: 100%;
 `;
 
-export const Message = styled.p`
-  color: ${({ theme }) => theme.color.textSecondary};
-  font-size: 16px;
-  margin: 50px 0 100px;
-`;
-
 export const BottomLine = styled.div`
   display: flex;
   justify-content: space-between;

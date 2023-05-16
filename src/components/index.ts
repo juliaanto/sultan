@@ -22,3 +22,4 @@ export { default as ProductTypes } from "./product-types";
 export { default as AdminProductList } from "./admin-product-list";
 export { default as AdminProductCard } from "./admin-product-card";
 export { default as Modal } from "./modal";
+export { default as Message } from "./message";

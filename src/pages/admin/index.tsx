@@ -1,7 +1,7 @@
 import { AdminProductList, Heading, Modal, NewProductForm } from "../../components";
+import { Block, ButtonsWrapper } from "./admin.styled";
 import { useEffect, useState } from "react";
 
-import { Block } from "./admin.styled";
 import { Button } from "../../ui";
 
 function Admin() {
@@ -10,11 +10,19 @@ function Admin() {
   }, []);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleDeleteAllProductsClick = () => {
+    localStorage.removeItem('products');
+    window.location.reload();
+  }
   
   return (
     <Block>
       <Heading>Товары</Heading>
-      <Button onClick={() => setIsModalOpen(true)}>Добавить товар</Button>
+      <ButtonsWrapper>
+        <Button onClick={() => setIsModalOpen(true)}>Добавить товар</Button>
+        <Button onClick={handleDeleteAllProductsClick}>Удалить все товары</Button>
+      </ButtonsWrapper>
       <Modal isOpen={isModalOpen} handleCloseClick={() => setIsModalOpen(false)}>
         <NewProductForm handleSubmit={() => setIsModalOpen(false)} />
       </Modal>

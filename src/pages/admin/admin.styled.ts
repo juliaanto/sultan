@@ -11,3 +11,10 @@ export const Block = styled.main`
     width: 100vw;
   }
 `;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 15px;
+`;

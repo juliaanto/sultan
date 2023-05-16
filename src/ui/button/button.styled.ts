@@ -221,7 +221,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
       default:
         return css`
           background-color: ${({theme}) => theme.color.primary};
-          padding: 20px 50px;
+          padding: 20px 40px;
           border-radius: 79px;
           font-weight: 700;
           color: ${({theme}) => theme.color.textButton};
