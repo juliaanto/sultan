@@ -29,6 +29,7 @@ Products added via the admin panel are saved to the localStorage. If the list is
 - Search by checkboxes in the filter
 - Thank you order window
 - Adaptive layout
+- Validation of the form for adding a product in the admin panel
 
 
 ## How to run

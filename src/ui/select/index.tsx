@@ -16,7 +16,7 @@ function Select({label, id, options, placeholder}: SelectProps) {
       <Label htmlFor={id}>{label}</Label>
       <SelectWrapper>
         <StyledSelect id={id} name={id} required>
-          <Option value="" selected hidden>{placeholder}</Option>
+          <Option value="" hidden>{placeholder}</Option>
           {options.map((option) => (
             <Option value={option.valueId} key={option.valueId}>{option.valueName}</Option>
           ))}

@@ -92,12 +92,12 @@ function NewProductForm({handleSubmit}: NewProductFormProps) {
         placeholder="Выберите тип размера"
         options={[
           {
-            valueId: String(SizeType.Volume),
-            valueName: "Объем"
+            valueId: SizeType.Volume,
+            valueName: SizeType.Volume
           },
           {
-            valueId: String(SizeType.Weight),
-            valueName: "Вес"
+            valueId: SizeType.Weight,
+            valueName: SizeType.Weight
           },
         ]}
       />
