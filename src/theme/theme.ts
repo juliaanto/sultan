@@ -11,6 +11,7 @@ const theme = {
     textFooter: "#ffffff",
     input: "#ededed",
     inputFooter: "#ffffff",
+    placeholder: "rgba(92, 99, 112, 0.6)",
   },
   contentWidth: {
     maxDesktop: "1370px",

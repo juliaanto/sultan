@@ -69,7 +69,7 @@ export const StyledInput = styled.input<StyledInputProps>`
       color: transparent;
 
       @media (min-width: ${({ theme }) => theme.breakpoint.desktop}px) {
-        color: rgba(92, 99, 112, 0.6);
+        color: ${({ theme }) => theme.color.placeholder};
       }
     }
   }

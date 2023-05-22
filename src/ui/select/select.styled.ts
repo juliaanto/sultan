@@ -26,12 +26,17 @@ export const StyledSelect = styled.select`
   -moz-appearance:none;
   -webkit-appearance:none;
   appearance:none;
+
+  :invalid { 
+    color: ${({ theme }) => theme.color.placeholder};
+  }
 `;
 
 export const Icon = styled(IconTriangle)`
   position: absolute;
   top: 50%;
   right: 30px;
+  transform: translateY(-50%);
 `;
 
 export const Option = styled.option`

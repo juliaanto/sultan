@@ -9,6 +9,15 @@ export const Form = styled.form`
 `;
 
 export const ButtonWrapper = styled.div`
-  margin-top: 50px;
   grid-column: 2 / -1;
+  margin-top: auto;
+  margin-bottom: 0;
+`;
+
+export const TextareaWrapper = styled.div`
+  grid-column: 1 / -1;
+
+  & textarea {
+    height: 150px;
+  }
 `;

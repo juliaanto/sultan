@@ -17,4 +17,10 @@ export const StyledTextarea = styled.textarea`
   padding: 21px 30px;
   border: none;
   outline: none;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+
+  &::placeholder {
+    color: ${({ theme }) => theme.color.placeholder};
+  }
 `;
