@@ -1,6 +1,6 @@
 import { Button, Input, Select, Textarea } from "../../ui";
+import { ButtonWrapper, Form } from "./new-product-form.styled";
 
-import { Form } from "./new-product-form.styled";
 import { SizeType } from "../../common/data/size-type";
 import { useState } from "react";
 
@@ -73,9 +73,10 @@ function NewProductForm({handleSubmit}: NewProductFormProps) {
           valueName: "Уход за лицом"
         },
       ]} />
-
       <Textarea label="Описание" id="description" />
-      <Button type="submit">Добавить</Button>
+      <ButtonWrapper>
+        <Button type="submit" $width="100%">Добавить товар</Button>
+      </ButtonWrapper>
     </Form>
   );
 }

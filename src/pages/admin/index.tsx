@@ -23,7 +23,11 @@ function Admin() {
         <Button onClick={() => setIsModalOpen(true)}>Добавить товар</Button>
         <Button onClick={handleDeleteAllProductsClick}>Удалить все товары</Button>
       </ButtonsWrapper>
-      <Modal isOpen={isModalOpen} handleCloseClick={() => setIsModalOpen(false)}>
+      <Modal 
+        isOpen={isModalOpen}
+        title="Добавление товара"
+        handleCloseClick={() => setIsModalOpen(false)}
+      >
         <NewProductForm handleSubmit={() => setIsModalOpen(false)} />
       </Modal>
       <AdminProductList />
