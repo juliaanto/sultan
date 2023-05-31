@@ -1,3 +1,4 @@
+import { StyledButton } from "../../ui/button/button.styled";
 import styled from "styled-components";
 
 export const Form = styled.form`
@@ -8,7 +9,7 @@ export const Form = styled.form`
   margin-top: 50px;
 `;
 
-export const ButtonWrapper = styled.div`
+export const Button = styled(StyledButton)`
   grid-column: 2 / -1;
   margin-top: auto;
   margin-bottom: 0;

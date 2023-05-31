@@ -4,10 +4,7 @@ interface SelectProps {
   label: string;
   id: string;
   placeholder: string;
-  options: {
-    valueId: string;
-    valueName: string
-  }[]
+  options: string[];
 }
 
 function Select({label, id, options, placeholder}: SelectProps) {
@@ -18,7 +15,7 @@ function Select({label, id, options, placeholder}: SelectProps) {
         <StyledSelect id={id} name={id} required>
           <Option value="" hidden>{placeholder}</Option>
           {options.map((option) => (
-            <Option value={option.valueId} key={option.valueId}>{option.valueName}</Option>
+            <Option value={option} key={option}>{option}</Option>
           ))}
         </StyledSelect>
         <Icon />

@@ -1,5 +1,5 @@
-import { Button, Input, Select, Textarea } from "../../ui";
-import { ButtonWrapper, Form, TextareaWrapper } from "./new-product-form.styled";
+import { Button, Form, TextareaWrapper } from "./new-product-form.styled";
+import { Dropdown, Input, Select, Textarea } from "../../ui";
 
 import { SizeType } from "../../common/data/size-type";
 import { useState } from "react";
@@ -90,16 +90,7 @@ function NewProductForm({handleSubmit}: NewProductFormProps) {
         label="Тип размера"
         id="sizeType"
         placeholder="Выберите тип размера"
-        options={[
-          {
-            valueId: SizeType.Volume,
-            valueName: SizeType.Volume
-          },
-          {
-            valueId: SizeType.Weight,
-            valueName: SizeType.Weight
-          },
-        ]}
+        options={[ SizeType.Volume, SizeType.Weight ]}
       />
       <Input
         $label="Размер"
@@ -107,6 +98,7 @@ function NewProductForm({handleSubmit}: NewProductFormProps) {
         name="size"
         placeholder="Введите размер"
       />
+      <Dropdown />
       <TextareaWrapper>
         <Textarea
           label="Описание"
@@ -114,29 +106,12 @@ function NewProductForm({handleSubmit}: NewProductFormProps) {
           placeholder="Введите описание"
         />
       </TextareaWrapper>
-      <Select
-        label="Назначение"
-        id=""
-        placeholder="Выберите назначение"
-        options={[
-          {
-            valueId: String(SizeType.Volume),
-            valueName: "Уход за руками"
-          },
-          {
-            valueId: String(SizeType.Weight),
-            valueName: "Уход за лицом"
-          },
-        ]}
-      />
-      <ButtonWrapper>
-        <Button
-          type="submit"
-          $width="100%"
-        >
-          Добавить товар
-        </Button>
-      </ButtonWrapper>
+      <Button
+        type="submit"
+        $width="100%"
+      >
+        Добавить товар
+      </Button>
     </Form>
   );
 }
