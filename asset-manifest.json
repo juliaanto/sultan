@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/sultan/static/css/main.e6c13ad2.css",
-    "main.js": "/sultan/static/js/main.6f5dafc8.js",
+    "main.js": "/sultan/static/js/main.c4283bd2.js",
     "static/media/operator.png": "/sultan/static/media/operator.c09c28a7728cdb77b5a8.png",
     "static/media/logo.svg": "/sultan/static/media/logo.32f874c42f3575abb4f760c35ba7b673.svg",
     "static/media/logo-mastercard.svg": "/sultan/static/media/logo-mastercard.b8d9095c846f209d0f89c54d6d657a9f.svg",
@@ -24,10 +24,10 @@
     "static/media/arrow.svg": "/sultan/static/media/arrow.35ab94e2f8817f324bd31c2293385fa8.svg",
     "static/media/triangle.svg": "/sultan/static/media/triangle.260e242d67fc23d29ab014c3406116d8.svg",
     "main.e6c13ad2.css.map": "/sultan/static/css/main.e6c13ad2.css.map",
-    "main.6f5dafc8.js.map": "/sultan/static/js/main.6f5dafc8.js.map"
+    "main.c4283bd2.js.map": "/sultan/static/js/main.c4283bd2.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.6f5dafc8.js"
+    "static/js/main.c4283bd2.js"
   ]
 }
