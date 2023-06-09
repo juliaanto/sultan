@@ -2,6 +2,8 @@ import { Button, Form, TextareaWrapper } from "./new-product-form.styled";
 import { Dropdown, Input, Select, Textarea } from "../../ui";
 
 import { SizeType } from "../../common/data/size-type";
+import { getProductTypes } from "../../store/admin/adminSlice";
+import { useAppSelector } from "../../app/hooks";
 import { useState } from "react";
 
 interface NewProductFormProps {
@@ -9,10 +11,9 @@ interface NewProductFormProps {
 }
 
 function NewProductForm({handleSubmit}: NewProductFormProps) {
-  const adminProductTypes = localStorage.getItem("productTypes");
-  const productTypeValues: string[] = adminProductTypes ? JSON.parse(adminProductTypes) : [];
+  const productTypeValues = useAppSelector(getProductTypes);
 
-  const [productTypes, setProductTypes] = useState<string[]>([]);
+  const [checkedProductTypes, setCheckedProductTypes] = useState<string[]>([]);
 
   const handleFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -24,7 +25,7 @@ function NewProductForm({handleSubmit}: NewProductFormProps) {
       brand: event.target.brand.value,
       producer: event.target.producer.value,
       imageUrl: event.target.imageUrl.value,
-      productType: productTypes,
+      productType: checkedProductTypes,
       sizeType: event.target.sizeType.value,
       size: event.target.size.value,
       description: event.target.description.value,
@@ -100,7 +101,7 @@ function NewProductForm({handleSubmit}: NewProductFormProps) {
       />
       <Dropdown
         valueTitles={productTypeValues}
-        onValueChange={(checkedValues) => setProductTypes(checkedValues)}
+        onValueChange={(checkedValues) => setCheckedProductTypes(checkedValues)}
       />
       <TextareaWrapper>
         <Textarea

@@ -21,17 +21,16 @@ function ProductTypes() {
 
   return (
     <Block>
-      Тип товара:
+      <Form onSubmit={handleFormSubmit}>
+        <Input name="newProductType" placeholder="Введите тип товара" />
+        <Button type="submit">Добавить</Button>
+      </Form>
       {productTypes.map((productType, index) => (
         <ProductTypeWrapper key={index}>
           <ProductType>{productType}</ProductType>
           <Button $view={ButtonView.Cross} onClick={() => handleRemoveButtonClick(productType)} />
         </ProductTypeWrapper>
       ))}
-      <Form onSubmit={handleFormSubmit}>
-        <Input $label="Новый тип товара" name="newProductType"/>
-        <Button type="submit">Добавить</Button>
-      </Form>
     </Block>
   );
 }

@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { RootState } from '../../app/store';
+import mockProductTypes from "../../common/data/product-types.json"
 
 export interface AdminState {
   productTypes: string[];
@@ -9,7 +10,7 @@ export interface AdminState {
 const localStorageState = localStorage.getItem('productTypes');
 
 const initialState: AdminState = {
-  productTypes: localStorageState ? JSON.parse(localStorageState) : [],
+  productTypes: (localStorageState && JSON.parse(localStorageState).length > 0) ? JSON.parse(localStorageState) : mockProductTypes,
 };
 
 export const adminSlice = createSlice({

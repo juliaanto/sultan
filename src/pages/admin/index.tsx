@@ -1,4 +1,4 @@
-import { AdminProductList, Heading, Modal, NewProductForm } from "../../components";
+import { AdminProductList, Heading, Modal, NewProductForm, ProductTypes } from "../../components";
 import { Block, ButtonsWrapper } from "./admin.styled";
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,13 @@ function Admin() {
     document.title = "Управление списком товаров | Султан";
   }, []);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  enum ModalName {
+    Closed,
+    AddProduct,
+    EditProductType
+  }
+
+  const [modal, setModal] = useState<ModalName>();
 
   const handleDeleteAllProductsClick = () => {
     localStorage.removeItem('products');
@@ -20,15 +26,23 @@ function Admin() {
     <Block>
       <Heading>Товары</Heading>
       <ButtonsWrapper>
-        <Button onClick={() => setIsModalOpen(true)}>Добавить товар</Button>
+        <Button onClick={() => setModal(ModalName.AddProduct)}>Добавить товар</Button>
         <Button onClick={handleDeleteAllProductsClick}>Удалить все товары</Button>
+        <Button onClick={() => setModal(ModalName.EditProductType)}>Редактировать типы товара</Button>
       </ButtonsWrapper>
       <Modal 
-        isOpen={isModalOpen}
+        isOpen={modal === ModalName.AddProduct}
         title="Добавление товара"
-        handleCloseClick={() => setIsModalOpen(false)}
+        handleCloseClick={() => setModal(undefined)}
       >
-        <NewProductForm handleSubmit={() => setIsModalOpen(false)} />
+        <NewProductForm handleSubmit={() => setModal(undefined)} />
+      </Modal>
+      <Modal 
+        isOpen={modal === ModalName.EditProductType}
+        title="Редактировать типы товара"
+        handleCloseClick={() => setModal(undefined)}
+      >
+        <ProductTypes />
       </Modal>
       <AdminProductList />
     </Block>
