@@ -19,7 +19,13 @@ function AdminProductCard({product}: AdminProductCardProps) {
       <TableData>{product.producer}</TableData>
       <TableData>{product.sizeType}</TableData>
       <TableData>{product.size}</TableData>
-      <TableData>{product.productType}</TableData>
+      <TableData>
+        <ul>
+          {product.productType.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </TableData>
       <TableData>{product.description.substring(0, 200)}</TableData>
     </TableRow>
   )

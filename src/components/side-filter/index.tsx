@@ -1,6 +1,6 @@
 import { BottomLine, Fieldset, Form, Heading, Legend, Text } from "./side-filter.styled";
 import { Button, CheckboxSet, Input } from "../../ui";
-import { FilterBy, IFilters, PriceFilter } from "../../types/filters";
+import { FilterBy, FilterLocation, IFilters, PriceFilter } from "../../types/filters";
 import { filterCatalogProducts, getFilter, setPriceFilterValue, setProducerFilterValue, setProductTypeFilterValue } from "../../store/products/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { useEffect, useState } from "react";
@@ -80,6 +80,7 @@ function SideFilter() {
         items={filterData[FilterBy.Producer]}
         filterField={FilterBy.Producer}
         shownItemsCount={4}
+        location={FilterLocation.sideFilter}
         onInputChange={handleProducerFilterChange}
       />
       <CheckboxSet 
@@ -87,6 +88,7 @@ function SideFilter() {
         items={filterData[FilterBy.ProductType]} 
         filterField={FilterBy.ProductType}
         shownItemsCount={4}
+        location={FilterLocation.sideFilter}
         onInputChange={handleProductTypeFilterChange}
       />
       <BottomLine>

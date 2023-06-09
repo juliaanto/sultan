@@ -1,5 +1,5 @@
 import { Fieldset, Legend, ShowAllButton, Wrapper } from "./checkbox-set.styled";
-import { FilterBy, ICheckboxFilter } from "../../types/filters";
+import { FilterBy, FilterLocation, ICheckboxFilter } from "../../types/filters";
 import Input, { InputView } from "../input";
 
 import Checkbox from "../checkbox";
@@ -10,10 +10,11 @@ interface CheckboxSetProps {
   items: ICheckboxFilter;
   filterField: FilterBy;
   shownItemsCount?: number;
+  location?: FilterLocation;
   onInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function CheckboxSet({filterName, items, filterField, shownItemsCount, onInputChange}: CheckboxSetProps) {
+function CheckboxSet({filterName, items, filterField, shownItemsCount, location, onInputChange}: CheckboxSetProps) {
   const [isShownAll, setIsShownAll] = useState(false);
   const shownItems = !isShownAll && shownItemsCount ? Object.values(items).slice(0, shownItemsCount) : items;
 
@@ -27,7 +28,8 @@ function CheckboxSet({filterName, items, filterField, shownItemsCount, onInputCh
             title={title} 
             id={id} 
             isChecked={isChecked} 
-            filterField={filterField} 
+            filterField={filterField}
+            location={location}
             onInputChange={onInputChange}
           />
         ))}

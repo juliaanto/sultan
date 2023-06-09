@@ -11,8 +11,8 @@ interface NewProductFormProps {
 function NewProductForm({handleSubmit}: NewProductFormProps) {
   const adminProductTypes = localStorage.getItem("productTypes");
   const productTypeValues: string[] = adminProductTypes ? JSON.parse(adminProductTypes) : [];
-  const [productTypes, setProductTypes] = useState([]);
 
+  const [productTypes, setProductTypes] = useState<string[]>([]);
 
   const handleFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -98,7 +98,10 @@ function NewProductForm({handleSubmit}: NewProductFormProps) {
         name="size"
         placeholder="Введите размер"
       />
-      <Dropdown />
+      <Dropdown
+        valueTitles={productTypeValues}
+        onValueChange={(checkedValues) => setProductTypes(checkedValues)}
+      />
       <TextareaWrapper>
         <Textarea
           label="Описание"

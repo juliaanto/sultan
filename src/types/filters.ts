@@ -27,3 +27,7 @@ export interface IFilters {
   [FilterBy.ProductType]: ICheckboxFilter,
   [FilterBy.Producer]: ICheckboxFilter,
 }
+
+export enum FilterLocation {
+  sideFilter = "sideFilter",
+}

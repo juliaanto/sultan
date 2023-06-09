@@ -1,13 +1,47 @@
 import { Block, Button, Icon, Label, Menu } from "./dropdown.styled";
-import { createRef, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 
 import Checkbox from "../checkbox";
 import useClickOutsideElement from "../../common/hooks/useClickOutsideElement";
 
-function Dropdown() {
+interface DropdownProps {
+  valueTitles: string[];
+  onValueChange: (changedProductTypes: string[]) => void;
+}
+
+function Dropdown({valueTitles, onValueChange}: DropdownProps) {
+  const defaultValues: {
+    title: string,
+    isChecked: boolean,
+  }[] = [];
+  
+  valueTitles.forEach((item) => {
+    defaultValues.push({
+      title: item,
+      isChecked: false,
+    })
+  })
+
   const [isOpen, setIsOpen] = useState(false);
+  const [values, setValues] = useState(defaultValues);
+
   const menuRef = createRef<HTMLInputElement>();
   useClickOutsideElement(menuRef, () => setIsOpen(false));
+
+  useEffect(() => {
+    const checkedValueTitles: string[] = [];
+    values.forEach((value) => {
+      value.isChecked && checkedValueTitles.push(value.title);
+    })
+    onValueChange(checkedValueTitles);
+  }, [values]);
+
+  const handleInputChange = (event: { target: any; }) => {
+    const valueIndex = values.findIndex((item) => item.title === event.target.name);
+    const updatedValues = [...values];
+    updatedValues[valueIndex].isChecked = !values[valueIndex].isChecked;
+    setValues(updatedValues);
+  }
   
   return (
     <Block ref={menuRef}>
@@ -21,9 +55,15 @@ function Dropdown() {
       </Button>
       {isOpen &&
         <Menu >
-          <Checkbox title={"Уход за руками"} id={"Уход за руками"} isChecked={false} />
-          <Checkbox title={"Уход за лицом"} id={"Уход за лицом"} isChecked={false} />
-          <Checkbox title={"Бумажная продукция"} id={"Бумажная продукция"} isChecked={false} />
+          {values.map((item, index) => (
+            <Checkbox 
+              key={index} 
+              title={item.title} 
+              id={item.title} 
+              isChecked={item.isChecked} 
+              onInputChange={handleInputChange}
+            />
+          ))}
         </Menu>
       }
     </Block>
