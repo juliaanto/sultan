@@ -23,6 +23,7 @@ interface ButtonProps {
   $width?: string;
   $height?: string;
   disabled?: boolean;
+  $color?: string;
 }
 
 function Button({
@@ -34,6 +35,7 @@ function Button({
   $height,
   $isLocatedInFooter,
   disabled,
+  $color,
 }: ButtonProps) {
   const renderContent = (view?: string) => {
     switch(view) {
@@ -65,6 +67,7 @@ function Button({
       $height={$height}
       $isLocatedInFooter={$isLocatedInFooter}
       disabled={disabled}
+      $color={$color}
     >
       {renderContent($view)}
     </StyledButton>

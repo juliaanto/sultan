@@ -39,7 +39,7 @@ function Admin() {
       </Modal>
       <Modal 
         isOpen={modal === ModalName.EditProductType}
-        title="Редактировать типы товара"
+        title="Редактирование типов товара"
         handleCloseClick={() => setModal(undefined)}
       >
         <ProductTypes />

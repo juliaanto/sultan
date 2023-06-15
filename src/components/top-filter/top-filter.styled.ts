@@ -11,7 +11,10 @@ export const Wrapper = styled.div`
 
 export const Label = styled.label`
   width: min-content;
-  display: inline-block;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
   text-align: center;
   color: ${({ theme }) => theme.color.textSecondary};
   font-weight: 400;

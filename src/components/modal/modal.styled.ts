@@ -34,8 +34,7 @@ export const Title = styled.h3`
   font-size: 30px;
   font-weight: 500;
   text-align: center;
-  margin: 0 auto 15px;
-  max-width: 410px;
+  margin: 0 auto 40px;
   line-height: 42px;
 `;
 

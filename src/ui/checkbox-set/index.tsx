@@ -24,7 +24,8 @@ function CheckboxSet({filterName, items, filterField, shownItemsCount, location,
       <Input $view={InputView.Search} />
       <Wrapper>
         {Object.values(shownItems).map(({title, id, isChecked}) => (
-          <Checkbox 
+          <Checkbox
+            key={id}
             title={title} 
             id={id} 
             isChecked={isChecked} 

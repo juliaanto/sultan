@@ -1,4 +1,4 @@
-import { Block, Form, ProductType, ProductTypeWrapper } from "./product-types.styled";
+import { Block, Form, InputWrapper, ProductType, ProductTypeWrapper, ProductTypesWrapper } from "./product-types.styled";
 import { Button, Input } from "../../ui";
 import { addProductType, getProductTypes, removeProductType } from "../../store/admin/adminSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -22,15 +22,23 @@ function ProductTypes() {
   return (
     <Block>
       <Form onSubmit={handleFormSubmit}>
-        <Input name="newProductType" placeholder="Введите тип товара" />
+        <InputWrapper>
+          <Input name="newProductType" placeholder="Введите тип товара" />
+        </InputWrapper>
         <Button type="submit">Добавить</Button>
       </Form>
-      {productTypes.map((productType, index) => (
-        <ProductTypeWrapper key={index}>
-          <ProductType>{productType}</ProductType>
-          <Button $view={ButtonView.Cross} onClick={() => handleRemoveButtonClick(productType)} />
-        </ProductTypeWrapper>
-      ))}
+      <ProductTypesWrapper>
+        {productTypes.map((productType, index) => (
+          <ProductTypeWrapper key={index}>
+            <ProductType>{productType}</ProductType>
+            <Button
+              $view={ButtonView.Cross}
+              onClick={() => handleRemoveButtonClick(productType)}
+              $color={"#ededed"}
+            />
+          </ProductTypeWrapper>
+        ))}
+      </ProductTypesWrapper>
     </Block>
   );
 }

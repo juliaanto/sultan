@@ -7,6 +7,7 @@ interface StyledButtonProps {
   $width?: string;
   $height?: string;
   $isLocatedInFooter?: boolean;
+  $color?: string;
 }
 
 export const StyledButton = styled.button<StyledButtonProps>`
@@ -202,7 +203,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
           &::after,
           &::before {
             content: "";
-            background-color: ${({theme}) => theme.color.primary};
+            background-color: ${({theme}) => props.$color || theme.color.primary};
             border-radius: 10px;
             position: absolute;
             width: 17px;
@@ -216,7 +217,6 @@ export const StyledButton = styled.button<StyledButtonProps>`
           &::after {
             transform: rotate(-45deg);
           }
-
         `;
       default:
         return css`
