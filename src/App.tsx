@@ -1,22 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Cart, Catalog, Product } from "./pages";
-import { setCatalogProducts, setInitialFilter } from "./store/products/productsSlice";
 
 import Admin from "./pages/admin";
 import { AppRoute } from "./common/data/app-route";
 import GlobalStyle from "./theme/globalStyle";
-import { IProduct } from "./types/product";
 import { ThemeProvider } from "styled-components";
-import mockProducts from "./common/data/products.json"
+import { setInitialFilter } from "./store/products/productsSlice";
 import theme from "./theme/theme";
 import { useAppDispatch } from "./app/hooks";
 
 function App() {
-  const adminProducts = localStorage.getItem("products");
-  const products = adminProducts ? JSON.parse(adminProducts) : mockProducts;
-
   const dispatch = useAppDispatch();
-  dispatch(setCatalogProducts(products as IProduct[]));
   dispatch(setInitialFilter());
   
   return (

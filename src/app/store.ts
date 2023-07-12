@@ -13,6 +13,7 @@ export const store = configureStore({
 store.subscribe(()=>{
   localStorage.setItem('cart', JSON.stringify(store.getState().products.cartProducts));
   localStorage.setItem('productTypes', JSON.stringify(store.getState().admin.productTypes));
+  localStorage.setItem('products', JSON.stringify(store.getState().admin.products));
 })
 
 export type AppDispatch = typeof store.dispatch;

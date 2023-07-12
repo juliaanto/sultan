@@ -1,9 +1,9 @@
 import { Button, Form, TextareaWrapper } from "./new-product-form.styled";
 import { Dropdown, Input, Select, Textarea } from "../../ui";
+import { addProduct, getProductTypes } from "../../store/admin/adminSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 import { SizeType } from "../../common/data/size-type";
-import { getProductTypes } from "../../store/admin/adminSlice";
-import { useAppSelector } from "../../app/hooks";
 import { useState } from "react";
 
 interface NewProductFormProps {
@@ -12,6 +12,7 @@ interface NewProductFormProps {
 
 function NewProductForm({handleSubmit}: NewProductFormProps) {
   const productTypeValues = useAppSelector(getProductTypes);
+  const dispatch = useAppDispatch();
 
   const [checkedProductTypes, setCheckedProductTypes] = useState<string[]>([]);
 
@@ -31,15 +32,7 @@ function NewProductForm({handleSubmit}: NewProductFormProps) {
       description: event.target.description.value,
     }
 
-    const productsJSON = localStorage.getItem("products");
-
-    if (productsJSON) {
-      const products = JSON.parse(productsJSON);
-      products.push(newProduct);
-      localStorage.setItem('products', JSON.stringify(products));
-    } else {
-      localStorage.setItem('products', JSON.stringify([newProduct]));
-    }
+    dispatch(addProduct(newProduct));
 
     event.target.reset();
     handleSubmit();

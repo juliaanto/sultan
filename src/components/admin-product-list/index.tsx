@@ -1,12 +1,12 @@
 import { Block, TableHead, TableHeader } from "./admin-product-list.styled";
 
 import AdminProductCard from "../admin-product-card";
-import { IProduct } from "../../types/product";
 import Message from "../message";
+import { getProducts } from "../../store/admin/adminSlice";
+import { useAppSelector } from "../../app/hooks";
 
 function AdminProductList() {
-  const adminProducts = localStorage.getItem("products");
-  const products: IProduct[] = adminProducts ? JSON.parse(adminProducts) : undefined;
+  const products = useAppSelector(getProducts);
   
   return (
     <>
@@ -24,6 +24,7 @@ function AdminProductList() {
             <TableHeader>Размер</TableHeader>
             <TableHeader>Назначение</TableHeader>
             <TableHeader>Описание</TableHeader>
+            <TableHeader>Действия</TableHeader>
           </tr>
         </TableHead>
         <tbody>

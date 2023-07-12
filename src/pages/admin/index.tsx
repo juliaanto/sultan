@@ -3,8 +3,12 @@ import { Block, ButtonsWrapper } from "./admin.styled";
 import { useEffect, useState } from "react";
 
 import { Button } from "../../ui";
+import { removeAllProducts } from "../../store/admin/adminSlice";
+import { useAppDispatch } from "../../app/hooks";
 
 function Admin() {
+  const dispatch = useAppDispatch();
+  
   useEffect(() => {
     document.title = "Управление списком товаров | Султан";
   }, []);
@@ -18,8 +22,7 @@ function Admin() {
   const [modal, setModal] = useState<ModalName>();
 
   const handleDeleteAllProductsClick = () => {
-    localStorage.removeItem('products');
-    window.location.reload();
+    dispatch(removeAllProducts());
   }
   
   return (

@@ -1,12 +1,23 @@
 import { TableData, TableRow } from "./admin-product-card.styled";
 
+import { Button } from "../../ui";
+import { ButtonView } from "../../ui/button";
 import { IProduct } from "../../types/product";
+import { ReactComponent as IconBin } from "../../assets/icons/bin.svg";
+import { removeProduct } from "../../store/admin/adminSlice";
+import { useAppDispatch } from "../../app/hooks";
 
 interface AdminProductCardProps {
   product: IProduct;
 }
 
 function AdminProductCard({product}: AdminProductCardProps) {
+  const dispatch = useAppDispatch();
+  
+  const handleDeleteClick = (barcode: number) => {
+    dispatch(removeProduct(barcode));
+  }
+
   return (
     <TableRow>
       <TableData>{product.barcode}</TableData>
@@ -27,6 +38,11 @@ function AdminProductCard({product}: AdminProductCardProps) {
         </ul>
       </TableData>
       <TableData>{product.description.substring(0, 200)}</TableData>
+      <TableData>
+        <Button $view={ButtonView.Icon} $width="59px" $height="59px" onClick={() => handleDeleteClick(product.barcode)}>
+          <IconBin />
+        </Button>
+      </TableData>
     </TableRow>
   )
 }

@@ -1,13 +1,14 @@
-import { FilterBy, IFilters, PriceFilter } from '../../types/filters';
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { FilterBy, IFilters, PriceFilter } from "../../types/filters";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { SortBy, sortProducts } from "../../common/helpers/sort";
-import { addProductToCart, removeItemFromCart, removeProduct } from '../../common/helpers/cart';
+import { addProductToCart, removeItemFromCart, removeProduct } from "../../common/helpers/cart";
 
-import { ICartItem } from '../../types/cart-item';
-import { IProduct } from '../../types/product';
-import { RootState } from '../../app/store';
-import { filterProducts } from '../../common/helpers/filter';
-import { getFilterData } from '../../common/helpers/filter-data';
+import { ICartItem } from "../../types/cart-item";
+import { IProduct } from "../../types/product";
+import { RootState } from "../../app/store";
+import { filterProducts } from "../../common/helpers/filter";
+import { getFilterData } from "../../common/helpers/filter-data";
+import mockProducts from "../../common/data/products.json";
 
 export interface ProductsState {
   initialProducts: IProduct[];
@@ -17,11 +18,15 @@ export interface ProductsState {
   sort: SortBy;
 }
 
-const localStorageState = localStorage.getItem('cart');
+const localStorageState = localStorage.getItem("cart");
+
+const localStorageProducts = localStorage.getItem("products");
+const parsedProducts = localStorageProducts ? JSON.parse(localStorageProducts) : [];
+const products = parsedProducts.length > 0 ? parsedProducts : mockProducts;
 
 const initialState: ProductsState = {
-  initialProducts: [],
-  catalogProducts: [],
+  initialProducts: products,
+  catalogProducts: products,
   cartProducts: localStorageState ? JSON.parse(localStorageState) : [],
   filter: {
     [FilterBy.Price]: {
@@ -35,7 +40,7 @@ const initialState: ProductsState = {
 };
 
 export const productsSlice = createSlice({
-  name: 'products',
+  name: "products",
   initialState,
   reducers: {
     setCatalogProducts: (state, action: PayloadAction<IProduct[]>) => {
