@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/sultan/static/css/main.e6c13ad2.css",
-    "main.js": "/sultan/static/js/main.c4283bd2.js",
+    "main.js": "/sultan/static/js/main.27747a26.js",
     "static/media/operator.png": "/sultan/static/media/operator.c09c28a7728cdb77b5a8.png",
     "static/media/logo.svg": "/sultan/static/media/logo.32f874c42f3575abb4f760c35ba7b673.svg",
     "static/media/logo-mastercard.svg": "/sultan/static/media/logo-mastercard.b8d9095c846f209d0f89c54d6d657a9f.svg",
@@ -17,6 +17,7 @@
     "static/media/box.svg": "/sultan/static/media/box.3daf02ca5bcf43434fd3c21fedf830c9.svg",
     "static/media/logo-telegram.svg": "/sultan/static/media/logo-telegram.345862dbe54245bf13aa48c0b9bf84ff.svg",
     "static/media/phone.svg": "/sultan/static/media/phone.e74ed3e8a20e93f90d9ea5afd4f2e047.svg",
+    "static/media/pencil.svg": "/sultan/static/media/pencil.297b53f11854546424693a2a18b3353f.svg",
     "static/media/location.svg": "/sultan/static/media/location.d148b8d8689c3530f152b2dfc5c6dcb9.svg",
     "static/media/catalog-button.svg": "/sultan/static/media/catalog-button.18342704135b4ecec9a33537fa160ec3.svg",
     "static/media/search.svg": "/sultan/static/media/search.ea9ef697bfe0d73dc61f4d8bcff567cc.svg",
@@ -24,10 +25,10 @@
     "static/media/arrow.svg": "/sultan/static/media/arrow.35ab94e2f8817f324bd31c2293385fa8.svg",
     "static/media/triangle.svg": "/sultan/static/media/triangle.260e242d67fc23d29ab014c3406116d8.svg",
     "main.e6c13ad2.css.map": "/sultan/static/css/main.e6c13ad2.css.map",
-    "main.c4283bd2.js.map": "/sultan/static/js/main.c4283bd2.js.map"
+    "main.27747a26.js.map": "/sultan/static/js/main.27747a26.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.c4283bd2.js"
+    "static/js/main.27747a26.js"
   ]
 }
