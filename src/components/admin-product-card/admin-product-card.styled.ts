@@ -7,3 +7,8 @@ export const TableRow = styled.tr`
 export const TableData = styled.td`
   padding: 10px;
 `;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+`;

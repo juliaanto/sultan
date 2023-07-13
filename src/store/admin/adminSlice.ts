@@ -31,6 +31,10 @@ export const adminSlice = createSlice({
     addProduct: (state, action: PayloadAction<IProduct>) => {
       state.products.push(action.payload);
     },
+    editProduct: (state, action: PayloadAction<{product: IProduct, originalBarcode: number}>) => {
+      const index = state.products.findIndex((product) => product.barcode === action.payload.originalBarcode);
+      state.products.splice(index, 1, action.payload.product);
+    },
     removeProduct: (state, action: PayloadAction<number>) => {
       const index = state.products.findIndex((product) => product.barcode === action.payload);
       state.products.splice(index, 1);
@@ -45,6 +49,7 @@ export const {
   addProductType,
   removeProductType,
   addProduct,
+  editProduct,
   removeProduct,
   removeAllProducts,
 } = adminSlice.actions;

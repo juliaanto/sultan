@@ -12,7 +12,11 @@ export const Label = styled.p`
   margin-bottom: 10px;
 `;
 
-export const Button = styled.button`
+interface ButtonProps {
+  $isSelected?: boolean;
+}
+
+export const Button = styled.button<ButtonProps>`
   width: 100%;
   text-align: left;
   position: relative;
@@ -20,7 +24,7 @@ export const Button = styled.button`
   border-radius: 36px;
   padding: 21px 60px 21px 30px;
   border: none;
-  color: ${({ theme }) => theme.color.placeholder};
+  color: ${({ theme, $isSelected }) => $isSelected ? theme.color.textPrimary : theme.color.placeholder};
   z-index: 2;
 `;
 

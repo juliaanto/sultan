@@ -16,6 +16,7 @@ Products added via the admin panel are saved to the localStorage. If the list is
 
 ## Сomposition
 - Pages: catalog, cart, product card
+- Admin panel with adding, editing and deleting products
 - Filtering and sorting the list of products
 - Adding a product to the cart
 - Editing the list of items in the cart
@@ -24,7 +25,6 @@ Products added via the admin panel are saved to the localStorage. If the list is
 ## To do
 - Main page
 - Сheckout page
-- Admin panel
 - Pagination on the catalog page
 - Search by checkboxes in the filter
 - Thank you order window

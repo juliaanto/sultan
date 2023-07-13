@@ -1,11 +1,15 @@
-import { TableData, TableRow } from "./admin-product-card.styled";
+import { ButtonsWrapper, TableData, TableRow } from "./admin-product-card.styled";
 
 import { Button } from "../../ui";
 import { ButtonView } from "../../ui/button";
 import { IProduct } from "../../types/product";
 import { ReactComponent as IconBin } from "../../assets/icons/bin.svg";
+import { ReactComponent as IconPencil } from "../../assets/icons/pencil.svg";
+import Modal from "../modal";
+import NewProductForm from "../new-product-form";
 import { removeProduct } from "../../store/admin/adminSlice";
 import { useAppDispatch } from "../../app/hooks";
+import { useState } from "react";
 
 interface AdminProductCardProps {
   product: IProduct;
@@ -13,7 +17,13 @@ interface AdminProductCardProps {
 
 function AdminProductCard({product}: AdminProductCardProps) {
   const dispatch = useAppDispatch();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
+  const handleEditClick = (product: IProduct) => {
+    setIsModalOpen(true);
+  }
+
   const handleDeleteClick = (barcode: number) => {
     dispatch(removeProduct(barcode));
   }
@@ -39,9 +49,24 @@ function AdminProductCard({product}: AdminProductCardProps) {
       </TableData>
       <TableData>{product.description.substring(0, 200)}</TableData>
       <TableData>
-        <Button $view={ButtonView.Icon} $width="59px" $height="59px" onClick={() => handleDeleteClick(product.barcode)}>
-          <IconBin />
-        </Button>
+        <ButtonsWrapper>
+          <Button $view={ButtonView.Icon} $width="35px" $height="35px" onClick={() => handleEditClick(product)}>
+            <IconPencil />
+          </Button>
+          <Modal 
+            isOpen={isModalOpen}
+            title="Редактирование товара"
+            handleCloseClick={() => setIsModalOpen(false)}
+          >
+            <NewProductForm 
+              handleSubmit={() => setIsModalOpen(false)}
+              product={product}
+            />
+          </Modal>
+          <Button $view={ButtonView.Icon} $width="35px" $height="35px" onClick={() => handleDeleteClick(product.barcode)}>
+            <IconBin />
+          </Button>
+        </ButtonsWrapper>
       </TableData>
     </TableRow>
   )

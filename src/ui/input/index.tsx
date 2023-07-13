@@ -18,6 +18,7 @@ interface InputProps {
   value?: string | number | readonly string[] | undefined;
   $view?: InputView;
   $label?: string;
+  defaultValue?: string | number;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -29,6 +30,7 @@ function Input({
   value,
   $view,
   $label,
+  defaultValue,
   onChange,
 }: InputProps) {
   switch($view) {
@@ -87,6 +89,7 @@ function Input({
               id={id}
               value={value}
               $view={$view}
+              defaultValue={defaultValue}
               onChange={onChange}
             ></StyledInput>
           </LabelWrapper>
